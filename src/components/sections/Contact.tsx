@@ -3,6 +3,7 @@ import { Mail, Linkedin, Phone, MapPin, CheckCircle, AlertCircle } from 'lucide-
 import { Card, CardContent } from '../common/Card';
 import { Button } from '../common/Button';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
     const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.2 });
@@ -25,10 +26,19 @@ const ContactSection = () => {
         setFormStatus('submitting');
 
         try {
-            // Simulate API call - replace with actual email service integration
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            await emailjs.send(
+                'service_3f80esr',      // Get from EmailJS dashboard
+                'YOUR_TEMPLATE_ID',     // Get from EmailJS dashboard
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message,
+                    to_email: 'dipeshsonitech@gmail.com'
+                },
+                'YOUR_PUBLIC_KEY'       // Get from EmailJS dashboard
+            );
 
-            // Simulate successful submission
             setFormStatus('success');
             setFormMessage('Your message has been sent successfully!');
             setFormData({ name: '', email: '', subject: '', message: '' });
