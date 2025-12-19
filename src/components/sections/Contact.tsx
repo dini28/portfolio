@@ -1,56 +1,36 @@
 import { useState } from 'react';
 import { Mail, Linkedin, Phone, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
+import { useForm, ValidationError } from '@formspree/react';
 import { Card, CardContent } from '../common/Card';
 import { Button } from '../common/Button';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
-import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
-    const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.2 });
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
-    const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-    const [formMessage, setFormMessage] = useState('');
+    const [state, handleSubmit] = useForm("xojavpzd");
+    const [isVisible] = useState(true);
+    const [emailError, setEmailError] = useState('');
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setFormStatus('submitting');
+        const formData = new FormData(e.target as HTMLFormElement);
+        const email = formData.get('email');
 
-        try {
-            await emailjs.send(
-                'service_3f80esr',      // Get from EmailJS dashboard
-                'template_6aujlz4',     // Get from EmailJS dashboard
-                {
-                    from_name: formData.name,
-                    from_email: formData.email,
-                    subject: formData.subject,
-                    message: formData.message,
-                    to_email: 'dipeshsonitech@gmail.com'
-                },
-                'bScYWRQYSnirLUaX0'       // Get from EmailJS dashboard
-            );
-
-            setFormStatus('success');
-            setFormMessage('Your message has been sent successfully!');
-            setFormData({ name: '', email: '', subject: '', message: '' });
-        } catch (error) {
-            setFormStatus('error');
-            setFormMessage('Failed to send message. Please try again later.');
+        // Validate email before submitting
+        if (!validateEmail(email as string)) {
+            setEmailError('Please enter a valid email address');
+            return;
         }
+
+        setEmailError('');
+        handleSubmit(e);
     };
 
     return (
         <section
-            ref={sectionRef}
             id="contact"
             className="py-20 relative overflow-hidden"
             style={{
@@ -140,7 +120,7 @@ const ContactSection = () => {
                                 }}
                             ></div>
                             <CardContent className="p-8">
-                                <form onSubmit={handleSubmit} className="space-y-6">
+                                <form onSubmit={onSubmit} className="space-y-6">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
                                             <label htmlFor="name" className="block text-sm font-medium text-slate-600 mb-2">
@@ -150,10 +130,14 @@ const ContactSection = () => {
                                                 type="text"
                                                 id="name"
                                                 name="name"
-                                                value={formData.name}
-                                                onChange={handleChange}
                                                 className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-all"
                                                 required
+                                            />
+                                            <ValidationError
+                                                prefix="Name"
+                                                field="name"
+                                                errors={state.errors}
+                                                className="text-red-600 text-sm mt-1"
                                             />
                                         </div>
                                         <div>
@@ -164,10 +148,18 @@ const ContactSection = () => {
                                                 type="email"
                                                 id="email"
                                                 name="email"
-                                                value={formData.email}
-                                                onChange={handleChange}
-                                                className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:slate-teal-600 focus:border-transparent transition-all"
+                                                className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-all"
                                                 required
+                                                onChange={() => setEmailError('')}
+                                            />
+                                            {emailError && (
+                                                <p className="text-red-600 text-sm mt-1">{emailError}</p>
+                                            )}
+                                            <ValidationError
+                                                prefix="Email"
+                                                field="email"
+                                                errors={state.errors}
+                                                className="text-red-600 text-sm mt-1"
                                             />
                                         </div>
                                     </div>
@@ -179,10 +171,14 @@ const ContactSection = () => {
                                             type="text"
                                             id="subject"
                                             name="subject"
-                                            value={formData.subject}
-                                            onChange={handleChange}
-                                            className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:slate-teal-600 focus:border-transparent transition-all"
+                                            className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-all"
                                             required
+                                        />
+                                        <ValidationError
+                                            prefix="Subject"
+                                            field="subject"
+                                            errors={state.errors}
+                                            className="text-red-600 text-sm mt-1"
                                         />
                                     </div>
                                     <div>
@@ -192,25 +188,29 @@ const ContactSection = () => {
                                         <textarea
                                             id="message"
                                             name="message"
-                                            value={formData.message}
-                                            onChange={handleChange}
                                             rows={5}
                                             className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-all resize-none"
                                             required
                                         ></textarea>
+                                        <ValidationError
+                                            prefix="Message"
+                                            field="message"
+                                            errors={state.errors}
+                                            className="text-red-600 text-sm mt-1"
+                                        />
                                     </div>
 
                                     {/* Form Status Messages */}
-                                    {formStatus === 'success' && (
+                                    {state.succeeded && (
                                         <div className="flex items-center p-4 bg-green-50 text-green-700 rounded-lg">
                                             <CheckCircle className="w-5 h-5 mr-2" />
-                                            {formMessage}
+                                            Your message has been sent successfully! I'll get back to you soon.
                                         </div>
                                     )}
-                                    {formStatus === 'error' && (
+                                    {state.errors && Array.isArray(state.errors) && state.errors.length > 0 && !state.succeeded && (
                                         <div className="flex items-center p-4 bg-red-50 text-red-700 rounded-lg">
                                             <AlertCircle className="w-5 h-5 mr-2" />
-                                            {formMessage}
+                                            There was an error submitting your form. Please try again.
                                         </div>
                                     )}
 
@@ -221,13 +221,13 @@ const ContactSection = () => {
                                             className="text-white shadow-lg px-8 transition-all duration-300 group hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                                             style={{
                                                 background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                                                boxShadow: formStatus !== 'submitting' ? '0 0 40px rgba(20, 184, 166, 0.3)' : undefined
+                                                boxShadow: !state.submitting ? '0 0 40px rgba(20, 184, 166, 0.3)' : undefined
                                             }}
-                                            disabled={formStatus === 'submitting'}
+                                            disabled={state.submitting}
                                         >
-                                            {formStatus === 'submitting' ? (
+                                            {state.submitting ? (
                                                 <>
-                                                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                                     </svg>
@@ -235,7 +235,7 @@ const ContactSection = () => {
                                                 </>
                                             ) : (
                                                 <>
-                                                    <Mail className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                                                    <Mail className="w-5 h-5 mr-2 inline group-hover:rotate-12 transition-transform" />
                                                     Send Message
                                                 </>
                                             )}
