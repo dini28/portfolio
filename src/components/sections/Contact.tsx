@@ -28,7 +28,7 @@ const ContactSection = () => {
         try {
             await emailjs.send(
                 'service_3f80esr',      // Get from EmailJS dashboard
-                'YOUR_TEMPLATE_ID',     // Get from EmailJS dashboard
+                'template_6aujlz4',     // Get from EmailJS dashboard
                 {
                     from_name: formData.name,
                     from_email: formData.email,
@@ -36,7 +36,7 @@ const ContactSection = () => {
                     message: formData.message,
                     to_email: 'dipeshsonitech@gmail.com'
                 },
-                'YOUR_PUBLIC_KEY'       // Get from EmailJS dashboard
+                'bScYWRQYSnirLUaX0'       // Get from EmailJS dashboard
             );
 
             setFormStatus('success');
