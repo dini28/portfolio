@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { Mail, Linkedin, Phone, MapPin, CheckCircle, AlertCircle, Copy, Check } from 'lucide-react';
-import { useForm, ValidationError } from '@formspree/react';
 import { Card, CardContent } from '../common/Card';
 import { Button } from '../common/Button';
 
-const ContactSection = () => {
-    const [state, handleSubmit] = useForm("xojavpzd");
+const Contact = () => {
     const [isVisible] = useState(true);
     const [formErrors, setFormErrors] = useState<{
         name?: string;
@@ -14,6 +12,9 @@ const ContactSection = () => {
         message?: string;
     }>({});
     const [copied, setCopied] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [submitError, setSubmitError] = useState(false);
 
     const copyEmail = () => {
         navigator.clipboard.writeText('dipeshsonitech@gmail.com');
@@ -53,7 +54,7 @@ const ContactSection = () => {
         return errors;
     };
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
 
@@ -66,7 +67,28 @@ const ContactSection = () => {
         }
 
         setFormErrors({});
-        handleSubmit(e);
+        setIsSubmitting(true);
+        setSubmitSuccess(false);
+        setSubmitError(false);
+
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData as any).toString(),
+            });
+
+            if (response.ok) {
+                setSubmitSuccess(true);
+                (e.target as HTMLFormElement).reset();
+            } else {
+                setSubmitError(true);
+            }
+        } catch (error) {
+            setSubmitError(true);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleInputChange = (field: keyof typeof formErrors) => {
@@ -125,7 +147,7 @@ const ContactSection = () => {
                                         </div>
                                         <button
                                             onClick={copyEmail}
-                                            className="shrink-0 p-2 rounded-lg hover:bg-slate-100 transition-colors group relative"
+                                            className="shrink-0 pt-2 rounded-lg transition-colors group relative"
                                             aria-label="Copy email address"
                                         >
                                             {copied ? (
@@ -134,7 +156,7 @@ const ContactSection = () => {
                                                 <Copy className="w-4 h-4 text-slate-600 group-hover:text-slate-900" />
                                             )}
                                             {/* Tooltip */}
-                                            <span className="absolute -top-8 right-0 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                                            <span className="absolute -top-6 -right-2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                                                 {copied ? 'Copied!' : 'Copy email'}
                                             </span>
                                         </button>
@@ -194,7 +216,16 @@ const ContactSection = () => {
                                 }}
                             ></div>
                             <CardContent className="p-6 sm:p-8">
-                                <form onSubmit={onSubmit} className="space-y-5 sm:space-y-6">
+                                <form onSubmit={onSubmit} className="space-y-5 sm:space-y-6" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                                    {/* Hidden fields for Netlify */}
+                                    <input type="hidden" name="form-name" value="contact" />
+                                    {/* Honeypot field */}
+                                    <p className="hidden">
+                                        <label>
+                                            Don't fill this out if you're human: <input name="bot-field" />
+                                        </label>
+                                    </p>
+
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                                         <div>
                                             <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
@@ -215,12 +246,6 @@ const ContactSection = () => {
                                                     {formErrors.name}
                                                 </p>
                                             )}
-                                            <ValidationError
-                                                prefix="Name"
-                                                field="name"
-                                                errors={state.errors}
-                                                className="text-red-600 text-sm mt-1"
-                                            />
                                         </div>
                                         <div>
                                             <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
@@ -241,12 +266,6 @@ const ContactSection = () => {
                                                     {formErrors.email}
                                                 </p>
                                             )}
-                                            <ValidationError
-                                                prefix="Email"
-                                                field="email"
-                                                errors={state.errors}
-                                                className="text-red-600 text-sm mt-1"
-                                            />
                                         </div>
                                     </div>
                                     <div>
@@ -268,12 +287,6 @@ const ContactSection = () => {
                                                 {formErrors.subject}
                                             </p>
                                         )}
-                                        <ValidationError
-                                            prefix="Subject"
-                                            field="subject"
-                                            errors={state.errors}
-                                            className="text-red-600 text-sm mt-1"
-                                        />
                                     </div>
                                     <div>
                                         <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
@@ -294,22 +307,16 @@ const ContactSection = () => {
                                                 {formErrors.message}
                                             </p>
                                         )}
-                                        <ValidationError
-                                            prefix="Message"
-                                            field="message"
-                                            errors={state.errors}
-                                            className="text-red-600 text-sm mt-1"
-                                        />
                                     </div>
 
                                     {/* Form Status Messages */}
-                                    {state.succeeded && (
+                                    {submitSuccess && (
                                         <div className="flex items-center p-4 bg-green-50 text-green-700 rounded-lg border border-green-200">
                                             <CheckCircle className="w-5 h-5 mr-2 shrink-0" />
                                             <span className="text-sm sm:text-base">Your message has been sent successfully! I'll get back to you soon.</span>
                                         </div>
                                     )}
-                                    {state.errors && Array.isArray(state.errors) && state.errors.length > 0 && !state.succeeded && (
+                                    {submitError && (
                                         <div className="flex items-center p-4 bg-red-50 text-red-700 rounded-lg border border-red-200">
                                             <AlertCircle className="w-5 h-5 mr-2 shrink-0" />
                                             <span className="text-sm sm:text-base">There was an error submitting your form. Please try again.</span>
@@ -323,11 +330,11 @@ const ContactSection = () => {
                                             className="text-white shadow-lg px-6 sm:px-8 transition-all duration-300 group hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                                             style={{
                                                 background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                                                boxShadow: !state.submitting ? '0 0 40px rgba(71, 85, 105, 0.3)' : undefined
+                                                boxShadow: !isSubmitting ? '0 0 40px rgba(71, 85, 105, 0.3)' : undefined
                                             }}
-                                            disabled={state.submitting}
+                                            disabled={isSubmitting}
                                         >
-                                            {state.submitting ? (
+                                            {isSubmitting ? (
                                                 <>
                                                     <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -387,4 +394,4 @@ const ContactSection = () => {
     );
 };
 
-export default ContactSection;
+export default Contact;

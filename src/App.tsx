@@ -1,7 +1,7 @@
 import Footer from "./components/layout/Footer"
 import Header from "./components/layout/Header"
-import ContactSection from "./components/sections/Contact"
-import HeroSection from "./components/sections/Hero"
+import Contact from "./components/sections/Contact"
+import Hero from "./components/sections/Hero"
 import Project from "./components/sections/Project"
 import Skills from "./components/sections/Skills"
 import WhatsAppButton from "./components/common/WhatsAppButton"
@@ -12,11 +12,11 @@ function App() {
   return (
     <>
       <Header />
-      <HeroSection />
+      <Hero />
       <About />
       <Skills />
       <Project />
-      <ContactSection />
+      <Contact />
       <Footer />
       <WhatsAppButton />
     </>

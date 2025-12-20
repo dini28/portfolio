@@ -139,7 +139,7 @@ const Footer = () => {
 
                 {/* Footer Bottom */}
                 <div className="pt-6 sm:pt-8 border-t border-white/20">
-                    <div className="flex justify-around items-center text-center">
+                    <div className="flex flex-col gap-4 items-center text-center">
 
                         {/* Copyright and Built By - Combined */}
                         <p className="text-sm sm:text-base text-white/60 flex flex-wrap items-center justify-center gap-2">
