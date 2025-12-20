@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import CV from '../../../public/CV.pdf';
 
 const navLinks = [
     { href: "#about", label: "About" },
@@ -70,90 +71,224 @@ export default function Header() {
         }
     };
 
+    const handleDownloadCV = () => {
+        // Create a temporary link element
+        const link = document.createElement('a');
+        link.href = CV;
+        link.download = 'Dipesh_Soni_CV.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+                ? "bg-white/98 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
                 : "bg-transparent"
                 }`}
             style={{ fontFamily: "Sansation, sans-serif" }}
         >
             <nav className="container mx-auto px-6 lg:px-10">
                 <div className="flex items-center justify-between h-20">
+                    {/* Logo/Name */}
                     <a
                         href="#"
                         onClick={(e) => handleNavClick(e, "#")}
-                        className="flex items-center space-x-3 group"
+                        className="flex items-center space-x-3 group relative"
                     >
-                        <span
-                            className="text-3xl font-semibold text-slate-800"
-                            style={{ fontFamily: "Genos, sans-serif" }}
-                        >
-                            Dipesh Soni
-                        </span>
+                        <div className="relative">
+                            {/* Animated background on hover */}
+                            <div
+                                className="absolute -inset-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"
+                                style={{
+                                    background: 'linear-gradient(to right, #94a3b8, #64748b, #475569)',
+                                }}
+                            ></div>
+
+                            <span
+                                className="relative text-3xl font-bold tracking-tight transition-all duration-300 group-hover:scale-105"
+                                style={{
+                                    fontFamily: "Genos, sans-serif",
+                                    background: 'linear-gradient(to right, #1e293b, #334155, #475569)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text'
+                                }}
+                            >
+                                Dipesh Soni
+                            </span>
+                        </div>
                     </a>
 
                     {/* Desktop Navigation */}
-                    <ul className="hidden md:flex items-center space-x-8 gap-8">
-                        {navLinks.map((link) => (
-                            <li key={link.href}>
-                                <a
-                                    href={link.href}
-                                    onClick={(e) => handleNavClick(e, link.href)}
-                                    aria-current={
-                                        activeSection === link.href.substring(1) ? "page" : undefined
-                                    }
-                                    className={`relative text-lg font-medium transition-colors duration-300 hover:text-slate-950 group ${activeSection === link.href.substring(1)
-                                        ? "text-slate-950"
-                                        : "text-slate-700"
-                                        }`}
-                                >
-                                    {link.label}
-                                    <span
-                                        className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 h-0.5 bg-slate-950 transition-all duration-300 ${activeSection === link.href.substring(1)
-                                            ? "w-full"
-                                            : "w-0 group-hover:w-full"
+                    <div className="hidden md:flex items-center gap-8">
+                        <ul className="flex items-center space-x-1">
+                            {navLinks.map((link) => (
+                                <li key={link.href}>
+                                    <a
+                                        href={link.href}
+                                        onClick={(e) => handleNavClick(e, link.href)}
+                                        aria-current={
+                                            activeSection === link.href.substring(1) ? "page" : undefined
+                                        }
+                                        className={`relative px-4 py-2 text-base font-medium transition-colors duration-300 hover:text-slate-950 group ${activeSection === link.href.substring(1)
+                                            ? "text-slate-950"
+                                            : "text-slate-700"
                                             }`}
-                                    ></span>
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
+                                    >
+                                        {link.label}
+                                        <span
+                                            className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-slate-950 transition-all duration-300 ${activeSection === link.href.substring(1)
+                                                ? "w-full"
+                                                : "w-0 group-hover:w-full"
+                                                }`}
+                                        ></span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+
+                        {/* Download CV Button */}
+                        <button
+                            onClick={handleDownloadCV}
+                            className="px-5 py-2.5 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(15,23,42,0.6)] flex items-center gap-2 group"
+                            style={{
+                                background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
+                            }}
+                        >
+                            <svg
+                                className="w-4 h-4 group-hover:animate-bounce"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                />
+                            </svg>
+                            Download CV
+                        </button>
+                    </div>
 
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden p-2 rounded-lg text-slate-800 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-700"
+                        className="md:hidden relative p-2.5 rounded-xl text-slate-800 hover:bg-slate-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-slate-400 group"
                         aria-label="Toggle menu"
                         aria-expanded={isOpen}
                     >
-                        {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+                        <div className="relative w-7 h-7">
+                            <Menu
+                                className={`absolute inset-0 w-7 h-7 transition-all duration-300 ${isOpen
+                                    ? "opacity-0 rotate-90 scale-50"
+                                    : "opacity-100 rotate-0 scale-100"
+                                    }`}
+                            />
+                            <X
+                                className={`absolute inset-0 w-7 h-7 transition-all duration-300 ${isOpen
+                                    ? "opacity-100 rotate-0 scale-100"
+                                    : "opacity-0 -rotate-90 scale-50"
+                                    }`}
+                            />
+                        </div>
                     </button>
                 </div>
 
                 {/* Mobile Navigation */}
                 <div
-                    className={`md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-gray-200 transition-all duration-300 ease-in-out origin-top ${isOpen
-                        ? "opacity-100 scale-y-100"
-                        : "opacity-0 scale-y-0 pointer-events-none"
+                    className={`md:hidden absolute top-20 left-0 right-0 transition-all duration-300 ease-out origin-top ${isOpen
+                        ? "opacity-100 scale-y-100 translate-y-0"
+                        : "opacity-0 scale-y-95 -translate-y-4 pointer-events-none"
                         }`}
                 >
-                    <ul className="container mx-auto px-4 py-6 space-y-2">
-                        {navLinks.map((link) => (
-                            <li key={link.href}>
-                                <a
-                                    href={link.href}
-                                    onClick={(e) => handleNavClick(e, link.href)}
-                                    className={`block px-4 py-3 rounded-lg transition-colors ${activeSection === link.href.substring(1)
-                                        ? "bg-teal-50 text-teal-700"
-                                        : "text-slate-800 hover:bg-gray-50"
-                                        }`}
+                    <div
+                        className="bg-white/98 backdrop-blur-xl border-t border-slate-200 shadow-2xl"
+                        style={{
+                            boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                        }}
+                    >
+                        <ul className="container mx-auto px-6 py-6 space-y-1">
+                            {navLinks.map((link, index) => (
+                                <li
+                                    key={link.href}
+                                    className="transform transition-all duration-300"
+                                    style={{
+                                        transitionDelay: isOpen ? `${index * 50}ms` : '0ms',
+                                        opacity: isOpen ? 1 : 0,
+                                        transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',
+                                    }}
                                 >
-                                    {link.label}
-                                </a>
+                                    <a
+                                        href={link.href}
+                                        onClick={(e) => handleNavClick(e, link.href)}
+                                        className={`block px-5 py-4 rounded-xl font-semibold transition-all duration-300 relative overflow-hidden group ${activeSection === link.href.substring(1)
+                                            ? "text-white shadow-lg"
+                                            : "text-slate-700 hover:text-white"
+                                            }`}
+                                    >
+                                        {/* Background */}
+                                        <span
+                                            className={`absolute inset-0 transition-all duration-300 ${activeSection === link.href.substring(1)
+                                                ? "opacity-100"
+                                                : "opacity-0 group-hover:opacity-100"
+                                                }`}
+                                            style={{
+                                                background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
+                                            }}
+                                        ></span>
+
+                                        {/* Icon indicator */}
+                                        <span className="relative z-10 flex items-center gap-3">
+                                            <span
+                                                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeSection === link.href.substring(1)
+                                                    ? "bg-white scale-100"
+                                                    : "bg-slate-400 scale-0 group-hover:scale-100 group-hover:bg-white"
+                                                    }`}
+                                            ></span>
+                                            {link.label}
+                                        </span>
+                                    </a>
+                                </li>
+                            ))}
+
+                            {/* Mobile Download CV Button */}
+                            <li
+                                className="transform transition-all duration-300 pt-2"
+                                style={{
+                                    transitionDelay: isOpen ? `${navLinks.length * 50}ms` : '0ms',
+                                    opacity: isOpen ? 1 : 0,
+                                    transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',
+                                }}
+                            >
+                                <button
+                                    onClick={handleDownloadCV}
+                                    className="w-full px-5 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group"
+                                    style={{
+                                        background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
+                                    }}
+                                >
+                                    <svg
+                                        className="w-4 h-4 group-hover:animate-bounce"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                        />
+                                    </svg>
+                                    Download CV
+                                </button>
                             </li>
-                        ))}
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </header>

@@ -5,6 +5,7 @@ import HeroSection from "./components/sections/Hero"
 import Project from "./components/sections/Project"
 import Skills from "./components/sections/Skills"
 import WhatsAppButton from "./components/common/WhatsAppButton"
+import About from "./components/sections/About"
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <>
       <Header />
       <HeroSection />
+      <About />
       <Skills />
       <Project />
       <ContactSection />
