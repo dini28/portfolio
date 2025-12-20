@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import CV from '../../../public/CV.pdf';
+import CV from '../../assets/CV.pdf';
 
 const navLinks = [
     { href: "#about", label: "About" },
