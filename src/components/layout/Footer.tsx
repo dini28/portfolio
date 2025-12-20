@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Code2, User, Terminal, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Code2, User, Terminal } from 'lucide-react';
 import logo from '../../assets/logo.svg';
 
 const Footer = () => {

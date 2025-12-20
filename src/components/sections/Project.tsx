@@ -168,7 +168,7 @@ const Project = () => {
                                     {project.technologies.map((tech) => (
                                         <span
                                             key={`${project.title}-${tech}`}
-                                            className="px-2.5 py-1 bg-gradient-to-r from-slate-600 to-slate-800 text-white text-xs font-medium rounded-full hover:scale-105 transition-all duration-300 cursor-default shadow-sm"
+                                            className="px-2.5 py-1 bg-linear-to-r from-slate-600 to-slate-800 text-white text-xs font-medium rounded-full hover:scale-105 transition-all duration-300 cursor-default shadow-sm"
                                         >
                                             {tech}
                                         </span>
