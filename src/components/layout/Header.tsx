@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import CV from '../../assets/CV.pdf';
+import logo_header from '../../assets/logo_header.svg'
 
 const navLinks = [
     { href: "#about", label: "About" },
@@ -100,14 +101,14 @@ export default function Header() {
                         <div className="relative">
                             {/* Animated background on hover */}
                             <div
-                                className="absolute -inset-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"
+                                className="absolute -inset-2 rounded-lg opacity-0 duration-300 blur-sm"
                                 style={{
                                     background: 'linear-gradient(to right, #94a3b8, #64748b, #475569)',
                                 }}
                             ></div>
 
                             <span
-                                className="relative text-3xl font-bold tracking-tight transition-all duration-300 group-hover:scale-105"
+                                className="relative text-3xl font-bold tracking-tight transition-all duration-300"
                                 style={{
                                     fontFamily: "Genos, sans-serif",
                                     background: 'linear-gradient(to right, #1e293b, #334155, #475569)',
@@ -116,6 +117,11 @@ export default function Header() {
                                     backgroundClip: 'text'
                                 }}
                             >
+                                <img
+                                    src={logo_header}
+                                    alt="Logo"
+                                    className="text-black w-10 h-10 object-fit inline-block mr-2"
+                                />
                                 Dipesh Soni
                             </span>
                         </div>
