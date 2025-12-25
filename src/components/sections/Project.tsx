@@ -32,7 +32,7 @@ const PROJECTS_DATA = [
         description: 'A full-featured hotel booking website with user authentication, room search and filtering, booking management, and payment integration using MongoDB database.',
         image: ghummakkad,
         technologies: ['HTML', 'CSS', 'JavaScript', 'MongoDB'],
-        liveUrl: '',
+        liveUrl: 'https://ghummakkad.onrender.com',
         githubUrl: '',
     },
 ];
