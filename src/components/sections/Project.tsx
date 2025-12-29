@@ -4,7 +4,7 @@ import { Button } from '../common/Button';
 import { useScrollReveal, useStaggerReveal } from '../../hooks/useScrollReveal';
 
 import digital_marketing from '../../assets/digital_marketing.png';
-import quickquality from '../../assets/quickquality.png';
+import fictiongames from '../../assets/fictiongames.png';
 import ghummakkad from '../../assets/ghummakkad.png';
 
 const PROJECTS_DATA = [
@@ -18,13 +18,13 @@ const PROJECTS_DATA = [
         githubUrl: '',
     },
     {
-        title: 'Quick Quality',
-        subtitle: 'Product Based',
-        description: 'A responsive landing page for the Milkoscan portable adulteration detection device. Highlights product features, team introductions, and includes an order modal system.',
-        image: quickquality,
-        technologies: ['HTML', 'CSS', 'JavaScript'],
-        liveUrl: 'https://dini28.github.io/QuickQuality',
-        githubUrl: 'https://github.com/dini28/QuickQuality',
+        title: 'Fiction Games',
+        subtitle: 'Web-Based Gaming Platform',
+        description: 'Bold gaming experiences where every click writes a new story. Built with React and JavaScript, deployed on Vercel for seamless performance. Your game. Your legacy.',
+        image: fictiongames,
+        technologies: ['React', 'JavaScript', 'GSAP', 'Vercel'],
+        liveUrl: 'https://fictiongames.vercel.app',
+        githubUrl: 'https://github.com/dini28/fiction',
     },
     {
         title: 'Ghummakkad',
@@ -33,7 +33,7 @@ const PROJECTS_DATA = [
         image: ghummakkad,
         technologies: ['HTML', 'CSS', 'JavaScript', 'MongoDB'],
         liveUrl: 'https://ghummakkad.onrender.com',
-        githubUrl: '',
+        githubUrl: 'https://github.com/dini28/Ghummakkad',
     },
 ];
 
