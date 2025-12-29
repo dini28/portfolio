@@ -19,7 +19,7 @@ const PROJECTS_DATA = [
     },
     {
         title: 'Fiction Games',
-        subtitle: 'Web-Based Gaming Platform',
+        subtitle: 'Next-Gen Web Gaming',
         description: 'Bold gaming experiences where every click writes a new story. Built with React and JavaScript, deployed on Vercel for seamless performance. Your game. Your legacy.',
         image: fictiongames,
         technologies: ['React', 'JavaScript', 'GSAP', 'Vercel'],
