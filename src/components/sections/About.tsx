@@ -1,215 +1,178 @@
-import { GraduationCap, Code2, Rocket } from 'lucide-react';
+import { GraduationCap, Code2, Rocket, Award, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '../common/Card';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import about from '../../assets/about.png';
+import about from '../../assets/about.webp';
 
 const About = () => {
-    const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.1 });
-    const imageReveal = useScrollReveal({ threshold: 0.3 });
-    const contentReveal = useScrollReveal({ threshold: 0.3 });
+    // We use separate hooks to create a staggered entrance effect
+    const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal({ threshold: 0.1 });
+    const { ref: imageRef, isVisible: imageVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.2 });
+    const { ref: contentRef, isVisible: contentVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.2 });
 
     return (
         <section
             ref={sectionRef}
             id="about"
-            className="py-20 bg-white relative overflow-hidden"
-            style={{ fontFamily: 'Sansation, sans-serif' }}
+            className="py-20 bg-black relative overflow-hidden"
         >
-            {/* Background Elements */}
-            <div className="absolute top-20 right-20 w-32 h-32 bg-cyan-400/5 rounded-full blur-2xl"></div>
-            <div className="absolute bottom-20 left-20 w-48 h-48 bg-teal-500/5 rounded-full blur-2xl"></div>
+            {/* --- Background Atmosphere --- */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {/* Fine Grid Texture */}
+                <div
+                    className="absolute inset-0 opacity-[0.02]"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+                        `,
+                        backgroundSize: '50px 50px'
+                    }}
+                />
 
-            <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
-                {/* Section Header */}
-                <div className={`text-center mb-16 transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <p className="text-lg text-slate-600 font-medium mb-4 uppercase tracking-wider">
-                        Get To Know More
-                    </p>
-                    <h2
-                        className="text-4xl lg:text-5xl font-bold mb-6"
-                        style={{
-                            background: 'linear-gradient(to right, #0f172a, #334155, #0f172a)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text'
-                        }}
-                    >
+                {/* Ambient Gradient Blobs */}
+                <div className="absolute top-20 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+                <div className="absolute bottom-20 left-20 w-96 h-96 bg-white/3 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+
+                {/* Corner Highlights */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-white/5 to-transparent rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-white/5 to-transparent rounded-full blur-3xl" />
+            </div>
+
+            <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-20 relative z-10">
+                {/* --- Header --- */}
+                <div className={`text-center mb-16 transition-all duration-700 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <p className="text-lg text-gray-400 font-medium mb-4 uppercase tracking-wider">Get To Know More</p>
+                    <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white">
                         About Me
                     </h2>
+                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto rounded-full" />
                 </div>
 
-                <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 sm:gap-10 lg:gap-12 xl:gap-16 max-w-7xl mx-auto">
+                <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 lg:gap-16 max-w-7xl mx-auto">
 
-                    {/* About Image */}
+                    {/* --- Left: Image Section --- */}
                     <div
-                        ref={imageReveal.ref as React.RefObject<HTMLDivElement>}
-                        className={`shrink-0 lg:w-1/2 transition-all duration-1000 ${imageReveal.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-                            }`}
+                        ref={imageRef}
+                        className={`shrink-0 lg:w-1/2 transition-all duration-1000 ${imageVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
                     >
                         <div className="relative group max-w-md mx-auto">
-                            <div className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-700 hover:-translate-y-2">
-                                <img
-                                    src={about}
-                                    alt="Dipesh Soni"
-                                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                {/* Overlay with linear gradient */}
-                                <div
-                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                                    style={{
-                                        background: 'linear-gradient(to top, rgba(15, 23, 42, 0.3), transparent)'
-                                    }}
-                                ></div>
+
+                            {/* Decorative Glow */}
+                            <div className="absolute -inset-6 bg-gradient-to-r from-white/10 via-white/5 to-white/10 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+
+                            {/* Image Frame */}
+                            <div className="relative overflow-hidden rounded-3xl border-2 border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm p-3 group-hover:border-white/20 transition-all duration-700 group-hover:shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+                                <div className="overflow-hidden rounded-2xl relative">
+                                    <img
+                                        src={about}
+                                        alt="Dipesh Soni - Frontend Developer"
+                                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105 grayscale"
+                                    />
+                                    {/* Gradient Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                                </div>
                             </div>
-                            {/* Decorative elements with linear gradients */}
-                            <div
-                                className="absolute -bottom-4 -right-4 w-20 h-20 rounded-2xl opacity-80 -z-10"
-                                style={{
-                                    background: 'linear-gradient(to bottom right, #475569, #334155, #0f172a)'
-                                }}
-                            ></div>
-                            <div
-                                className="absolute -top-4 -left-4 w-16 h-16 rounded-full opacity-60 -z-10 animate-pulse"
-                                style={{
-                                    background: 'linear-gradient(to bottom right, #475569, #334155, #0f172a)'
-                                }}
-                            ></div>
+
+                            {/* Geometric Corners */}
+                            <div className="absolute -top-3 -right-3 w-24 h-24 border-t-2 border-r-2 border-white/20 rounded-tr-3xl" />
+                            <div className="absolute -bottom-3 -left-3 w-24 h-24 border-b-2 border-l-2 border-white/20 rounded-bl-3xl" />
                         </div>
                     </div>
 
-                    {/* About Content */}
+                    {/* --- Right: Content Section --- */}
                     <div
-                        ref={contentReveal.ref as React.RefObject<HTMLDivElement>}
-                        className={`lg:w-1/2 space-y-6 sm:space-y-8 transition-all duration-1000 ${contentReveal.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-                            }`}
+                        ref={contentRef}
+                        className={`lg:w-1/2 space-y-8 transition-all duration-1000 ${contentVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
                     >
 
-                        {/* Education Card */}
-                        <Card className="border-0 shadow-lg hover:shadow-2xl bg-white/80 backdrop-blur-md hover:-translate-y-2 transition-all duration-700">
-                            <CardContent className="p-6 sm:p-8 text-center">
-                                <div
-                                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg"
-                                    style={{
-                                        background: 'linear-gradient(to bottom right, #475569, #334155, #0f172a)'
-                                    }}
-                                >
-                                    <GraduationCap className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
-                                </div>
-                                <h3 className="text-xl font-semibold mb-2 sm:mb-3 text-slate-800">
-                                    Education
-                                </h3>
-                                <p className="text-slate-600 leading-relaxed">
-                                    Bachelor of Technology<br />
-                                    <span className="font-medium text-slate-700">Computer Science and Engineering</span>
+                        {/* Info Cards Grid */}
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            {/* Education Card */}
+                            <Card className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500">
+                                <CardContent className="p-6 text-center">
+                                    <div className="w-14 h-14 bg-gradient-to-br from-white via-gray-200 to-gray-400 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                        <GraduationCap className="w-7 h-7 text-black" />
+                                    </div>
+                                    <h3 className="text-lg font-semibold mb-2 text-white">Education</h3>
+                                    <p className="text-sm text-gray-400 leading-relaxed">B.Tech in CSE</p>
+                                </CardContent>
+                            </Card>
+
+                            {/* Status Card */}
+                            <Card className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500">
+                                <CardContent className="p-6 text-center">
+                                    <div className="w-14 h-14 bg-gradient-to-br from-white via-gray-200 to-gray-400 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                                        <Award className="w-7 h-7 text-black" />
+                                    </div>
+                                    <h3 className="text-lg font-semibold mb-2 text-white">Projects Built</h3>
+                                    <p className="text-sm text-gray-400 leading-relaxed">5+ Personal Projects</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+
+                        {/* My Journey Story */}
+                        <div className="space-y-5">
+                            <div className="flex items-center gap-3 mb-4">
+                                <BookOpen className="w-6 h-6 text-white" />
+                                <h3 className="text-2xl font-bold text-white">My Journey</h3>
+                            </div>
+                            <div className="space-y-4">
+                                <p className="text-base leading-relaxed text-gray-400 text-justify">
+                                    <span className="font-semibold text-white">I'm a frontend developer still early in my journey.</span> What started with curiosity during my first semester has grown into a genuine passion for building things on the web. My first website was far from perfect, but seeing it live taught me something important code has the power to create real value.
                                 </p>
-                            </CardContent>
-                        </Card>
-
-                        {/* The Story */}
-                        <div className="space-y-4 sm:space-y-6 px-2 sm:px-0">
-                            <div className="prose prose-lg max-w-none">
-                                <p className="text-base sm:text-lg leading-relaxed text-slate-700">
-                                    <span className="font-semibold text-slate-800">My journey started with curiosity.</span> Toward the end of my first
-                                    semester, I found myself drawn to learning beyond the classroom. I still remember building my very first website —
-                                    it wasn’t perfect, a bit messy and barely functional — but seeing it live on the internet felt special. That moment
-                                    made me realize how powerful learning and code could be when they come together to solve real problems for real people.
+                                <p className="text-base leading-relaxed text-gray-400 text-justify">
+                                    I've spent the last year learning by doing building projects, breaking things, and figuring out how to fix them. From responsive landing pages to full-stack applications, each project has pushed me to learn something new. I won <span className="font-semibold text-white">CODEFIESTA 3.0 National Hackathon</span>, which taught me how to work under pressure and deliver solutions quickly.
                                 </p>
-
-
-                                <p className="text-base sm:text-lg leading-relaxed text-slate-700">
-                                    A defining moment in this journey was winning the <span className="font-semibold text-slate-800">CODEFIESTA 3.0 National Hackathon</span>.
-                                    Working under tight deadlines with a diverse team pushed me beyond my comfort zone — from brainstorming ideas
-                                    and rapid prototyping to debugging under pressure. The experience taught me how to collaborate effectively,
-                                    think critically, and build solutions that actually matter. More than the win, it reinforced my belief that
-                                    great products are born at the intersection of teamwork, persistence, and clear problem-solving.
-                                </p>
-
-
-                                <p className="text-base sm:text-lg leading-relaxed text-slate-700">
-                                    Whether it's diving into a new framework, fixing a bug that kept me up all night,
-                                    or building something just to see if I can - I'm here for it. I believe the best
-                                    code comes from iteration, curiosity, and a willingness to break things and start over.
+                                <p className="text-base leading-relaxed text-gray-400 text-justify">
+                                    I'm comfortable with React and Next.js, but I know there's so much more to learn. Every day is an opportunity to improve, whether it's understanding a new concept, optimizing code, or learning from the developer community. I'm eager to contribute, grow, and work on projects that challenge me.
                                 </p>
                             </div>
                         </div>
 
-                        {/* Tech Now vs Learning Next */}
-                        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 pt-4">
-                            {/* Currently Working With */}
-                            <Card className="border-2 border-slate-200 hover:border-slate-300 hover:shadow-xl transition-all duration-500 bg-white">
-                                <div
-                                    className="absolute bottom-0 left-0 w-32 h-32 opacity-10 z-0"
-                                    style={{
-                                        background: 'linear-gradient(to bottom right, #475569, #334155, #0f172a)',
-                                        borderRadius: '0 100% 0 0'
-                                    }}
-                                ></div>
-                                <CardContent className="p-5 sm:p-6">
-                                    <div className="flex items-start gap-3 mb-3 sm:mb-4">
-                                        <div
-                                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center shrink-0"
-                                            style={{
-                                                background: 'linear-gradient(to bottom right, #475569, #334155, #0f172a)'
-                                            }}
-                                        >
-                                            <Code2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                        {/* Tech Stack Cards */}
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            {/* Current Stack */}
+                            <Card className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all duration-500 relative overflow-hidden group">
+                                <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-white/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" style={{ borderRadius: '0 100% 0 0' }} />
+                                <CardContent className="p-5 relative z-10">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-10 h-10 bg-gradient-to-br from-white via-gray-200 to-gray-400 rounded-lg flex items-center justify-center shadow-lg">
+                                            <Code2 className="w-5 h-5 text-black" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-1">Currently Working With</h4>
-                                            <p className="text-xs sm:text-sm text-slate-500">Building with these daily</p>
+                                            <h4 className="font-bold text-white text-sm">Comfortable With</h4>
+                                            <p className="text-xs text-gray-500">Core technologies</p>
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap gap-2">
-                                        <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-xs sm:text-sm font-medium">
-                                            React
-                                        </span>
-                                        <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-xs sm:text-sm font-medium">
-                                            Next.js
-                                        </span>
-                                        <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-xs sm:text-sm font-medium">
-                                            TypeScript
-                                        </span>
-                                        <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-xs sm:text-sm font-medium">
-                                            Node.js
-                                        </span>
+                                        {['HTML/CSS', 'JavaScript', 'React', 'Tailwind'].map((tech) => (
+                                            <span key={tech} className="px-3 py-1.5 bg-white/10 border border-white/20 text-gray-300 rounded-lg text-xs font-medium hover:bg-white hover:text-black transition-all duration-300 cursor-default">
+                                                {tech}
+                                            </span>
+                                        ))}
                                     </div>
                                 </CardContent>
                             </Card>
 
                             {/* Learning Next */}
-                            <Card className="border-2 border-slate-200 hover:border-slate-300 hover:shadow-xl transition-all duration-500 bg-white relative overflow-hidden">
-                                <div
-                                    className="absolute top-0 right-0 w-32 h-32 opacity-10"
-                                    style={{
-                                        background: 'linear-gradient(to bottom right, #475569, #334155, #0f172a)',
-                                        borderRadius: '0 0 0 100%'
-                                    }}
-                                ></div>
-                                <CardContent className="p-5 sm:p-6 relative z-10">
-                                    <div className="flex items-start gap-3 mb-3 sm:mb-4">
-                                        <div
-                                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center shrink-0"
-                                            style={{
-                                                background: 'linear-gradient(to bottom right, #475569, #334155, #0f172a)'
-                                            }}
-                                        >
-                                            <Rocket className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                            <Card className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all duration-500 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" style={{ borderRadius: '0 0 0 100%' }} />
+                                <CardContent className="p-5 relative z-10">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-10 h-10 bg-gradient-to-br from-white via-gray-200 to-gray-400 rounded-lg flex items-center justify-center shadow-lg">
+                                            <Rocket className="w-5 h-5 text-black" />
                                         </div>
                                         <div>
-                                            <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-1">Learning Next</h4>
-                                            <p className="text-xs sm:text-sm text-slate-500">Exploring & experimenting</p>
+                                            <h4 className="font-bold text-white text-sm">Learning Next</h4>
+                                            <p className="text-xs text-gray-500">Currently exploring</p>
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap gap-2">
-                                        <span className="px-3 py-1.5 bg-linear-to-r from-slate-100 to-slate-50 text-slate-700 rounded-lg text-xs sm:text-sm font-medium border border-slate-200">
-                                            Web3
-                                        </span>
-                                        <span className="px-3 py-1.5 bg-linear-to-r from-slate-100 to-slate-50 text-slate-700 rounded-lg text-xs sm:text-sm font-medium border border-slate-200">
-                                            AI Integration
-                                        </span>
-                                        <span className="px-3 py-1.5 bg-linear-to-r from-slate-100 to-slate-50 text-slate-700 rounded-lg text-xs sm:text-sm font-medium border border-slate-200">
-                                            DevOps
-                                        </span>
+                                        {['Next.js', 'TypeScript', 'Node.js'].map((tech) => (
+                                            <span key={tech} className="px-3 py-1.5 bg-white/10 border border-white/20 text-gray-300 rounded-lg text-xs font-medium hover:bg-white hover:text-black transition-all duration-300 cursor-default">
+                                                {tech}
+                                            </span>
+                                        ))}
                                     </div>
                                 </CardContent>
                             </Card>

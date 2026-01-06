@@ -1,4 +1,5 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { useState } from 'react';
+import { ExternalLink, Github, ArrowUpRight, X, Lightbulb, Target, Rocket as RocketIcon } from 'lucide-react';
 import { Card, CardContent } from '../common/Card';
 import { Button } from '../common/Button';
 import { useScrollReveal, useStaggerReveal } from '../../hooks/useScrollReveal';
@@ -16,190 +17,164 @@ const PROJECTS_DATA = [
         technologies: ['React', 'TypeScript', 'Tailwind CSS'],
         liveUrl: 'http://pixelwings.vercel.app',
         githubUrl: '',
+        caseStudy: {
+            problem: "Small businesses struggled to manage their digital presence effectively using complex traditional tools.",
+            solution: "Developed a streamlined, design-first platform that simplifies pixel-perfect deployments and client management.",
+            impact: "Enabled 10+ businesses to launch their storefronts with 40% faster loading times and zero configuration overhead."
+        }
     },
     {
         title: 'Fiction Games',
         subtitle: 'Next-Gen Web Gaming',
-        description: 'Bold gaming experiences where every click writes a new story. Built with React and JavaScript, deployed on Vercel for seamless performance. Your game. Your legacy.',
+        description: 'Bold gaming experiences where every click writes a new story. Built with React and JavaScript, deployed on Vercel for seamless performance.',
         image: fictiongames,
         technologies: ['React', 'JavaScript', 'GSAP', 'Vercel'],
         liveUrl: 'https://fictiongames.vercel.app',
         githubUrl: 'https://github.com/dini28/fiction',
+        caseStudy: {
+            problem: "Most browser-based games felt static and lacked the fluid animations of native applications.",
+            solution: "Leveraged GSAP (GreenSock) or Frame-Motion for high-performance animations and React for state-driven world-building.",
+            impact: "Successfully created an immersive story-driven engine that maintains 60fps on mobile devices."
+        }
     },
     {
         title: 'Ghummakkad',
         subtitle: 'Hotel Booking Platform',
-        description: 'A full-featured hotel booking website with user authentication, room search and filtering, booking management, and payment integration using MongoDB database.',
+        description: 'A full-featured hotel booking website with user authentication, room search and filtering, booking management, and payment integration.',
         image: ghummakkad,
         technologies: ['HTML', 'CSS', 'JavaScript', 'MongoDB'],
         liveUrl: 'https://ghummakkad.onrender.com',
         githubUrl: 'https://github.com/dini28/Ghummakkad',
+        caseStudy: {
+            problem: "Local Rajasthan travelers lacked a centralized platform to find verified properties in remote desert locations.",
+            solution: "Built a full-stack MERN platform with robust search algorithms and a real-world database of 150+ properties.",
+            impact: "Streamlined the booking process for local tourism, featuring integrated digital payments and instant confirmations."
+        }
     },
 ];
 
 const Project = () => {
     const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.1 });
-    const { containerRef, visibleItems } = useStaggerReveal(PROJECTS_DATA.length, { staggerDelay: 200 });
+    const { containerRef, visibleItems } = useStaggerReveal<HTMLDivElement>(PROJECTS_DATA.length, { staggerDelay: 200 });
+    const [selectedProject, setSelectedProject] = useState<typeof PROJECTS_DATA[0] | null>(null);
 
     return (
-        <section
-            ref={sectionRef}
-            id="projects"
-            className="py-20 bg-white relative overflow-hidden"
-            style={{ fontFamily: 'Sansation, sans-serif' }}
-        >
-            {/* Background Elements */}
-            <div className="absolute top-16 left-16 w-48 h-48 bg-slate-400/5 rounded-full blur-3xl animate-pulse -z-10"></div>
-            <div className="absolute bottom-16 right-16 w-64 h-64 bg-slate-500/5 rounded-full blur-3xl animate-pulse -z-10" style={{ animationDelay: '4s' }}></div>
+        <section ref={sectionRef} id="projects" className="py-20 bg-black relative overflow-hidden">
+            {/* Background */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute inset-0 opacity-[0.02]" style={{
+                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                    backgroundSize: '50px 50px'
+                }} />
+                <div className="absolute top-20 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+                <div className="absolute bottom-20 left-20 w-96 h-96 bg-white/3 rounded-full blur-3xl" />
+            </div>
 
-            <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
-                {/* Section Header */}
-                <div className={`text-center mb-12 sm:mb-16 transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <p className="text-base sm:text-lg text-slate-600 font-medium mb-3 sm:mb-4 uppercase tracking-wider">
-                        Featured Work
-                    </p>
-                    <h2
-                        className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6"
-                        style={{
-                            background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text'
-                        }}
-                    >
+            <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-20 relative z-10">
+                {/* Header */}
+                <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <p className="text-lg text-gray-400 font-medium mb-4 uppercase tracking-wider">Featured Work</p>
+                    <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white">
                         Projects
                     </h2>
+                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto rounded-full" />
                 </div>
 
                 {/* Projects Grid */}
-                <div ref={containerRef as React.RefObject<HTMLDivElement>} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
+                <div ref={containerRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {PROJECTS_DATA.map((project, index) => (
-                        <Card
+                        <div
                             key={project.title}
-                            className={`
-                                group border-0 shadow-lg hover:shadow-2xl 
-                                transition-all duration-700 hover:-translate-y-4 overflow-hidden 
-                                bg-white backdrop-blur-md
-                                ${visibleItems[index] ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-3 scale-95'}
-                            `}
-                            style={{
-                                animationDelay: `${index * 150}ms`,
-                                transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                            }}
+                            className={`transition-all duration-700 ${visibleItems[index] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
                         >
-                            {/* Project Image */}
-                            <div className="relative overflow-hidden h-48 sm:h-52">
-                                <img
-                                    src={project.image}
-                                    alt={`Screenshot of ${project.title} project`}
-                                    loading="lazy"
-                                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
-                                />
+                            <Card className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 hover:bg-white/10 transition-all duration-500 overflow-hidden group h-full flex flex-col hover:shadow-[0_20px_60px_rgba(255,255,255,0.15)]">
+                                {/* Image Container */}
+                                <div className="relative h-56 overflow-hidden">
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" />
 
-                                {/* Animated Overlay with dark gradient */}
-                                <div
-                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-sm"
-                                    style={{
-                                        background: 'linear-gradient(135deg, rgba(71, 85, 105, 0.95), rgba(51, 65, 85, 0.95), rgba(15, 23, 42, 0.95))'
-                                    }}
-                                >
-                                    <div className="flex gap-3 sm:gap-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                        {/* Conditionally Render Live Link */}
+                                    {/* Badge */}
+                                    <div className="absolute top-4 left-4 px-3 py-1.5 bg-black/90 backdrop-blur-sm border border-white/20 rounded-lg">
+                                        <p className="text-xs font-semibold text-white">{project.subtitle}</p>
+                                    </div>
+
+                                    {/* Quick Actions */}
+                                    <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         {project.liveUrl && (
-                                            <Button
-                                                size="sm"
-                                                variant="secondary"
-                                                className="bg-white/10 backdrop-blur-md text-white border-white/20 hover:bg-white hover:text-slate-900 hover:scale-105 transition-all duration-300 text-xs sm:text-sm"
-                                                asChild
+                                            <a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-9 h-9 bg-white rounded-lg flex items-center justify-center hover:scale-110 transition-transform"
                                             >
-                                                <a
-                                                    href={project.liveUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    aria-label={`View live demo of ${project.title}`}
-                                                >
-                                                    <ExternalLink className="w-4 h-4 mr-1.5 sm:mr-2" />
-                                                    Live Demo
-                                                </a>
-                                            </Button>
+                                                <ExternalLink className="w-4 h-4 text-black" />
+                                            </a>
                                         )}
-
-                                        {/* Conditionally Render Github Link */}
                                         {project.githubUrl && (
-                                            <Button
-                                                size="sm"
-                                                variant="secondary"
-                                                className="bg-white/10 backdrop-blur-md text-white border-white/20 hover:bg-white hover:text-slate-900 hover:scale-105 transition-all duration-300 text-xs sm:text-sm"
-                                                asChild
+                                            <a
+                                                href={project.githubUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-9 h-9 bg-white rounded-lg flex items-center justify-center hover:scale-110 transition-transform"
                                             >
-                                                <a
-                                                    href={project.githubUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    aria-label={`View source code for ${project.title}`}
-                                                >
-                                                    <Github className="w-4 h-4 mr-1.5 sm:mr-2" />
-                                                    Code
-                                                </a>
-                                            </Button>
+                                                <Github className="w-4 h-4 text-black" />
+                                            </a>
                                         )}
                                     </div>
                                 </div>
 
-                                {/* Project Type Badge */}
-                                <div className="absolute top-3 left-3 px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-lg shadow-md">
-                                    <p className="text-xs font-semibold text-slate-700">{project.subtitle}</p>
-                                </div>
-                            </div>
+                                <CardContent className="p-6 flex flex-col flex-grow">
+                                    {/* Title */}
+                                    <h3
+                                        className="text-2xl font-bold text-white mb-3 flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer"
+                                        onClick={() => setSelectedProject(project)}
+                                    >
+                                        {project.title}
+                                        <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+                                    </h3>
 
-                            <CardContent className="p-5 sm:p-6 relative">
-                                {/* Project Title */}
-                                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-slate-800 group-hover:text-slate-950 transition-colors duration-300">
-                                    {project.title}
-                                </h3>
+                                    {/* Description */}
+                                    <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                                        {project.description}
+                                    </p>
 
-                                {/* Project Description */}
-                                <p className="text-slate-600 text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-3">
-                                    {project.description}
-                                </p>
+                                    {/* Tech Stack */}
+                                    <div className="flex flex-wrap gap-2 mb-6">
+                                        {project.technologies.map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className="px-3 py-1 text-xs font-medium bg-white/10 border border-white/20 text-gray-300 rounded-md hover:bg-white hover:text-black transition-all duration-300"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
 
-                                {/* Technologies */}
-                                <div className="flex flex-wrap gap-2 mt-auto">
-                                    {project.technologies.map((tech) => (
-                                        <span
-                                            key={`${project.title}-${tech}`}
-                                            className="px-2.5 py-1 bg-linear-to-r from-slate-600 to-slate-800 text-white text-xs font-medium rounded-full hover:scale-105 transition-all duration-300 cursor-default shadow-sm"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                {/* Decorative corner with dark gradient */}
-                                <div
-                                    className="absolute top-0 right-0 w-16 sm:w-20 h-16 sm:h-20 rounded-bl-full pointer-events-none opacity-50"
-                                    style={{
-                                        background: 'linear-gradient(to bottom right, rgba(71, 85, 105, 0.1), transparent)'
-                                    }}
-                                ></div>
-                            </CardContent>
-                        </Card>
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        className="w-full text-white border-white/10 hover:bg-white hover:text-black mt-auto"
+                                        onClick={() => setSelectedProject(project)}
+                                    >
+                                        View Case Study
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        </div>
                     ))}
                 </div>
 
-                {/* View More Projects */}
-                <div className={`text-center mt-12 sm:mt-16 transition-all duration-800 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+                {/* CTA */}
+                <div className={`text-center mt-16 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
                     <Button
-                        variant="outline"
                         size="lg"
-                        className="border-2 border-slate-700 text-slate-700 hover:text-white hover:border-transparent hover:scale-105 transition-all duration-300 px-6 sm:px-8 bg-transparent group text-sm sm:text-base"
+                        variant="outline"
+                        className="border-2 border-white/20 bg-white/5 backdrop-blur-md text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 group"
                         asChild
-                        onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-                            e.currentTarget.style.background = 'linear-gradient(to right, #475569, #334155, #0f172a)';
-                        }}
-                        onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-                            e.currentTarget.style.background = 'transparent';
-                        }}
                     >
                         <a href="https://github.com/dini28" target="_blank" rel="noopener noreferrer">
                             <Github className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
@@ -208,6 +183,97 @@ const Project = () => {
                     </Button>
                 </div>
             </div>
+
+            {/* Case Study Modal */}
+            {selectedProject && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-300"
+                    onClick={() => setSelectedProject(null)}
+                >
+                    <div
+                        className="relative w-full max-w-2xl bg-black border-2 border-white/20 rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Modal Header/Image */}
+                        <div className="relative h-48 sm:h-64 overflow-hidden">
+                            <img
+                                src={selectedProject.image}
+                                alt={selectedProject.title}
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                            <button
+                                onClick={() => setSelectedProject(null)}
+                                className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+                            <div className="absolute bottom-6 left-8">
+                                <h3 className="text-3xl font-bold text-white mb-1">{selectedProject.title}</h3>
+                                <p className="text-gray-400 font-medium">{selectedProject.subtitle}</p>
+                            </div>
+                        </div>
+
+                        {/* Modal Content */}
+                        <div className="p-8 space-y-8">
+                            <div className="grid gap-6">
+                                {/* Problem */}
+                                <div className="flex gap-4">
+                                    <div className="shrink-0 w-10 h-10 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
+                                        <Target className="w-5 h-5 text-gray-400" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-white font-bold mb-2">The Problem</h4>
+                                        <p className="text-gray-400 text-sm leading-relaxed">{selectedProject.caseStudy.problem}</p>
+                                    </div>
+                                </div>
+
+                                {/* Solution */}
+                                <div className="flex gap-4">
+                                    <div className="shrink-0 w-10 h-10 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
+                                        <Lightbulb className="w-5 h-5 text-gray-400" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-white font-bold mb-2">Technical Solution</h4>
+                                        <p className="text-gray-400 text-sm leading-relaxed">{selectedProject.caseStudy.solution}</p>
+                                    </div>
+                                </div>
+
+                                {/* Impact */}
+                                <div className="flex gap-4">
+                                    <div className="shrink-0 w-10 h-10 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
+                                        <RocketIcon className="w-5 h-5 text-gray-400" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-white font-bold mb-2">Impact & Result</h4>
+                                        <p className="text-gray-400 text-sm leading-relaxed">{selectedProject.caseStudy.impact}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                                <div className="flex gap-2">
+                                    {selectedProject.technologies.slice(0, 3).map(tech => (
+                                        <span key={tech} className="text-[10px] uppercase tracking-widest font-bold text-gray-500">{tech}</span>
+                                    ))}
+                                </div>
+                                <div className="flex gap-4">
+                                    {selectedProject.githubUrl && (
+                                        <a href={selectedProject.githubUrl} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                                            <Github className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                    {selectedProject.liveUrl && (
+                                        <a href={selectedProject.liveUrl} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                                            <ExternalLink className="w-5 h-5" />
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };

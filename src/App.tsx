@@ -6,11 +6,12 @@ import Project from "./components/sections/Project"
 import Skills from "./components/sections/Skills"
 import WhatsAppButton from "./components/common/WhatsAppButton"
 import About from "./components/sections/About"
-
+import { SmoothScroll } from "./components/common/SmoothScroll"
+import PortfolioGuide from "./components/sections/PortfolioGuide"
 
 function App() {
   return (
-    <>
+    <SmoothScroll>
       <Header />
       <Hero />
       <About />
@@ -18,8 +19,9 @@ function App() {
       <Project />
       <Contact />
       <Footer />
+      <PortfolioGuide />
       <WhatsAppButton />
-    </>
+    </SmoothScroll>
   )
 }
 

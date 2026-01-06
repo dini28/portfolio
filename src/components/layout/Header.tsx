@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import CV from '../../assets/CV.pdf';
-import logo_header from '../../assets/logo_header.svg'
+import logo_header from '../../assets/logo_header.svg';
 
 const navLinks = [
     { href: "#about", label: "About" },
@@ -73,7 +73,6 @@ export default function Header() {
     };
 
     const handleDownloadCV = () => {
-        // Create a temporary link element
         const link = document.createElement('a');
         link.href = CV;
         link.download = 'Dipesh_Soni_CV.pdf';
@@ -85,10 +84,9 @@ export default function Header() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                ? "bg-white/98 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
+                ? "bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_30px_rgba(255,255,255,0.1)]"
                 : "bg-transparent"
                 }`}
-            style={{ fontFamily: "Sansation, sans-serif" }}
         >
             <nav className="container mx-auto px-6 lg:px-10">
                 <div className="flex items-center justify-between h-20">
@@ -99,30 +97,26 @@ export default function Header() {
                         className="flex items-center space-x-3 group relative"
                     >
                         <div className="relative">
-                            {/* Animated background on hover */}
+                            {/* Animated glow on hover */}
                             <div
-                                className="absolute -inset-2 rounded-lg opacity-0 duration-300 blur-sm"
+                                className="absolute -inset-2 rounded-lg opacity-0 group-hover:opacity-100 duration-300 blur-sm"
                                 style={{
-                                    background: 'linear-gradient(to right, #94a3b8, #64748b, #475569)',
+                                    background: 'linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.1))',
                                 }}
-                            ></div>
+                            />
 
-                            <span
-                                className="relative text-3xl font-bold tracking-tight transition-all duration-300"
+                            <span className="relative text-3xl tracking-tight transition-all duration-300 flex items-center gap-2 text-white"
                                 style={{
-                                    fontFamily: "Genos, sans-serif",
-                                    background: 'linear-gradient(to right, #1e293b, #334155, #475569)',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
-                                    backgroundClip: 'text'
-                                }}
-                            >
+                                    fontFamily: "Offside",
+                                    fontWeight: "bold"
+                                }}>
                                 <img
                                     src={logo_header}
                                     alt="Logo"
-                                    className="text-black w-10 h-10 object-fit inline-block mr-2"
+                                    className="w-10 h-10 object-contain brightness-0 invert"
                                 />
-                                Dipesh Soni
+                                <span className="md:hidden">DS</span>
+                                <span className="hidden md:inline">Dipesh Soni</span>
                             </span>
                         </div>
                     </a>
@@ -138,18 +132,18 @@ export default function Header() {
                                         aria-current={
                                             activeSection === link.href.substring(1) ? "page" : undefined
                                         }
-                                        className={`relative px-4 py-2 text-base font-medium transition-colors duration-300 hover:text-slate-950 group ${activeSection === link.href.substring(1)
-                                            ? "text-slate-950"
-                                            : "text-slate-700"
+                                        className={`relative px-4 py-2 text-base font-medium transition-colors duration-300 hover:text-white group ${activeSection === link.href.substring(1)
+                                            ? "text-white"
+                                            : "text-gray-400"
                                             }`}
                                     >
                                         {link.label}
                                         <span
-                                            className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-slate-950 transition-all duration-300 ${activeSection === link.href.substring(1)
+                                            className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-white transition-all duration-300 ${activeSection === link.href.substring(1)
                                                 ? "w-full"
                                                 : "w-0 group-hover:w-full"
                                                 }`}
-                                        ></span>
+                                        />
                                     </a>
                                 </li>
                             ))}
@@ -158,10 +152,7 @@ export default function Header() {
                         {/* Download CV Button */}
                         <button
                             onClick={handleDownloadCV}
-                            className="px-5 py-2.5 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(15,23,42,0.6)] flex items-center gap-2 group"
-                            style={{
-                                background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                            }}
+                            className="px-5 py-2.5 bg-white text-black font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center gap-2 group"
                         >
                             <svg
                                 className="w-4 h-4 group-hover:animate-bounce"
@@ -183,7 +174,7 @@ export default function Header() {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden relative p-2.5 rounded-xl text-slate-800 hover:bg-slate-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-slate-400 group"
+                        className="md:hidden relative p-2.5 rounded-xl text-white hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 group"
                         aria-label="Toggle menu"
                         aria-expanded={isOpen}
                     >
@@ -211,12 +202,7 @@ export default function Header() {
                         : "opacity-0 scale-y-95 -translate-y-4 pointer-events-none"
                         }`}
                 >
-                    <div
-                        className="bg-white/98 backdrop-blur-xl border-t border-slate-200 shadow-2xl"
-                        style={{
-                            boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                        }}
-                    >
+                    <div className="bg-black/98 backdrop-blur-xl border-t border-white/10 shadow-2xl">
                         <ul className="container mx-auto px-6 py-6 space-y-1">
                             {navLinks.map((link, index) => (
                                 <li
@@ -232,29 +218,26 @@ export default function Header() {
                                         href={link.href}
                                         onClick={(e) => handleNavClick(e, link.href)}
                                         className={`block px-5 py-4 rounded-xl font-semibold transition-all duration-300 relative overflow-hidden group ${activeSection === link.href.substring(1)
-                                            ? "text-white shadow-lg"
-                                            : "text-slate-700 hover:text-white"
+                                            ? "text-black shadow-lg bg-white"
+                                            : "text-gray-400 hover:text-black"
                                             }`}
                                     >
-                                        {/* Background */}
+                                        {/* Background on hover */}
                                         <span
-                                            className={`absolute inset-0 transition-all duration-300 ${activeSection === link.href.substring(1)
+                                            className={`absolute inset-0 bg-white transition-all duration-300 ${activeSection === link.href.substring(1)
                                                 ? "opacity-100"
                                                 : "opacity-0 group-hover:opacity-100"
                                                 }`}
-                                            style={{
-                                                background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                                            }}
-                                        ></span>
+                                        />
 
                                         {/* Icon indicator */}
                                         <span className="relative z-10 flex items-center gap-3">
                                             <span
                                                 className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeSection === link.href.substring(1)
-                                                    ? "bg-white scale-100"
-                                                    : "bg-slate-400 scale-0 group-hover:scale-100 group-hover:bg-white"
+                                                    ? "bg-black scale-100"
+                                                    : "bg-gray-600 scale-0 group-hover:scale-100 group-hover:bg-black"
                                                     }`}
-                                            ></span>
+                                            />
                                             {link.label}
                                         </span>
                                     </a>
@@ -272,10 +255,7 @@ export default function Header() {
                             >
                                 <button
                                     onClick={handleDownloadCV}
-                                    className="w-full px-5 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group"
-                                    style={{
-                                        background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                                    }}
+                                    className="w-full px-5 py-4 rounded-xl font-semibold bg-white text-black transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group"
                                 >
                                     <svg
                                         className="w-4 h-4 group-hover:animate-bounce"

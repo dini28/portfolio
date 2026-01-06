@@ -1,251 +1,250 @@
 import { useEffect, useState, useRef } from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
-import dipesh from '../../assets/dipesh.jpeg';
+import { Github, Linkedin, Mail, ArrowRight, Code2, Laptop, Download } from 'lucide-react';
 import { Button } from '../common/Button';
+import dipesh from '../../assets/dipesh.webp';
+
+// animations
+const animation = `
+  @keyframes grid-move {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(50px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+
+  .mouse-glow {
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+    transform: translate(-50%, -50%);
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+  }
+`;
 
 const Hero = () => {
-    const [currentText, setCurrentText] = useState('');
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [charIndex, setCharIndex] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [isVisible] = useState(true);
-    const heroRef = useRef(null);
+    const [textState, setTextState] = useState({
+        text: '',
+        index: 0,
+        charIndex: 0,
+        isDeleting: false
+    });
+    const [isVisible, setIsVisible] = useState(false);
+    const heroRef = useRef<HTMLElement>(null);
 
-    const texts = [
-        'Full Stack Developer',
-        'Problem Solver',
-        'System Designer',
-        'Code Craftsman'
-    ];
+    const roles = ['Frontend Developer', 'React Enthusiast', 'UI/UX Learner', 'Web Developer'];
 
+    // spotlight effect
     useEffect(() => {
-        const type = () => {
-            const current = texts[currentIndex];
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!heroRef.current) return;
 
-            if (!isDeleting && charIndex < current.length) {
-                setCurrentText(current.substring(0, charIndex + 1));
-                setCharIndex(prev => prev + 1);
+            const rect = heroRef.current.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            heroRef.current.style.setProperty('--mouse-x', `${x}%`);
+            heroRef.current.style.setProperty('--mouse-y', `${y}%`);
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
+    // entrance animation
+    useEffect(() => {
+        const timer = setTimeout(() => setIsVisible(true), 100);
+        return () => clearTimeout(timer);
+    }, []);
+
+    // typewriter
+    useEffect(() => {
+        const { index, charIndex, isDeleting } = textState;
+        const currentRole = roles[index];
+        const typeSpeed = isDeleting ? 50 : 100;
+
+        const nextStep = () => {
+            if (!isDeleting && charIndex < currentRole.length) {
+                setTextState(prev => ({
+                    ...prev,
+                    text: currentRole.substring(0, charIndex + 1),
+                    charIndex: charIndex + 1
+                }));
             } else if (isDeleting && charIndex > 0) {
-                setCurrentText(current.substring(0, charIndex - 1));
-                setCharIndex(prev => prev - 1);
-            } else if (!isDeleting && charIndex === current.length) {
-                setTimeout(() => setIsDeleting(true), 2000);
+                setTextState(prev => ({
+                    ...prev,
+                    text: currentRole.substring(0, charIndex - 1),
+                    charIndex: charIndex - 1
+                }));
+            } else if (!isDeleting && charIndex === currentRole.length) {
+                setTimeout(() => setTextState(prev => ({ ...prev, isDeleting: true })), 2000);
             } else if (isDeleting && charIndex === 0) {
-                setIsDeleting(false);
-                setCurrentIndex(prev => (prev + 1) % texts.length);
+                setTextState(prev => ({
+                    ...prev,
+                    isDeleting: false,
+                    index: (index + 1) % roles.length
+                }));
             }
         };
 
-        const timer = setTimeout(type, isDeleting ? 50 : 100);
+        const timer = setTimeout(nextStep, typeSpeed);
         return () => clearTimeout(timer);
-    }, [charIndex, isDeleting, currentIndex, texts]);
+    }, [textState, roles]);
 
-    const scrollToContact = () => {
-        const element = document.querySelector('#contact');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
-    const getTransitionClass = (delayClass: string) => {
-        return `transition-all duration-1000 ${delayClass} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`;
+    // scroll to section
+    const scrollToSection = (id: string) => {
+        document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
         <section
             ref={heroRef}
             id="hero"
-            className="min-h-screen flex items-center justify-center pt-20 py-8 relative overflow-hidden"
-            style={{ fontFamily: 'Sansation, sans-serif' }}
+            className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black py-12 lg:py-0"
         >
-            <style>
-                {`
-                    @keyframes gradient-shift {
-                        0%, 100% { background-position: 0% 50%; }
-                        50% { background-position: 100% 50%; }
-                    }
-                `}
-            </style>
+            <style>{animation}</style>
 
-            <div
-                className="absolute inset-0"
-                style={{
-                    background: 'linear-gradient(to bottom right, #eff6ff, #ffffff, #f0fdfa)'
-                }}
-            ></div>
-
-            <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-slate-500/15 rounded-full blur-3xl animate-pulse"></div>
+            {/* Background Elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {/* Animated Grid */}
                 <div
-                    className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-slate-500/10 rounded-full blur-3xl animate-pulse"
-                    style={{ animationDelay: '2s' }}
-                ></div>
+                    className="absolute inset-0 opacity-[0.04]"
+                    style={{
+                        backgroundImage: `linear-gradient(rgba(255,255,255,0.15) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,0.15) 2px, transparent 2px)`,
+                        backgroundSize: '80px 80px',
+                        animation: 'grid-move 20s linear infinite'
+                    }}
+                />
+                <div
+                    className="absolute inset-0 opacity-[0.02]"
+                    style={{
+                        backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+                        backgroundSize: '20px 20px'
+                    }}
+                />
+
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.04),transparent_50%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.03),transparent_50%)]" />
+
+                <div className="mouse-glow absolute w-[800px] h-[800px] rounded-full blur-[80px] transition-opacity duration-300 ease-out" />
+
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl animate-pulse duration-[4000ms]" />
+                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-tl from-white/5 to-transparent rounded-full blur-3xl animate-pulse duration-[6000ms] delay-2000" />
             </div>
 
-            <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-20 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 sm:gap-10 lg:gap-12 xl:gap-16 max-w-7xl mx-auto">
+            {/* Main Content */}
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
+                <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-16 max-w-7xl mx-auto">
 
-                    <div className={`shrink-0 order-1 lg:order-2 ${getTransitionClass('delay-0')}`}>
-                        <div className="relative group">
-                            {/* Animated glow rings */}
-                            <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                                <div className="absolute inset-0 rounded-full animate-ping" style={{
-                                    background: 'linear-gradient(to bottom right, #475569, #334155)',
-                                    animationDuration: '3s',
-                                    opacity: 0.2
-                                }}></div>
+                    {/* Left Side: Text */}
+                    <div className={`flex-1 text-center lg:text-left max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <div className="space-y-4 mb-8">
+                            <p className="text-xl text-gray-400 font-medium tracking-wide">Hey! I'm</p>
+                            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-none tracking-tight">
+                                <span className="inline-block text-white"
+                                    style={{ fontFamily: "Offside", fontWeight: "bold" }}>
+                                    Dipesh Soni
+                                </span>
+                            </h1>
+
+                            {/* Typewriter Container */}
+                            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl mt-4">
+                                <Code2 className="w-5 h-5 text-gray-400" />
+                                <div className="text-xl sm:text-2xl font-medium text-white min-w-[200px] text-left">
+                                    {textState.text}
+                                    <span className="animate-pulse border-l-2 border-white ml-1 h-6 inline-block align-middle" />
+                                </div>
                             </div>
+                        </div>
 
-                            {/* Outer decorative ring */}
-                            <div className="absolute -inset-4 rounded-full opacity-50 blur-xl group-hover:opacity-75 transition-all duration-500" style={{
-                                background: 'linear-gradient(135deg, #475569, #334155, #0f172a, #334155, #475569)',
-                                backgroundSize: '200% 200%',
-                                animation: 'gradient-shift 8s ease infinite'
-                            }}></div>
+                        <p className="text-lg text-gray-400 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
+                            Passionate about creating beautiful and functional web experiences. Learning and building with
+                            <span className="text-white font-semibold"> React</span>,
+                            <span className="text-white font-semibold"> Next.js</span>,
+                            and modern frontend technologies.
+                        </p>
 
-                            {/* Main image container */}
-                            <div className="relative">
-                                <div
-                                    className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.5)] p-1.5 group-hover:shadow-[0_30px_80px_rgba(15,23,42,0.8)] transition-all duration-700 group-hover:scale-[1.02]"
-                                    style={{
-                                        background: 'linear-gradient(135deg, #94a3b8, #64748b, #475569, #334155, #0f172a)',
-                                        backgroundSize: '200% 200%',
-                                        animation: 'gradient-shift 6s ease infinite'
-                                    }}
+                        {/* CTA Buttons */}
+                        <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-10">
+                            <Button size="lg" onClick={() => scrollToSection('#projects')} className="bg-white text-black text-lg hover:bg-gray-200 transition-all group px-8 rounded-lg">
+                                View Work
+                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                            <Button size="lg" variant="outline" onClick={() => scrollToSection('#contact')} className="text-lg text-gray-400 hover:text-white px-8 rounded-lg">
+                                <Mail className="mr-2 w-5 h-5" />
+                                Let's Talk
+                            </Button>
+                        </div>
+
+                        {/* Social Links */}
+                        <div className="flex items-center justify-center lg:justify-start gap-6">
+                            <span className="text-xs uppercase tracking-[0.2em] text-gray-500 font-semibold">Connect</span>
+                            <div className="h-px w-8 bg-white/10" />
+                            {[
+                                { icon: Github, href: 'https://github.com/dini28', label: 'GitHub' },
+                                { icon: Linkedin, href: 'https://linkedin.com/in/dipesh-soni', label: 'LinkedIn' }
+                            ].map((social, i) => (
+                                <a
+                                    key={i}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-gray-400 hover:text-white transition-colors hover:scale-110 transform duration-200
+                                    hover:-rotate-15"
+                                    aria-label={social.label}
                                 >
-                                    {/* Inner white border */}
-                                    <div className="w-full h-full rounded-full p-2 bg-white">
-                                        <div className="w-full h-full rounded-full overflow-hidden relative">
-                                            {/* Image with overlay effect */}
-                                            <img
-                                                src={dipesh}
-                                                alt="Dipesh Soni - Full Stack Developer"
-                                                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-                                            />
+                                    <social.icon className="w-6 h-6" />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
 
-                                            {/* Gradient overlay on hover */}
-                                            <div className="absolute inset-0 bg-linear-to-t from-slate-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    {/* Right Side: Profile Image */}
+                    <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <div className="relative group w-80 h-80 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px]">
+                            {/* Glow Backdrop */}
+                            <div className="absolute -inset-4 bg-gradient-to-tr from-white/10 via-transparent to-white/5 rounded-[2rem] blur-2xl group-hover:blur-3xl transition-all duration-500" />
+
+                            {/* Image Frame */}
+                            <div className="relative h-full w-full rounded-[2rem] border-2 border-white/10 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm p-3 group-hover:border-white/20 transition-all duration-500">
+                                <div className="relative h-full w-full rounded-2xl overflow-hidden">
+                                    <img
+                                        src={dipesh}
+                                        alt="Dipesh Soni"
+                                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0 brightness-75 group-hover:brightness-100"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
+
+                                    {/* Tech Icons Overlay */}
+                                    <div className="absolute inset-0 flex items-end justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                        <div className="flex gap-2">
+                                            {[Laptop, Code2].map((Icon, idx) => (
+                                                <div key={idx} className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
+                                                    <Icon className="w-5 h-5 text-white" />
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Floating badges */}
-                                <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-2xl p-3 transform group-hover:translate-y-1 transition-all duration-500 border-2 border-slate-200">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                                        <span className="text-sm font-bold text-slate-700">Available</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex-1 text-center lg:text-left order-2 lg:order-1 max-w-2xl lg:max-w-xl xl:max-w-2xl px-4 sm:px-0">
-                        <div className="space-y-3 sm:space-y-4">
-                            <div>
-                                <p className={`text-lg sm:text-xl lg:text-2xl text-slate-600 font-medium mb-1 sm:mb-2 ${getTransitionClass('delay-100')}`}>
-                                    Hi, I'm
-                                </p>
-
-                                <h1
-                                    className={`text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold mb-2 sm:mb-4 ${getTransitionClass('delay-200')}`}
+                                {/* Shimmer Border Animation */}
+                                <div
+                                    className="absolute inset-0 rounded-[2rem] pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-500"
                                     style={{
-                                        fontFamily: 'Genos, sans-serif',
-                                        background: 'linear-gradient(to right, #94a3b8, #64748b, #475569)',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        backgroundClip: 'text'
+                                        background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)',
+                                        animation: 'shimmer 3s infinite linear'
                                     }}
-                                >
-                                    Dipesh Soni
-                                </h1>
-
-                                <div className={`text-2xl sm:text-3xl lg:text-4xl text-slate-700 font-semibold h-12 sm:h-14 lg:h-16 flex items-center justify-center lg:justify-start mb-4 sm:mb-6 ${getTransitionClass('delay-300')}`}>
-                                    <span className="text-slate-800">
-                                        {currentText}
-                                        <span className="animate-pulse text-slate-500">|</span>
-                                    </span>
-                                </div>
+                                />
                             </div>
 
-                            <p className={`text-base sm:text-lg lg:text-xl xl:text-2xl text-slate-600 leading-relaxed max-w-xl sm:max-w-2xl mx-auto lg:mx-0 font-medium px-2 sm:px-0 ${getTransitionClass('delay-500')}`}>
-                                Building high-performance web applications with clean, scalable code and user-centric design.
-                            </p>
+                            {/* Corner Accents */}
+                            <div className="absolute -top-3 -right-3 w-20 h-20 border-t-2 border-r-2 border-white/20 rounded-tr-3xl" />
+                            <div className="absolute -bottom-3 -left-3 w-20 h-20 border-b-2 border-l-2 border-white/20 rounded-bl-3xl" />
 
-                            <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-2 sm:pt-4 px-2 sm:px-0 ${getTransitionClass('delay-700')}`}>
-                                <Button
-                                    size="lg"
-                                    onClick={() => {
-                                        const element = document.querySelector('#projects');
-                                        if (element) {
-                                            element.scrollIntoView({ behavior: 'smooth' });
-                                        }
-                                    }}
-                                    className="text-white shadow-2xl font-bold text-base sm:text-lg transition-all duration-300 group hover:scale-105 hover:shadow-[0_0_50px_rgba(15,23,42,0.9)] w-full sm:w-auto"
-                                    style={{
-                                        background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                                        padding: '0.875rem 2rem'
-                                    }}
-                                >
-                                    View My Work
-                                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                    </svg>
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    size="lg"
-                                    onClick={scrollToContact}
-                                    className="border-2 border-slate-700 text-slate-700 hover:scale-105 transition-all duration-300 group bg-transparent hover:text-white text-base sm:text-lg font-semibold w-full sm:w-auto"
-                                    style={{
-                                        padding: '0.875rem 2rem'
-                                    }}
-                                    onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-                                        e.currentTarget.style.background = 'linear-gradient(to right, #475569, #334155, #0f172a)';
-                                    }}
-                                    onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-                                        e.currentTarget.style.background = 'transparent';
-                                    }}
-                                >
-                                    <Mail className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                                    Contact Me
-                                </Button>
-                            </div>
-
-                            <div className={`flex gap-4 sm:gap-6 justify-center lg:justify-start pt-4 sm:pt-6 ${getTransitionClass('delay-1000')}`}>
-                                <a
-                                    href="https://github.com/dini28"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-[0_0_40px_rgba(15,23,42,0.7)] group"
-                                    style={{
-                                        background: 'linear-gradient(to right, #475569, #334155, #0f172a)'
-                                    }}
-                                    aria-label="Visit GitHub profile"
-                                >
-                                    <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-
-                                    <span className="absolute top-full ml-2.5 mt-1.5 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-                                        GitHub
-                                    </span>
-                                </a>
-                                <a
-                                    href="https://linkedin.com/in/dipesh-soni"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-12 h-12 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-[0_0_40px_rgba(15,23,42,0.7)] group"
-                                    style={{
-                                        background: 'linear-gradient(to right, #475569, #334155, #0f172a)'
-                                    }}
-                                    aria-label="Visit LinkedIn profile"
-                                >
-                                    <Linkedin className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-
-                                    <span className="absolute top-full ml-2.5 mt-1.5 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-                                        LinkedIn
-                                    </span>
-                                </a>
-                            </div>
+                            {/* Floating Stats */}
+                            <FloatingCard position="-bottom-6 -left-6" label="Status" value="Fresher" delay={0} />
+                            <FloatingCard position="-top-6 -right-6" label="Projects" value="5+" delay={100} />
                         </div>
                     </div>
                 </div>
@@ -253,5 +252,18 @@ const Hero = () => {
         </section>
     );
 };
+
+// Sub-component for cleaner code
+const FloatingCard = ({ position, label, value, delay }: { position: string; label: string; value: string; delay: number }) => (
+    <div className={`absolute ${position}`} style={{ transitionDelay: `${delay}ms` }}>
+        <div className="relative">
+            <div className="absolute inset-0 bg-white rounded-xl blur-lg opacity-20" />
+            <div className="relative bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl px-5 py-3 shadow-2xl">
+                <div className="text-xs text-gray-400 mb-0.5">{label}</div>
+                <div className="text-xl font-bold text-white">{value}</div>
+            </div>
+        </div>
+    </div>
+);
 
 export default Hero;

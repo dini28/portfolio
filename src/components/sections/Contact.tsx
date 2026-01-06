@@ -30,23 +30,19 @@ const Contact = () => {
         const subject = formData.get('subject') as string;
         const message = formData.get('message') as string;
 
-        // Name validation
         if (!name || name.trim().length < 2) {
             errors.name = 'Please enter your full name (at least 2 characters)';
         }
 
-        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !emailRegex.test(email)) {
-            errors.email = 'Please enter a valid email address (e.g., name@example.com)';
+            errors.email = 'Please enter a valid email address';
         }
 
-        // Subject validation
         if (!subject || subject.trim().length < 3) {
             errors.subject = 'Please enter a subject (at least 3 characters)';
         }
 
-        // Message validation
         if (!message || message.trim().length < 10) {
             errors.message = 'Please enter a message (at least 10 characters)';
         }
@@ -58,7 +54,6 @@ const Contact = () => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
 
-        // Validate form
         const errors = validateForm(formData);
 
         if (Object.keys(errors).length > 0) {
@@ -96,249 +91,208 @@ const Contact = () => {
     };
 
     return (
-        <section
-            id="contact"
-            className="py-20 relative overflow-hidden"
-            style={{
-                fontFamily: 'Sansation, sans-serif',
-                background: 'linear-gradient(to bottom right, rgba(248, 250, 252, 0.3), rgba(219, 234, 254, 0.05))'
-            }}
-        >
-            {/* Background Elements */}
-            <div className="absolute top-20 left-20 w-72 h-72 bg-teal-500/5 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <section id="contact" className="py-20 bg-black relative overflow-hidden">
+            {/* Background */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute inset-0 opacity-[0.02]" style={{
+                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                    backgroundSize: '50px 50px'
+                }} />
+                <div className="absolute top-20 left-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+                <div className="absolute bottom-20 right-20 w-96 h-96 bg-white/3 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+            </div>
 
-            <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
-                {/* Section Header */}
-                <div className={`text-center mb-12 sm:mb-16 transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <p className="text-base sm:text-lg text-slate-600 font-medium mb-3 sm:mb-4 uppercase tracking-wider">
-                        Get in Touch
-                    </p>
-                    <h2
-                        className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6"
-                        style={{
-                            background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text'
-                        }}
-                    >
+            <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-20 relative z-10">
+                {/* Header */}
+                <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <p className="text-lg text-gray-400 font-medium mb-4 uppercase tracking-wider">Get in Touch</p>
+                    <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white">
                         Contact Me
                     </h2>
+                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto rounded-full" />
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
-                    {/* Contact Information */}
-                    <div className={`lg:col-span-1 space-y-4 sm:space-y-6 transition-all duration-800 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        <Card className="border border-slate-200 shadow-xl bg-white/80 backdrop-blur-sm">
-                            <CardContent className="p-5 sm:p-6">
-                                <h3 className="text-lg sm:text-xl font-bold mb-4">Contact Information</h3>
-                                <div className="space-y-4">
-                                    {/* Email with Copy Button */}
-                                    <div className="flex items-start justify-between gap-2">
-                                        <div className="flex items-center flex-1 min-w-0">
-                                            <Mail className="w-5 h-5 text-slate-900 mr-3 shrink-0" />
-                                            <a
-                                                href="mailto:dipeshsonitech@gmail.com"
-                                                className="text-sm sm:text-base text-slate-600 hover:text-slate-900 transition-colors break-all"
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    {/* Contact Info */}
+                    <div className={`lg:col-span-1 space-y-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <Card className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 hover:bg-white/10 transition-all duration-300">
+                            <CardContent className="p-6">
+                                <h3 className="text-xl font-bold text-white mb-6">Contact Information</h3>
+                                <div className="space-y-5">
+                                    {/* Email */}
+                                    <div className="group bg-white/[0.02] p-4 rounded-xl border border-white/5 hover:border-white/10 transition-all">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="flex items-center">
+                                                <Mail className="w-5 h-5 text-gray-400 mr-2" />
+                                                <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Email Address</span>
+                                            </div>
+                                            <button
+                                                onClick={copyEmail}
+                                                className={`p-1.5 rounded-lg border transition-all ${copied ? 'bg-green-500/10 border-green-500/20 text-green-400' : 'bg-white/5 border-white/10 text-gray-500 hover:text-white'}`}
                                             >
-                                                dipeshsonitech@gmail.com
-                                            </a>
+                                                {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                                            </button>
                                         </div>
-                                        <button
-                                            onClick={copyEmail}
-                                            className="shrink-0 pt-2 rounded-lg transition-colors group relative"
-                                            aria-label="Copy email address"
-                                        >
-                                            {copied ? (
-                                                <Check className="w-4 h-4 text-green-600" />
-                                            ) : (
-                                                <Copy className="w-4 h-4 text-slate-600 group-hover:text-slate-900" />
-                                            )}
-                                            {/* Tooltip */}
-                                            <span className="absolute -top-6 -right-2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                                                {copied ? 'Copied!' : 'Copy email'}
-                                            </span>
-                                        </button>
-                                    </div>
-
-                                    <div className="flex items-center">
-                                        <Phone className="w-5 h-5 text-slate-900 mr-3 shrink-0" />
-                                        <a href="tel:+916377796008" className="text-sm sm:text-base text-slate-600 hover:text-slate-900 transition-colors">
-                                            +91 6377796008
+                                        <a href="mailto:dipeshsonitech@gmail.com" className="text-white font-medium hover:text-gray-300 transition-colors block px-7">
+                                            dipeshsonitech@gmail.com
                                         </a>
                                     </div>
 
-                                    <div className="flex items-center">
-                                        <MapPin className="w-5 h-5 text-slate-900 mr-3 shrink-0" />
-                                        <span className="text-sm sm:text-base text-slate-600">Udaipur, India</span>
+                                    {/* Location */}
+                                    <div className="group bg-white/[0.02] p-4 rounded-xl border border-white/5 hover:border-white/10 transition-all">
+                                        <div className="flex items-center mb-2">
+                                            <MapPin className="w-5 h-5 text-gray-400 mr-2" />
+                                            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Current Location</span>
+                                        </div>
+                                        <p className="text-white font-medium px-7">Jodhpur, Rajasthan, India</p>
                                     </div>
 
-                                    <div className="flex items-center">
-                                        <Linkedin className="w-5 h-5 text-slate-900 mr-3 shrink-0" />
-                                        <a
-                                            href="https://linkedin.com/in/dipesh-soni"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-sm sm:text-base text-slate-600 hover:text-slate-900 transition-colors"
-                                        >
-                                            LinkedIn Profile
+                                    {/* Quick Contact */}
+                                    <div className="grid grid-cols-2 gap-3 pt-2">
+                                        <a href="tel:+916377796008" className="flex items-center justify-center gap-2 p-3 bg-white/5 border border-white/10 rounded-xl text-xs text-gray-400 hover:bg-white hover:text-black transition-all">
+                                            <Phone className="w-4 h-4" /> Call Me
+                                        </a>
+                                        <a href="https://linkedin.com/in/dipesh-soni" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 p-3 bg-white/5 border border-white/10 rounded-xl text-xs text-gray-400 hover:bg-white hover:text-black transition-all">
+                                            <Linkedin className="w-4 h-4" /> LinkedIn
                                         </a>
                                     </div>
                                 </div>
                             </CardContent>
                         </Card>
 
-                        <Card className="border border-slate-200 shadow-xl bg-white/80 backdrop-blur-sm">
-                            <CardContent className="p-5 sm:p-6">
-                                <h3 className="text-lg sm:text-xl font-bold mb-4">Response Time</h3>
-                                <p className="text-sm sm:text-base text-slate-600">
-                                    I typically respond to all inquiries within 24-48 hours. For urgent matters,
-                                    please mark your email as "Urgent" in the subject line.
+                        <Card className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 hover:bg-white/10 transition-all duration-300">
+                            <CardContent className="p-6">
+                                <h3 className="text-xl font-bold text-white mb-4">Response Time</h3>
+                                <p className="text-sm text-gray-400 leading-relaxed">
+                                    I typically respond within 24-48 hours. For urgent matters, please mark your email as "Urgent".
                                 </p>
                             </CardContent>
                         </Card>
                     </div>
 
-                    {/* Contact Form */}
-                    <div className={`lg:col-span-2 transition-all duration-800 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        <Card className="border border-slate-200 shadow-xl bg-white/80 backdrop-blur-sm relative">
-                            <div
-                                className="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-10"
-                                style={{
-                                    background: 'linear-gradient(to right, #475569, #334155, #0f172a)'
-                                }}
-                            ></div>
-                            <div
-                                className="absolute bottom-0 left-0 w-24 h-24 rounded-tr-full opacity-10"
-                                style={{
-                                    background: 'linear-gradient(to right, #475569, #334155, #0f172a)'
-                                }}
-                            ></div>
-                            <CardContent className="p-6 sm:p-8">
-                                <form onSubmit={onSubmit} className="space-y-5 sm:space-y-6" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                                    {/* Hidden fields for Netlify */}
+                    {/* Form */}
+                    <div className={`lg:col-span-2 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <Card className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 transition-all duration-300">
+                            <CardContent className="p-8">
+                                <form onSubmit={onSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                                     <input type="hidden" name="form-name" value="contact" />
-                                    {/* Honeypot field */}
                                     <p className="hidden">
-                                        <label>
-                                            Don't fill this out if you're human: <input name="bot-field" />
-                                        </label>
+                                        <label>Don't fill this out: <input name="bot-field" /></label>
                                     </p>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        {/* Name */}
                                         <div>
-                                            <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
-                                                Name <span className="text-red-500">*</span>
+                                            <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+                                                Name <span className="text-red-400">*</span>
                                             </label>
                                             <input
                                                 type="text"
                                                 id="name"
                                                 name="name"
-                                                className={`w-full px-4 py-3 rounded-lg border ${formErrors.name ? 'border-red-500 bg-red-50' : 'border-slate-300 bg-white'
-                                                    } focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-all`}
+                                                className={`w-full px-4 py-3 rounded-lg border-2 ${formErrors.name ? 'border-red-500 bg-red-500/10' : 'border-white/20 bg-white/5'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all`}
                                                 onChange={() => handleInputChange('name')}
                                                 placeholder="John Doe"
                                             />
                                             {formErrors.name && (
-                                                <p className="text-red-600 text-sm mt-1 flex items-center gap-1">
+                                                <p className="text-red-400 text-sm mt-2 flex items-center gap-1">
                                                     <AlertCircle className="w-4 h-4" />
                                                     {formErrors.name}
                                                 </p>
                                             )}
                                         </div>
+
+                                        {/* Email */}
                                         <div>
-                                            <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
-                                                Email <span className="text-red-500">*</span>
+                                            <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
+                                                Email <span className="text-red-400">*</span>
                                             </label>
                                             <input
                                                 type="email"
                                                 id="email"
                                                 name="email"
-                                                className={`w-full px-4 py-3 rounded-lg border ${formErrors.email ? 'border-red-500 bg-red-50' : 'border-slate-300 bg-white'
-                                                    } focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-all`}
+                                                className={`w-full px-4 py-3 rounded-lg border-2 ${formErrors.email ? 'border-red-500 bg-red-500/10' : 'border-white/20 bg-white/5'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all`}
                                                 onChange={() => handleInputChange('email')}
                                                 placeholder="john@example.com"
                                             />
                                             {formErrors.email && (
-                                                <p className="text-red-600 text-sm mt-1 flex items-center gap-1">
+                                                <p className="text-red-400 text-sm mt-2 flex items-center gap-1">
                                                     <AlertCircle className="w-4 h-4" />
                                                     {formErrors.email}
                                                 </p>
                                             )}
                                         </div>
                                     </div>
+
+                                    {/* Subject */}
                                     <div>
-                                        <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-2">
-                                            Subject <span className="text-red-500">*</span>
+                                        <label htmlFor="subject" className="block text-sm font-medium text-white mb-2">
+                                            Subject <span className="text-red-400">*</span>
                                         </label>
                                         <input
                                             type="text"
                                             id="subject"
                                             name="subject"
-                                            className={`w-full px-4 py-3 rounded-lg border ${formErrors.subject ? 'border-red-500 bg-red-50' : 'border-slate-300 bg-white'
-                                                } focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-all`}
+                                            className={`w-full px-4 py-3 rounded-lg border-2 ${formErrors.subject ? 'border-red-500 bg-red-500/10' : 'border-white/20 bg-white/5'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all`}
                                             onChange={() => handleInputChange('subject')}
                                             placeholder="Project Inquiry"
                                         />
                                         {formErrors.subject && (
-                                            <p className="text-red-600 text-sm mt-1 flex items-center gap-1">
+                                            <p className="text-red-400 text-sm mt-2 flex items-center gap-1">
                                                 <AlertCircle className="w-4 h-4" />
                                                 {formErrors.subject}
                                             </p>
                                         )}
                                     </div>
+
+                                    {/* Message */}
                                     <div>
-                                        <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
-                                            Message <span className="text-red-500">*</span>
+                                        <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
+                                            Message <span className="text-red-400">*</span>
                                         </label>
                                         <textarea
                                             id="message"
                                             name="message"
                                             rows={5}
-                                            className={`w-full px-4 py-3 rounded-lg border ${formErrors.message ? 'border-red-500 bg-red-50' : 'border-slate-300 bg-white'
-                                                } focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-all resize-none`}
+                                            className={`w-full px-4 py-3 rounded-lg border-2 ${formErrors.message ? 'border-red-500 bg-red-500/10' : 'border-white/20 bg-white/5'} text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all resize-none`}
                                             onChange={() => handleInputChange('message')}
                                             placeholder="Tell me about your project or idea..."
-                                        ></textarea>
+                                        />
                                         {formErrors.message && (
-                                            <p className="text-red-600 text-sm mt-1 flex items-center gap-1">
+                                            <p className="text-red-400 text-sm mt-2 flex items-center gap-1">
                                                 <AlertCircle className="w-4 h-4" />
                                                 {formErrors.message}
                                             </p>
                                         )}
                                     </div>
 
-                                    {/* Form Status Messages */}
+                                    {/* Success/Error Messages */}
                                     {submitSuccess && (
-                                        <div className="flex items-center p-4 bg-green-50 text-green-700 rounded-lg border border-green-200">
+                                        <div className="flex items-center p-4 bg-green-500/10 border-2 border-green-500/50 text-green-400 rounded-lg">
                                             <CheckCircle className="w-5 h-5 mr-2 shrink-0" />
-                                            <span className="text-sm sm:text-base">Your message has been sent successfully! I'll get back to you soon.</span>
+                                            <span className="text-sm">Message sent successfully! I'll get back to you soon.</span>
                                         </div>
                                     )}
                                     {submitError && (
-                                        <div className="flex items-center p-4 bg-red-50 text-red-700 rounded-lg border border-red-200">
+                                        <div className="flex items-center p-4 bg-red-500/10 border-2 border-red-500/50 text-red-400 rounded-lg">
                                             <AlertCircle className="w-5 h-5 mr-2 shrink-0" />
-                                            <span className="text-sm sm:text-base">There was an error submitting your form. Please try again.</span>
+                                            <span className="text-sm">Error submitting form. Please try again.</span>
                                         </div>
                                     )}
 
-                                    <div className="pt-4 flex justify-center items-center">
+                                    {/* Submit Button */}
+                                    <div className="flex justify-center pt-4">
                                         <Button
                                             type="submit"
                                             size="lg"
-                                            className="text-white shadow-lg px-6 sm:px-8 transition-all duration-300 group hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
-                                            style={{
-                                                background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                                                boxShadow: !isSubmitting ? '0 0 40px rgba(71, 85, 105, 0.3)' : undefined
-                                            }}
+                                            className="bg-white text-black hover:bg-gray-200 px-8 transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
                                             disabled={isSubmitting}
                                         >
                                             {isSubmitting ? (
                                                 <>
-                                                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                                                     </svg>
                                                     Sending...
                                                 </>
@@ -356,34 +310,13 @@ const Contact = () => {
                     </div>
                 </div>
 
-                {/* Call to Action */}
-                <div className={`text-center mt-12 sm:mt-16 transition-all duration-800 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
-                    <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 max-w-4xl mx-auto border border-white/20 relative overflow-hidden">
-                        {/* Background decoration */}
-                        <div
-                            className="absolute top-0 right-0 w-32 h-32 rounded-bl-full opacity-10"
-                            style={{
-                                background: 'linear-gradient(to right, #475569, #334155, #0f172a)'
-                            }}
-                        ></div>
-                        <div
-                            className="absolute bottom-0 left-0 w-24 h-24 rounded-tr-full opacity-10"
-                            style={{
-                                background: 'linear-gradient(to right, #475569, #334155, #0f172a)'
-                            }}
-                        ></div>
-                        <h3
-                            className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4"
-                            style={{
-                                background: 'linear-gradient(to right, #475569, #334155, #0f172a)',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
-                                backgroundClip: 'text'
-                            }}
-                        >
+                {/* CTA */}
+                <div className={`text-center mt-16 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+                    <div className="border-2 border-white/10 bg-white/5 backdrop-blur-md rounded-3xl p-8 lg:p-12 max-w-4xl mx-auto hover:border-white/20 transition-all duration-300">
+                        <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
                             Let's Work Together
                         </h3>
-                        <p className="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 max-w-2xl mx-auto">
+                        <p className="text-base lg:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
                             Whether you have a project in mind, want to collaborate, or just want to say hello,
                             I'd love to hear from you. Let's create something amazing together!
                         </p>
