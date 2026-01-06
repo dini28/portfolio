@@ -6,8 +6,8 @@ import about from '../../assets/about.webp';
 const About = () => {
     // We use separate hooks to create a staggered entrance effect
     const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal({ threshold: 0.1 });
-    const { ref: imageRef, isVisible: imageVisible } = useScrollReveal({ threshold: 0.2 });
-    const { ref: contentRef, isVisible: contentVisible } = useScrollReveal({ threshold: 0.2 });
+    const { ref: imageRef, isVisible: imageVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.2 });
+    const { ref: contentRef, isVisible: contentVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.2 });
 
     return (
         <section
@@ -114,7 +114,7 @@ const About = () => {
                         <div className="space-y-5">
                             <div className="flex items-center gap-3 mb-4">
                                 <BookOpen className="w-6 h-6 text-white" />
-                                <h3 className="text-2xl font-bold text-white">My Journey</h3>
+                                <h3 className="text-2xl font-bold text-white">Engineering Fun</h3>
                             </div>
                             <div className="space-y-4">
                                 <p className="text-base leading-relaxed text-gray-400 text-justify">

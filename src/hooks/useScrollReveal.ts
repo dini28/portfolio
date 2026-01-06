@@ -10,8 +10,8 @@ interface UseStaggerRevealOptions {
 }
 
 // Basic scroll reveal for single elements
-export const useScrollReveal = ({ threshold = 0.1 }: UseScrollRevealOptions = {}) => {
-    const ref = useRef<HTMLElement>(null);
+export const useScrollReveal = <T extends HTMLElement = HTMLElement>({ threshold = 0.1 }: UseScrollRevealOptions = {}) => {
+    const ref = useRef<T>(null);
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -41,11 +41,11 @@ export const useScrollReveal = ({ threshold = 0.1 }: UseScrollRevealOptions = {}
 };
 
 // Staggered reveal for lists/grids
-export const useStaggerReveal = (
+export const useStaggerReveal = <T extends HTMLElement = HTMLElement>(
     count: number,
     { staggerDelay = 100, threshold = 0.2 }: UseStaggerRevealOptions = {}
 ) => {
-    const containerRef = useRef<HTMLElement>(null);
+    const containerRef = useRef<T>(null);
     const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(count).fill(false));
     const hasAnimated = useRef(false);
 

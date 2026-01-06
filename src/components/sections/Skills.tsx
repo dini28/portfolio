@@ -8,10 +8,10 @@ const SKILL_CATEGORIES = [
         title: 'Database & Cloud',
         icon: <Database className="w-8 h-8" />,
         skills: [
-            { name: 'MongoDB', proficiency: 75, projects: ['Expense Tracker', 'Ghummakkad'] },
-            { name: 'Firebase', proficiency: 85, projects: ['Chat App', 'Portfolio'] },
+            { name: 'MongoDB', proficiency: 75, projects: ['Ghummakkad'] },
+            { name: 'Firebase', proficiency: 85, projects: ['Portfolio'] },
             { name: 'Netlify', proficiency: 80, projects: ['All Projects'] },
-            { name: 'Vercel', proficiency: 70, projects: ['AI Art Generator'] },
+            { name: 'Vercel', proficiency: 70, projects: ['Fiction Games'] },
             { name: 'AWS', proficiency: 60 }
         ]
     },
@@ -19,13 +19,13 @@ const SKILL_CATEGORIES = [
         title: 'Development',
         icon: <Code2 className="w-8 h-8" />,
         skills: [
-            { name: 'React.js', proficiency: 75, projects: ['Ghummakkad', 'AI Art Generator', 'Portfolio'] },
+            { name: 'React.js', proficiency: 75, projects: ['Ghummakkad', 'Portfolio'] },
             { name: 'Next.js', proficiency: 60, projects: ['Coming Soon'] },
             { name: 'TypeScript', proficiency: 50, projects: ['Portfolio'] },
             { name: 'Tailwind', proficiency: 80, projects: ['All Modern Apps'] },
             { name: 'JavaScript', proficiency: 85, projects: ['All Projects'] },
             { name: 'HTML5 & CSS3', proficiency: 95, projects: ['Base Foundations'] },
-            { name: 'Express.js', proficiency: 55, projects: ['Backend APIs'] },
+            { name: 'Express.js', proficiency: 55, projects: ['Working on'] },
             { name: 'Node.js', proficiency: 65, projects: ['Server Logic'] }
         ]
     },
@@ -34,9 +34,9 @@ const SKILL_CATEGORIES = [
         icon: <Wrench className="w-8 h-8" />,
         skills: [
             { name: 'Git', proficiency: 75, projects: ['Version Control'] },
-            { name: 'Docker', proficiency: 65 },
-            { name: 'RedHat Linux', proficiency: 65 },
-            { name: 'Postman', proficiency: 75, projects: ['API Testing'] },
+            { name: 'Docker', proficiency: 65, projects: ['Learning'] },
+            { name: 'RedHat Linux', proficiency: 65, projects: ['Learning'] },
+            { name: 'Postman', proficiency: 75, projects: ['Learning'] },
             { name: 'VS Code', proficiency: 95, projects: ['My Primary IDE'] }
         ]
     }
