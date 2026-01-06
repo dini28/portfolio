@@ -2,7 +2,7 @@
 
 A modern, responsive, and aesthetically pleasing personal portfolio website designed to showcase projects, skills, and professional experience. Built with the latest web technologies for optimal performance and user experience.
 
-![Portfolio Preview](https://via.placeholder.com/800x400?text=Portfolio+Preview) <!-- Replace with actual screenshot defined later -->
+![Portfolio Preview](public/preview.png)
 
 ## ✨ Features
 
