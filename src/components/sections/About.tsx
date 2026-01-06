@@ -6,8 +6,8 @@ import about from '../../assets/about.webp';
 const About = () => {
     // We use separate hooks to create a staggered entrance effect
     const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal({ threshold: 0.1 });
-    const { ref: imageRef, isVisible: imageVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.2 });
-    const { ref: contentRef, isVisible: contentVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.2 });
+    const { ref: imageRef, isVisible: imageVisible } = useScrollReveal({ threshold: 0.2 });
+    const { ref: contentRef, isVisible: contentVisible } = useScrollReveal({ threshold: 0.2 });
 
     return (
         <section

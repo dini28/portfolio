@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Github, Linkedin, Mail, ArrowRight, Code2, Laptop, Download } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowRight, Code2, Laptop } from 'lucide-react';
 import { Button } from '../common/Button';
 import dipesh from '../../assets/dipesh.webp';
 

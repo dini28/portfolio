@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 const WhatsAppButton: React.FC = () => {
     const phoneNumber = '6377796008';
