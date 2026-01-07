@@ -14,7 +14,7 @@
 [![License](https://img.shields.io/github/license/dini28/portfolio?style=flat-square&color=blue)](LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/dini28/portfolio/graphs/commit-activity)
 
-[Live Demo](https://dipeshsonitech.netlify.app) · [Report Bug](https://github.com/dini28/portfolio/issues) · [Request Feature](https://github.com/dini28/portfolio/issues)
+[Live Demo](https://dipeshsonitech.netlify.app/) · [Report Bug](https://github.com/dini28/portfolio/issues) · [Request Feature](https://github.com/dini28/portfolio/issues)
 
 ---
 
