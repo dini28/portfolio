@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎨 Modern Developer Portfolio
+# Modern Developer Portfolio
 
 ### A sleek, high-performance portfolio engineered for the modern web.
 
@@ -29,10 +29,10 @@ This is more than just a portfolio; it's a technical showcase of modern web engi
 ### ⚡ Performance & Quality
 | Metric | Score | status | 
 | :--- | :--- | :--- |
-| **Performance** | 98% | � Excellent |
-| **Accessibility** | 100% | 🟢 Perfect |
-| **Best Practices** | 100% | 🟢 Perfect |
-| **SEO** | 100% | 🟢 Perfect |
+| **Performance** | 98% | Excellent |
+| **Accessibility** | 100% | Perfect |
+| **Best Practices** | 100% | Perfect |
+| **SEO** | 100% | Perfect |
 
 ---
 
@@ -156,6 +156,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Project Link: [https://github.com/dini28/portfolio](https://github.com/dini28/portfolio)
 
 <div align="center">
-  <sub>Built with precision and pride by Dipesh</sub>
+  <sub>Built by Dipesh</sub>
 </div>
 
