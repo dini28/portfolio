@@ -38,16 +38,16 @@ This is more than just a portfolio; it's a technical showcase of modern web engi
 
 ## ✨ Key Features
 
-- **🔦 Immersive UX**: Custom mouse-tracking spotlight effects and smooth parallax transitions.
-- **📊 Deep Skills Intelligence**: Component-based proficiency breakdowns with real-world project context.
-- **📝 Context-Aware Modals**: Detailed project case studies using Radix UI for accessibility.
-- **💎 Design System**: A unified glassmorphism aesthetic built on a core utility-first system.
-- **🚀 Engineered Speed**: Optimization through code-splitting, lazy loading, and lightweight asset management.
-- **� Seamless Communication**: Netlify-integrated contact flow with sophisticated client-side validation.
+- **Immersive UX**: Custom mouse-tracking spotlight effects and smooth parallax transitions.
+- **Deep Skills Intelligence**: Component-based proficiency breakdowns with real-world project context.
+- **Context-Aware Modals**: Detailed project case studies using Radix UI for accessibility.
+- **Design System**: A unified glassmorphism aesthetic built on a core utility-first system.
+- **Engineered Speed**: Optimization through code-splitting, lazy loading, and lightweight asset management.
+- **Seamless Communication**: Netlify-integrated contact flow with sophisticated client-side validation.
 
 ---
 
-## � Technical Stack
+## Technical Stack
 
 ### Core Architecture
 - **React 19**: Utilizing the newest rendering capabilities and hooks.
@@ -65,7 +65,7 @@ This is more than just a portfolio; it's a technical showcase of modern web engi
 
 ---
 
-## � The Developer's Journey
+## The Developer's Journey
 
 This project originated as my **inaugural Hackathon entry**. It stands as a testament to the "learning by building" philosophy. Every line of code was written while exploring documentation, solving architectural challenges, and iterating on visual feedback.
 
