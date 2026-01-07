@@ -15,8 +15,8 @@ const PROJECTS_DATA = [
         description: 'A full-stack React application with modern architecture, featuring state management, responsive design, and seamless user experience.',
         image: digital_marketing,
         technologies: ['React', 'TypeScript', 'Tailwind CSS'],
-        liveUrl: 'http://pixelwings.vercel.app',
-        githubUrl: '',
+        liveUrl: 'https://pixelwings.netlify.app/',
+        githubUrl: 'https://github.com/dini28/pixelwings',
         caseStudy: {
             problem: "Small businesses struggled to manage their digital presence effectively using complex traditional tools.",
             solution: "Developed a streamlined, design-first platform that simplifies pixel-perfect deployments and client management.",
@@ -93,7 +93,7 @@ const Project = () => {
                                     <img
                                         src={project.image}
                                         alt={project.title}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                        className="w-full h-full object-fit group-hover:scale-110 transition-transform duration-700"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" />
 
