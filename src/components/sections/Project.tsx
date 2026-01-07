@@ -4,9 +4,9 @@ import { Card, CardContent } from '../common/Card';
 import { Button } from '../common/Button';
 import { useScrollReveal, useStaggerReveal } from '../../hooks/useScrollReveal';
 
-import digital_marketing from '../../assets/digital_marketing.png';
+import digital_marketing from '../../assets/pixelwings.webp';
 import fictiongames from '../../assets/fictiongames.png';
-import ghummakkad from '../../assets/ghummakkad.png';
+import ghummakkad from '../../assets/ghummakkad.webp';
 
 const PROJECTS_DATA = [
     {
