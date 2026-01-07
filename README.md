@@ -120,17 +120,6 @@ src/
    npm run preview
    ```
 
----
-
-## 🗺️ Roadmap
-
-- [ ] **Dark/Light Mode**: Implementation of a persistent theme switcher.
-- [ ] **Localized Content**: Internationalization support for multi-language display.
-- [ ] **Blog Integration**: Headless CMS integration for sharing technical articles.
-- [ ] **Unit Testing**: 80%+ coverage using Vitest and React Testing Library.
-
----
-
 ## 🤝 Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
