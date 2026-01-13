@@ -115,8 +115,12 @@ const PortfolioGuide = () => {
         const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
         const index = sections.indexOf(currentSection);
 
+        const isMobile = window.innerWidth < 768;
+        const margin = isMobile ? 16 : 40;
+        const iconSize = isMobile ? 56 : 80; // 14rem (56px) vs 20rem (80px)
+
         const isLeft = index % 2 === 0;
-        const x = isLeft ? 40 : window.innerWidth - 120;
+        const x = isLeft ? margin : window.innerWidth - iconSize - margin;
         const y = 30 + (Math.random() * 10); // Slight vertical variance for organic feel
 
         setPosition({ x, y });
@@ -125,9 +129,14 @@ const PortfolioGuide = () => {
         setCharacterMood(moods[Math.floor(Math.random() * moods.length)]);
     }, [currentSection]);
 
-    // Initial and periodic mood changes without moving X position
+    // Initial position, periodic updates, and resize handler
     useEffect(() => {
         updatePosition();
+
+        const handleResize = () => updatePosition();
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
     }, [updatePosition]);
 
     useEffect(() => {
@@ -337,18 +346,19 @@ const PortfolioGuide = () => {
                 >
                     <div className="absolute inset-0 bg-white rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-all duration-500" />
 
-                    <div className={`relative w-20 h-20 bg-black rounded-full border-2 border-white shadow-2xl flex items-center justify-center transition-all duration-300 ${isIdle ? 'scale-95' : 'group-hover:scale-110'
-                        } group-active:scale-95`}>
+                    <div
+                        className={`relative w-14 h-14 md:w-20 md:h-20 bg-black rounded-full border-2 border-white shadow-2xl flex items-center justify-center transition-all duration-300 ${isIdle ? 'scale-95' : 'group-hover:scale-110'
+                            } group-active:scale-95`}>
                         <CharacterIcon
-                            className={`w-9 h-9 text-white transition-transform duration-300 ${isIdle ? 'animate-pulse' : ''
+                            className={`w-6 h-6 md:w-9 md:h-9 text-white transition-transform duration-300 ${isIdle ? 'animate-pulse' : ''
                                 }`}
                             strokeWidth={2}
                         />
 
                         <div className="absolute inset-0 rounded-full border border-white/30 animate-ping opacity-20" />
 
-                        <div className="absolute -top-1 -right-1 w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:rotate-180 transition-transform duration-500 border-2 border-black">
-                            <Info className="w-4 h-4 text-black" strokeWidth={2.5} />
+                        <div className="absolute -top-1 -right-1 w-5 h-5 md:w-7 md:h-7 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:rotate-180 transition-transform duration-500 border-2 border-black">
+                            <Info className="w-3 h-3 md:w-4 md:h-4 text-black" strokeWidth={2.5} />
                         </div>
 
                         {totalClicks > 0 && (
@@ -358,7 +368,7 @@ const PortfolioGuide = () => {
                         )}
                     </div>
 
-                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-white text-black text-xs px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl border border-black/10 font-medium">
+                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-white text-black text-xs px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-xl border border-black/10 font-medium hidden md:block">
                         <Mouse className="inline w-3 h-3 mr-1.5" />
                         Click for insights
                         <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white border-t border-l border-black/10 rotate-45" />
@@ -367,7 +377,7 @@ const PortfolioGuide = () => {
             </div>
 
             {totalClicks > 0 && (
-                <div className="fixed top-6 left-6 z-40 bg-black text-white rounded-xl px-4 py-3 shadow-2xl border border-white/20 animate-in fade-in slide-in-from-top-4">
+                <div className="fixed top-24 left-6 z-40 bg-black text-white rounded-xl px-4 py-3 shadow-2xl border border-white/20 animate-in fade-in slide-in-from-top-4">
                     <div className="flex items-center gap-3">
                         <Star className="w-5 h-5 text-white" strokeWidth={2} />
                         <div>

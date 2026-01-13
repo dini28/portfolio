@@ -135,7 +135,7 @@ const Footer = () => {
 
                 {/* Footer Bottom */}
                 <div className="pt-6 sm:pt-8 border-t border-white/10">
-                    <div className="flex flex-col gap-4 items-center text-center">
+                    <div className="flex flex-col md:flex-row gap-4 justify-between items-center text-center">
                         {/* Copyright */}
                         <p className="text-sm sm:text-base text-gray-500 flex flex-wrap items-center justify-center gap-2">
                             <span>© {currentYear}</span>
@@ -148,11 +148,11 @@ const Footer = () => {
 
                         {/* Technologies */}
                         <p className="text-xs sm:text-sm text-gray-500 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
-                            <span className="px-2 py-1 bg-white/10 border border-white/20 rounded text-gray-400 font-medium hover:bg-white hover:text-black transition-all duration-300">React</span>
+                            <span className="px-2 py-1 bg-white/10 border border-white/20 rounded text-gray-400 font-medium ">React</span>
                             <span className="text-gray-600">+</span>
-                            <span className="px-2 py-1 bg-white/10 border border-white/20 rounded text-gray-400 font-medium hover:bg-white hover:text-black transition-all duration-300">TypeScript</span>
+                            <span className="px-2 py-1 bg-white/10 border border-white/20 rounded text-gray-400 font-medium ">TypeScript</span>
                             <span className="text-gray-600">+</span>
-                            <span className="px-2 py-1 bg-white/10 border border-white/20 rounded text-gray-400 font-medium hover:bg-white hover:text-black transition-all duration-300">Tailwind CSS</span>
+                            <span className="px-2 py-1 bg-white/10 border border-white/20 rounded text-gray-400 font-medium ">Tailwind CSS</span>
                         </p>
                     </div>
                 </div>

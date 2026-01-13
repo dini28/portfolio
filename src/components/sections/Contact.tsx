@@ -144,7 +144,7 @@ const Contact = () => {
                                             <MapPin className="w-5 h-5 text-gray-400 mr-2" />
                                             <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Current Location</span>
                                         </div>
-                                        <p className="text-white font-medium px-7">Jodhpur, Rajasthan, India</p>
+                                        <p className="text-white font-medium px-7">Udaipur, Rajasthan, India</p>
                                     </div>
 
                                     {/* Quick Contact */}

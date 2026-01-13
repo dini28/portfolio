@@ -88,7 +88,7 @@ export default function Header() {
                 : "bg-transparent"
                 }`}
         >
-            <nav className="container mx-auto px-6 lg:px-10">
+            <nav className="container mx-auto px-4 sm:px-6 lg:px-10">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo/Name */}
                     <a
@@ -115,14 +115,14 @@ export default function Header() {
                                     alt="Logo"
                                     className="w-10 h-10 object-contain brightness-0 invert"
                                 />
-                                <span className="md:hidden">DS</span>
-                                <span className="hidden md:inline">Dipesh Soni</span>
+                                <span className="lg:hidden">DS</span>
+                                <span className="hidden lg:inline">Dipesh Soni</span>
                             </span>
                         </div>
                     </a>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-8">
+                    <div className="hidden lg:flex items-center gap-8">
                         <ul className="flex items-center space-x-1">
                             {navLinks.map((link) => (
                                 <li key={link.href}>
@@ -174,7 +174,7 @@ export default function Header() {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden relative p-2.5 rounded-xl text-white hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 group"
+                        className="lg:hidden relative p-2.5 rounded-xl text-white hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 group"
                         aria-label="Toggle menu"
                         aria-expanded={isOpen}
                     >
@@ -197,7 +197,7 @@ export default function Header() {
 
                 {/* Mobile Navigation */}
                 <div
-                    className={`md:hidden absolute top-20 left-0 right-0 transition-all duration-300 ease-out origin-top ${isOpen
+                    className={`lg:hidden absolute top-20 left-0 right-0 transition-all duration-300 ease-out origin-top ${isOpen
                         ? "opacity-100 scale-y-100 translate-y-0"
                         : "opacity-0 scale-y-95 -translate-y-4 pointer-events-none"
                         }`}
