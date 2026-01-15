@@ -6,10 +6,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(405).json({ error: "Method not allowed" });
     }
 
-    const { name, email, message, subject } = req.body;
+    const { name, email, message, subject, company } = req.body;
 
-    // Honeypot anti-spam
-    if (subject) return res.status(200).end();
+    // Honeypot anti-spam (if 'company' is filled, it's a bot)
+    if (company) return res.status(200).end();
 
     if (!name || !email || !message || !subject) {
         return res.status(400).json({ error: "Missing fields" });
