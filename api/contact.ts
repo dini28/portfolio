@@ -6,10 +6,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(405).json({ error: "Method not allowed" });
     }
 
-    const { name, email, message, company } = req.body;
+    const { name, email, message, subject } = req.body;
 
     // Honeypot anti-spam
-    if (company) return res.status(200).end();
+    if (subject) return res.status(200).end();
 
     if (!name || !email || !message) {
         return res.status(400).json({ error: "Missing fields" });
@@ -33,6 +33,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         <h3>New Form Submission</h3>
         <p><b>Name:</b> ${name}</p>
         <p><b>Email:</b> ${email}</p>
+        <p><b>Subject:</b> ${subject}</p>
         <p><b>Message:</b><br>${message}</p>
       `,
         });
