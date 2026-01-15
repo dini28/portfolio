@@ -69,7 +69,7 @@ const Contact = () => {
         try {
             const data = Object.fromEntries(formData.entries());
 
-            const response = await fetch('/api/submit', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
