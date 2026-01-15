@@ -67,13 +67,17 @@ const Contact = () => {
         setSubmitError(false);
 
         try {
-            const response = await fetch('/', {
+            const data = Object.fromEntries(formData.entries());
+
+            const response = await fetch('/api/submit', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData as any).toString(),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
             });
 
-            if (response.ok) {
+            const result = await response.json();
+
+            if (response.ok && result.success) {
                 setSubmitSuccess(true);
                 (e.target as HTMLFormElement).reset();
             } else {
@@ -174,12 +178,7 @@ const Contact = () => {
                     <div className={`lg:col-span-2 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         <Card className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 transition-all duration-300">
                             <CardContent className="p-8">
-                                <form onSubmit={onSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                                    <input type="hidden" name="form-name" value="contact" />
-                                    <p className="hidden">
-                                        <label>Don't fill this out: <input name="bot-field" /></label>
-                                    </p>
-
+                                <form onSubmit={onSubmit} className="space-y-6">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {/* Name */}
                                         <div>
