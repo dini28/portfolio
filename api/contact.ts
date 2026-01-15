@@ -11,7 +11,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Honeypot anti-spam
     if (subject) return res.status(200).end();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !subject) {
         return res.status(400).json({ error: "Missing fields" });
     }
 
