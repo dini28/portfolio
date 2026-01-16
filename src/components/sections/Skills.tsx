@@ -20,7 +20,7 @@ const SKILL_CATEGORIES = [
         icon: <Code2 className="w-8 h-8" />,
         skills: [
             { name: 'React.js', proficiency: 75, projects: ['Ghummakkad', 'Portfolio'] },
-            { name: 'Next.js', proficiency: 60, projects: ['Coming Soon'] },
+            { name: 'Next.js', proficiency: 85, projects: ['Ghummakkad', 'Coming Soon'] },
             { name: 'TypeScript', proficiency: 50, projects: ['Portfolio'] },
             { name: 'Tailwind', proficiency: 80, projects: ['All Modern Apps'] },
             { name: 'JavaScript', proficiency: 85, projects: ['All Projects'] },

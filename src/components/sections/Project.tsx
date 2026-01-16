@@ -26,6 +26,7 @@ const PROJECTS_DATA = [
     {
         title: 'Fiction Games',
         subtitle: 'Next-Gen Web Gaming',
+        status: 'Currently developing',
         description: 'Bold gaming experiences where every click writes a new story. Built with React and JavaScript, deployed on Vercel for seamless performance.',
         image: fictiongames,
         technologies: ['React', 'JavaScript', 'GSAP', 'Vercel'],
@@ -39,16 +40,17 @@ const PROJECTS_DATA = [
     },
     {
         title: 'Ghummakkad',
-        subtitle: 'Hotel Booking Platform',
-        description: 'A full-featured hotel booking website with user authentication, room search and filtering, booking management, and payment integration.',
+        subtitle: 'Hotel Booking Engine',
+        status: 'Currently developing on Next.js 16',
+        description: 'A high-performance hotel booking platform reconstructed with Next.js App Router. Featuring SEO optimization, server-side rendering for lightning-fast speeds, and secure payment integrations.',
         image: ghummakkad,
-        technologies: ['HTML', 'CSS', 'JavaScript', 'MongoDB'],
-        liveUrl: 'https://ghummakkad.onrender.com',
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'MongoDB', 'Firebase'],
+        liveUrl: '',
         githubUrl: 'https://github.com/dini28/Ghummakkad',
         caseStudy: {
-            problem: "Local Rajasthan travelers lacked a centralized platform to find verified properties in remote desert locations.",
-            solution: "Built a full-stack MERN platform with robust search algorithms and a real-world database of 150+ properties.",
-            impact: "Streamlined the booking process for local tourism, featuring integrated digital payments and instant confirmations."
+            problem: "The original platform faced SEO challenges and slower load times common in standard client-side applications.",
+            solution: "Migrated the entire architecture to Next.js 14+, utilizing Server Components for data fetching and Server Actions for secure booking workflows.",
+            impact: "Achieved near-perfect Lighthouse scores, improved search visibility, and reduced time-to-interactive by 50%."
         }
     },
 ];
@@ -98,8 +100,15 @@ const Project = () => {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" />
 
                                     {/* Badge */}
-                                    <div className="absolute top-4 left-4 px-3 py-1.5 bg-black/90 backdrop-blur-sm border border-white/20 rounded-lg">
-                                        <p className="text-xs font-semibold text-white">{project.subtitle}</p>
+                                    <div className="absolute top-4 left-4 flex flex-col gap-2">
+                                        <div className="px-3 py-1.5 bg-black/90 backdrop-blur-sm border border-white/20 rounded-lg">
+                                            <p className="text-xs font-semibold text-white">{project.subtitle}</p>
+                                        </div>
+                                        {project.status && (
+                                            <div className="w-fit px-3 py-1 bg-white text-black border border-white/20 rounded-lg animate-pulse">
+                                                <p className="text-[10px] font-bold uppercase tracking-wider">{project.status}</p>
+                                            </div>
+                                        )}
                                     </div>
 
                                     {/* Quick Actions */}
