@@ -15,7 +15,7 @@ const PROJECTS_DATA = [
         description: 'A full-stack React application with modern architecture, featuring state management, responsive design, and seamless user experience.',
         image: digital_marketing,
         technologies: ['React', 'TypeScript', 'Tailwind CSS'],
-        liveUrl: 'https://pixelwings.netlify.app/',
+        liveUrl: 'https://pixelwingstrust.vercel.app/',
         githubUrl: 'https://github.com/dini28/pixelwings',
         caseStudy: {
             problem: "Small businesses struggled to manage their digital presence effectively using complex traditional tools.",
