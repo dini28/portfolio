@@ -9,12 +9,12 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
-[![Vercel Deployment](https://img.shields.io/badge/Deploy-Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://dipeshsonitech.netlify.app)
+[![Vercel Status](https://vercelbadge.vercel.app/api/dipeshsoni/dipeshsoni.vercel.app)](https://dipeshsoni.vercel.app)
 [![GitHub stars](https://img.shields.io/github/stars/dini28/portfolio?style=flat-square&color=gold)](https://github.com/dini28/portfolio/stargazers)
 [![License](https://img.shields.io/github/license/dini28/portfolio?style=flat-square&color=blue)](LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/dini28/portfolio/graphs/commit-activity)
 
-[Live Demo](https://dipeshsonitech.netlify.app/) · [Report Bug](https://github.com/dini28/portfolio/issues) · [Request Feature](https://github.com/dini28/portfolio/issues)
+[Live Demo](https://dipeshsoni.vercel.app/) · [Report Bug](https://github.com/dini28/portfolio/issues) · [Request Feature](https://github.com/dini28/portfolio/issues)
 
 ---
 
@@ -120,18 +120,6 @@ src/
    npm run preview
    ```
 
-## 🤝 Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
@@ -141,8 +129,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## 📬 Contact & Support
 
 **Dipesh** - [GitHub](https://github.com/dini28) | [LinkedIn](https://linkedin.com/in/dipesh-soni)
-
-Project Link: [https://github.com/dini28/portfolio](https://github.com/dini28/portfolio)
 
 <div align="center">
   <sub>Built by Dipesh</sub>
