@@ -4,15 +4,19 @@
 
 ### A sleek, high-performance portfolio engineered for the modern web.
 
+### 🛠 Tech Stack
+
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
 [![Vercel Status](https://vercelbadge.vercel.app/api/dipeshsoni/dipeshsoni.vercel.app)](https://dipeshsoni.vercel.app)
-[![GitHub stars](https://img.shields.io/github/stars/dini28/portfolio?style=flat-square&color=gold)](https://github.com/dini28/portfolio/stargazers)
-[![License](https://img.shields.io/github/license/dini28/portfolio?style=flat-square&color=blue)](LICENSE)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/dini28/portfolio/graphs/commit-activity)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-dipeshsoni%2Fportfolio-black?style=for-the-badge&logo=github)](https://github.com/dipeshsoni/portfolio)
+[![Stars](https://img.shields.io/github/stars/dipeshsoni/portfolio?style=for-the-badge&color=FFD700)](https://github.com/dipeshsoni/portfolio/stargazers)
+[![License](https://img.shields.io/github/license/dipeshsoni/portfolio?style=for-the-badge&color=blue)](LICENSE)
+[![Maintenance](https://img.shields.io/badge/Maintained-Yes-success?style=for-the-badge)](https://github.com/dipeshsoni/portfolio/commits/main)
+
 
 [Live Demo](https://dipeshsoni.vercel.app/) · [Report Bug](https://github.com/dini28/portfolio/issues) · [Request Feature](https://github.com/dini28/portfolio/issues)
 
