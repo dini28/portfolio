@@ -8,11 +8,11 @@ const SKILL_CATEGORIES = [
         title: 'Database & Cloud',
         icon: <Database className="w-8 h-8" />,
         skills: [
-            { name: 'MongoDB', proficiency: 75, projects: ['Ghummakkad'] },
-            { name: 'Firebase', proficiency: 85, projects: ['Portfolio'] },
-            { name: 'Netlify', proficiency: 80, projects: ['All Projects'] },
-            { name: 'Vercel', proficiency: 70, projects: ['Fiction Games'] },
-            { name: 'AWS', proficiency: 60 }
+            { name: 'MongoDB', proficiency: 65, projects: ['Ghummakkad'] },
+            { name: 'Firebase', proficiency: 65, projects: ['Portfolio'] },
+            { name: 'Netlify', proficiency: 60, projects: ['All Projects'] },
+            { name: 'Vercel', proficiency: 80, projects: ['Fiction Games'] },
+            { name: 'AWS', proficiency: 30 }
         ]
     },
     {
@@ -20,21 +20,22 @@ const SKILL_CATEGORIES = [
         icon: <Code2 className="w-8 h-8" />,
         skills: [
             { name: 'React.js', proficiency: 75, projects: ['Ghummakkad', 'Portfolio'] },
-            { name: 'Next.js', proficiency: 85, projects: ['Ghummakkad', 'Coming Soon'] },
+            { name: 'Next.js', proficiency: 45, projects: ['Ghummakkad', 'Coming Soon'] },
             { name: 'TypeScript', proficiency: 50, projects: ['Portfolio'] },
             { name: 'Tailwind', proficiency: 80, projects: ['All Modern Apps'] },
-            { name: 'JavaScript', proficiency: 85, projects: ['All Projects'] },
+            { name: 'shadcn/ui', proficiency: 70, projects: [''] },
+            { name: 'JavaScript', proficiency: 75, projects: ['All Projects'] },
             { name: 'HTML5 & CSS3', proficiency: 95, projects: ['Base Foundations'] },
             { name: 'Express.js', proficiency: 55, projects: ['Working on'] },
             { name: 'Node.js', proficiency: 65, projects: ['Server Logic'] }
         ]
     },
     {
-        title: 'Tools & DevOps',
+        title: 'Tools & Platforms',
         icon: <Wrench className="w-8 h-8" />,
         skills: [
-            { name: 'Git', proficiency: 75, projects: ['Version Control'] },
-            { name: 'Docker', proficiency: 65, projects: ['Learning'] },
+            { name: 'Git', proficiency: 55, projects: ['Version Control'] },
+            { name: 'Docker', proficiency: 45, projects: ['Learning'] },
             { name: 'RedHat Linux', proficiency: 65, projects: ['Learning'] },
             { name: 'Postman', proficiency: 75, projects: ['Learning'] },
             { name: 'VS Code', proficiency: 95, projects: ['My Primary IDE'] }
