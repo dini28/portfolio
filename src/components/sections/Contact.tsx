@@ -83,7 +83,7 @@ const Contact = () => {
             } else {
                 setSubmitError(true);
             }
-        } catch (error) {
+        } catch {
             setSubmitError(true);
         } finally {
             setIsSubmitting(false);

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import { Github, Linkedin, Mail, ArrowRight, Code2, Laptop } from 'lucide-react';
 import { Button } from '../common/Button';
 import dipesh from '../../assets/dipesh.webp';
@@ -33,7 +33,7 @@ const Hero = () => {
     const [isVisible, setIsVisible] = useState(false);
     const heroRef = useRef<HTMLElement>(null);
 
-    const roles = ['Frontend Developer', 'React Enthusiast', 'UI/UX Learner', 'Web Developer'];
+    const roles = useMemo(() => ['Frontend Developer', 'React Enthusiast', 'UI/UX Learner', 'Web Developer'], []);
 
     // spotlight effect
     useEffect(() => {
@@ -141,7 +141,7 @@ const Hero = () => {
                     <div className={`flex-1 text-center lg:text-left max-w-2xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         <div className="space-y-4 mb-8">
                             <p className="text-xl text-gray-400 font-medium tracking-wide">Hey! I'm</p>
-                            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-none tracking-tight">
+                            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-none tracking-tight">
                                 <span className="inline-block text-white"
                                     style={{ fontFamily: "Offside", fontWeight: "bold" }}>
                                     Dipesh Soni
@@ -161,7 +161,7 @@ const Hero = () => {
                         <p className="text-lg text-gray-400 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
                             Passionate about creating beautiful and functional web experiences. Learning and building with
                             <span className="text-white font-semibold"> React</span>,
-                            <span className="text-white font-semibold"> Next.js</span>,
+                            <span className="text-white font-semibold"> Vite</span>,
                             and modern frontend technologies.
                         </p>
 

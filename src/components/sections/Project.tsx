@@ -19,8 +19,8 @@ const PROJECTS_DATA = [
         githubUrl: 'https://github.com/dini28/pixelwings',
         caseStudy: {
             problem: "Small businesses struggled to manage their digital presence effectively using complex traditional tools.",
-            solution: "Developed a streamlined, design-first platform that simplifies pixel-perfect deployments and client management.",
-            impact: "Enabled 10+ businesses to launch their storefronts with 40% faster loading times and zero configuration overhead."
+            solution: "Developed a streamlined, design-first platform that simplifies pixel-perfect deployments.",
+            impact: "Enabled businesses to launch their storefronts with faster loading times and zero configuration overhead."
         }
     },
     {
@@ -29,28 +29,28 @@ const PROJECTS_DATA = [
         status: 'Currently developing',
         description: 'Bold gaming experiences where every click writes a new story. Built with React and JavaScript, deployed on Vercel for seamless performance.',
         image: fictiongames,
-        technologies: ['React', 'JavaScript', 'GSAP', 'Vercel'],
+        technologies: ['React', 'JavaScript', 'GSAP', 'Vercel', 'Lenis', 'Lottie'],
         liveUrl: 'https://fictiongames.vercel.app',
         githubUrl: 'https://github.com/dini28/fiction',
         caseStudy: {
-            problem: "Most browser-based games felt static and lacked the fluid animations of native applications.",
-            solution: "Leveraged GSAP (GreenSock) or Frame-Motion for high-performance animations and React for state-driven world-building.",
-            impact: "Successfully created an immersive story-driven engine that maintains 60fps on mobile devices."
+            problem: "Most studio websites feel static, templated, and fail to capture the energy of modern games.",
+            solution: "A high-performance showcase platform built with React and GSAP enabling fluid transitions, animated world reveals, and story-driven navigation.",
+            impact: "Studios can present their games with native-like fluidity, maintaining 60fps performance on mobile while delivering immersive, cinematic experiences."
         }
     },
     {
         title: 'Ghummakkad',
         subtitle: 'Hotel Booking Engine',
-        status: 'Currently developing on Next.js 16',
+        status: 'Currently developing on Next.js',
         description: 'A high-performance hotel booking platform reconstructed with Next.js App Router. Featuring SEO optimization, server-side rendering for lightning-fast speeds, and secure payment integrations.',
         image: ghummakkad,
         technologies: ['HTML5', 'CSS3', 'JavaScript', 'MongoDB', 'Firebase'],
         liveUrl: '',
         githubUrl: 'https://github.com/dini28/Ghummakkad',
         caseStudy: {
-            problem: "The original platform faced SEO challenges and slower load times common in standard client-side applications.",
-            solution: "Migrated the entire architecture to Next.js 14+, utilizing Server Components for data fetching and Server Actions for secure booking workflows.",
-            impact: "Achieved near-perfect Lighthouse scores, improved search visibility, and reduced time-to-interactive by 50%."
+            problem: "The tourism platform struggled with poor search visibility and slow load times, limiting discoverability for hotels and experiences across Rajasthan.",
+            solution: "Rebuilt the platform using Next.js 14+, leveraging Server Components for fast, SEO-optimized content delivery and Server Actions to power secure, seamless hotel booking workflows.",
+            impact: "The platform will achieve near-perfect Lighthouse scores, stronger organic visibility for Rajasthan tourism searches, and a 50% reduction in time-to-interactive, driving faster bookings and higher engagement."
         }
     },
 ];

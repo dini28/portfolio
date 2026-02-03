@@ -30,6 +30,7 @@ const PortfolioGuide = () => {
         const savedSeenFacts = localStorage.getItem('portfolio_seen_facts');
         const savedTotalClicks = localStorage.getItem('portfolio_total_clicks');
 
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if (savedAchievements) setAchievements(JSON.parse(savedAchievements));
         if (savedSeenFacts) setSeenFacts(new Set(JSON.parse(savedSeenFacts)));
         if (savedTotalClicks) setTotalClicks(parseInt(savedTotalClicks));
@@ -131,6 +132,7 @@ const PortfolioGuide = () => {
 
     // Initial position, periodic updates, and resize handler
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         updatePosition();
 
         const handleResize = () => updatePosition();
