@@ -1,135 +1,79 @@
-import { useState } from 'react';
-import { Code2, Database, Wrench, X } from 'lucide-react';
-import { Card, CardContent } from '../common/Card';
+import { Code2, Database, Wrench, Cpu } from 'lucide-react';
 import { useScrollReveal, useStaggerReveal } from '../../hooks/useScrollReveal';
-import SectionBackground from '../common/SectionBackground';
-import { SKILL_CATEGORIES, getSkillLevel } from '../../data/skills';
-
+import { SKILL_CATEGORIES } from '../../data/skills';
 
 const SKILL_ICON_MAP = { Database, Code2, Wrench } as const;
 
 const Skills = () => {
-    const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.2 });
+    const { ref: sectionRef, isVisible } = useScrollReveal({ threshold: 0.1 });
     const { containerRef, visibleItems } = useStaggerReveal<HTMLDivElement>(SKILL_CATEGORIES.length, { staggerDelay: 150 });
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     const getIcon = (iconName: string) => {
         const IconComp = SKILL_ICON_MAP[iconName as keyof typeof SKILL_ICON_MAP];
-        return IconComp ? <IconComp className="w-8 h-8" /> : null;
+        return IconComp ? <IconComp className="w-5 h-5 text-emerald-400" /> : <Cpu className="w-5 h-5 text-emerald-400" />;
     };
 
     return (
-        <section ref={sectionRef} id="skills" className="py-20 bg-transparent relative overflow-hidden">
-            {/* Background */}
-            <SectionBackground variant="subtle" animated />
+        <section ref={sectionRef} id="skills" className="py-28 sm:py-36 relative overflow-hidden">
+            <div className="section-spotlight w-[700px] h-[500px] top-40 -left-20 opacity-80" />
+            <div className="section-spotlight w-[500px] h-[400px] bottom-20 right-0 opacity-50" />
 
-            <div className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-20 relative z-10">
-                {/* Header */}
-                <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <p className="text-lg text-gray-400 font-medium mb-4 uppercase tracking-wider">Technical Proficiency</p>
-                    <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white">
-                        Skills & Technologies
+            <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+                <div className={`text-center mb-20 sm:mb-24 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    <div className="section-eyebrow mb-4">
+                        <Cpu className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>Tech Stack &amp; Capabilities</span>
+                    </div>
+                    <h2 className="display-heading text-4xl sm:text-5xl lg:text-6xl mb-5">
+                        <span className="block text-white">Redefining Developer</span>
+                        <span className="block gradient-text mt-1">Experience</span>
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto rounded-full mb-4" />
-                    <p className="text-sm text-gray-500">Click on any card to see proficiency levels</p>
+                    <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                        A structured breakdown of languages, frameworks, and engineering tools I leverage daily.
+                    </p>
                 </div>
 
-                {/* Skills Grid */}
-                <div ref={containerRef} className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                     {SKILL_CATEGORIES.map((category, index) => {
-                        const isFlipped = activeIndex === index;
                         return (
                             <div
-                                key={index}
-                                className={`flip-card-container transition-all duration-700 ${visibleItems[index] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                                key={category.title}
+                                className={`transition-all duration-700 ease-out ${visibleItems[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                                style={{ transitionDelay: `${index * 120}ms` }}
                             >
-                                <div className={`flip-card-inner ${isFlipped ? 'flipped' : ''}`}>
-                                    {/* Front Side */}
-                                    <div className={`flip-card-front w-full h-full ${isFlipped ? 'pointer-events-none' : ''}`}>
-                                        <Card
-                                            className="border-2 border-white/10 bg-white/5 backdrop-blur-md hover:border-white/20 hover:bg-white/10 cursor-pointer group transition-all duration-300 hover:shadow-[0_20px_60px_rgba(255,255,255,0.15)] w-full h-full flex flex-col justify-center"
-                                            onClick={() => setActiveIndex(index)}
-                                        >
-                                            <CardContent className="p-8 flex flex-col justify-center h-full">
-                                                <div className="text-center mb-6">
-                                                    <div className="w-16 h-16 bg-gradient-to-br from-white to-gray-400 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
-                                                        {getIcon(category.iconName)}
-                                                    </div>
-                                                    <h3 className="text-xl font-bold text-white mb-2">{category.title}</h3>
-                                                    <div className="h-0.5 w-12 mx-auto bg-white/50 rounded-full" />
-                                                </div>
+                                <div className="card-surface rounded-3xl p-7 h-full flex flex-col justify-between hover-lift">
+                                    <div>
+                                        <div className="flex items-center justify-between mb-6">
+                                            <div className="w-11 h-11 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center">
+                                                {getIcon(category.iconName)}
+                                            </div>
+                                            <span className="code-mono text-[10px] text-gray-500 uppercase tracking-[0.2em]">
+                                                0{index + 1} // Stack
+                                            </span>
+                                        </div>
 
-                                                <div className="flex flex-wrap gap-2 justify-center mb-6">
-                                                    {category.skills.slice(0, 5).map((skill) => (
-                                                        <span key={skill.name} className="px-3 py-1.5 bg-white/10 border border-white/20 text-gray-300 rounded-full text-xs font-medium hover:bg-white hover:text-black transition-all duration-300">
-                                                            {skill.name}
-                                                        </span>
-                                                    ))}
-                                                    {category.skills.length > 5 && (
-                                                        <span className="px-3 py-1.5 bg-white/10 border border-white/20 text-gray-400 rounded-full text-xs font-medium">
-                                                            +{category.skills.length - 5} more
-                                                        </span>
-                                                    )}
-                                                </div>
+                                        <h3 className="text-xl sm:text-[1.35rem] font-bold tracking-tight text-white mb-2">
+                                            {category.title}
+                                        </h3>
+                                        <p className="text-xs sm:text-[0.8rem] text-gray-500 leading-relaxed mb-6">
+                                            {category.skills.length} core technologies mastered for high-performance builds.
+                                        </p>
 
-                                                <p className="text-xs text-gray-500 text-center group-hover:text-gray-400 transition-colors">
-                                                    Click to view proficiency
-                                                </p>
-                                            </CardContent>
-                                        </Card>
+                                        <div className="space-y-2">
+                                            {category.skills.map((skill) => (
+                                                <div key={skill.name} className="group flex items-center justify-between p-3 rounded-xl bg-black/40 border border-white/[0.06] hover:border-white/[0.14] hover:bg-black/60 transition-all">
+                                                    <span className="text-sm font-medium text-gray-200">{skill.name}</span>
+                                                    <span className="code-mono text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
+                                                        {skill.proficiency}%
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
 
-                                    {/* Back Side */}
-                                    <div className={`flip-card-back w-full h-full ${isFlipped ? '' : 'pointer-events-none'}`}>
-                                        <Card className="border-2 border-white/20 bg-black/95 text-white w-full h-full overflow-hidden shadow-[0_20px_50px_rgba(255,255,255,0.15)] flex flex-col">
-                                            <CardContent className="p-6 h-full flex flex-col justify-between overflow-hidden">
-                                                {/* Header */}
-                                                <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4 shrink-0">
-                                                    <div className="flex items-center gap-3">
-                                                        <div className="w-9 h-9 bg-gradient-to-br from-white to-gray-400 rounded-lg flex items-center justify-center">
-                                                            {getIcon(category.iconName)}
-                                                        </div>
-                                                        <div>
-                                                            <h4 className="text-sm font-bold text-white leading-tight">{category.title}</h4>
-                                                            <p className="text-[10px] text-gray-500">Proficiency Breakdown</p>
-                                                        </div>
-                                                    </div>
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            setActiveIndex(null);
-                                                        }}
-                                                        className="text-gray-400 hover:text-white p-1 hover:bg-white/10 rounded-md transition-colors cursor-pointer"
-                                                        aria-label="Flip back"
-                                                    >
-                                                        <X className="w-4 h-4" />
-                                                    </button>
-                                                </div>
-
-                                                {/* Skill List */}
-                                                <div className="space-y-3.5 flex-grow overflow-y-auto pr-1 select-none custom-scrollbar">
-                                                    {category.skills.map((skill) => (
-                                                        <div key={skill.name} className="space-y-1">
-                                                            <div className="flex items-center justify-between">
-                                                                <span className="text-xs font-semibold text-white">{skill.name}</span>
-                                                                <div className="flex items-center gap-1.5">
-                                                                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-white text-black">
-                                                                        {getSkillLevel(skill.proficiency)}
-                                                                    </span>
-                                                                    <span className="text-xs font-bold text-white">{skill.proficiency}%</span>
-                                                                </div>
-                                                            </div>
-                                                            <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
-                                                                <div
-                                                                    className="h-full bg-gradient-to-r from-white to-gray-300 rounded-full transition-all duration-1000 ease-out"
-                                                                    style={{ width: `${skill.proficiency}%` }}
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </CardContent>
-                                        </Card>
+                                    <div className="mt-8 pt-5 border-t border-white/[0.08] flex items-center justify-between code-mono text-[11px] text-gray-500">
+                                        <span>Status: Operational</span>
+                                        <span className="text-emerald-400">● 100% Active</span>
                                     </div>
                                 </div>
                             </div>
@@ -137,15 +81,10 @@ const Skills = () => {
                     })}
                 </div>
 
-                {/* Additional Note */}
-                <div className={`text-center mt-16 transition-all duration-800 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
-                    <div className="max-w-2xl mx-auto px-4">
-                        <div className="inline-block border-2 border-white/10 bg-white/5 backdrop-blur-md rounded-2xl p-6 hover:border-white/20 transition-all duration-500">
-                            <p className="text-base sm:text-lg text-gray-400 leading-relaxed italic">
-                                "Always learning and exploring new technologies. The tech world moves fast, and I enjoy keeping up with the latest trends and best practices."
-                            </p>
-                        </div>
-                    </div>
+                <div className={`card-surface rounded-3xl p-8 sm:p-10 max-w-4xl mx-auto text-center transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                    <blockquote className="text-base sm:text-lg text-gray-300 italic max-w-2xl mx-auto leading-[1.8]">
+                        "Great software is built at the intersection of performance, clean architecture, and continuous learning."
+                    </blockquote>
                 </div>
             </div>
         </section>

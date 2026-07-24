@@ -1,8 +1,7 @@
 import { useEffect, useState, useRef, useMemo } from 'react';
-import { Code2, ArrowRight } from 'lucide-react';
+import { Code2, ArrowRight, Copy, Check, Terminal } from 'lucide-react';
 import heroImage from '../../assets/dipesh.webp';
 import { useMagnetic } from '../../hooks/useMagnetic';
-import { HUDContainer } from '../common/HUDContainer';
 
 const Hero = () => {
     const [textState, setTextState] = useState({
@@ -12,45 +11,17 @@ const Hero = () => {
         isDeleting: false
     });
     const [isVisible, setIsVisible] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const [copied, setCopied] = useState(false);
     const heroRef = useRef<HTMLElement>(null);
     const viewWorkRef = useMagnetic<HTMLButtonElement>(0.2);
-    const scrollDownRef = useMagnetic<HTMLButtonElement>(0.3);
 
-    const roles = useMemo(() => ['Frontend Developer', 'React Enthusiast', 'UI/UX Designer', 'Web Developer'], []);
+    const roles = useMemo(() => ['Frontend Developer', 'React Architect', 'UI/UX Craftsperson', 'Web Engineer'], []);
 
-    // window width listener for button style responsiveness
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    // spotlight effect
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (!heroRef.current) return;
-
-            const rect = heroRef.current.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-            heroRef.current.style.setProperty('--mouse-x', `${x}%`);
-            heroRef.current.style.setProperty('--mouse-y', `${y}%`);
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
-
-    // entrance animation
     useEffect(() => {
         const timer = setTimeout(() => setIsVisible(true), 100);
         return () => clearTimeout(timer);
     }, []);
 
-    // typewriter
     useEffect(() => {
         const { index, charIndex, isDeleting } = textState;
         const currentRole = roles[index];
@@ -84,127 +55,153 @@ const Hero = () => {
         return () => clearTimeout(timer);
     }, [textState, roles]);
 
-    // scroll to section
+    const copyTerminalCmd = () => {
+        navigator.clipboard.writeText('npx dipesh-soni@latest');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
     const scrollToSection = (id: string) => {
         document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
     };
+
+    const techStackStrip = [
+        { name: 'React 19', label: 'UI Architecture', status: 'Primary Stack' },
+        { name: 'TypeScript', label: 'Type Safety', status: 'Strict Mode' },
+        { name: 'Next.js 15', label: 'SSR & Fullstack', status: 'Production Ready' },
+        { name: 'Tailwind CSS', label: 'Design System', status: 'Utility First' },
+    ];
 
     return (
         <section
             ref={heroRef}
             id="hero"
-            className="min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent py-16 lg:py-0"
+            className="relative min-h-[100dvh] flex items-center overflow-hidden py-32"
         >
-            {/* Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="mouse-glow absolute w-[800px] h-[800px] rounded-full blur-[80px] transition-opacity duration-300 ease-out" />
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl animate-pulse duration-[4000ms]" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-tl from-white/5 to-transparent rounded-full blur-3xl animate-pulse duration-[6000ms] delay-2000" />
-            </div>
+            <div className="section-spotlight w-[900px] h-[500px] -top-10 left-1/2 -translate-x-1/2" />
+            <div className="section-spotlight w-[500px] h-[500px] top-1/3 -left-32 opacity-50" />
 
-            {/* Left Rotated Sidebar Banner */}
-            <div className="hidden lg:flex absolute left-12 top-0 bottom-0 py-20 flex-col items-center justify-between pointer-events-none z-20">
-                <span className="text-[10px] tracking-[0.3em] text-neutral-500 uppercase [writing-mode:vertical-lr] rotate-180 font-medium">
-                    Frontend Developer
-                </span>
-                <div className="w-[1px] flex-1 bg-neutral-800 my-8" />
-                <span className="text-[10px] tracking-[0.3em] text-neutral-500 font-medium">
-                    2026
-                </span>
-            </div>
+            <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
+                <div
+                    className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center transition-all duration-[1000ms] ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                >
+                    <div className="lg:col-span-7 space-y-8">
+                        <div className="section-eyebrow">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            <span>Available for work</span>
+                        </div>
 
-            {/* Main Content Container */}
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 relative z-10 lg:pl-28 max-w-7xl">
-                <HUDContainer>
-                    <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-16">
+                        <h1 className="display-heading text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
+                            <span className="block text-white">Hello, I'm</span>
+                            <span className="block mt-1 gradient-text">Dipesh Soni</span>
+                        </h1>
 
-                        {/* Left/Center Side: Content Block - Left Aligned on Mobile to Match Mockup Layout */}
-                        <div className={`lg:col-span-7 flex flex-col justify-center text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-
-                            {/* Original Stats Row - Left Aligned */}
-                            <div className="flex gap-6 sm:gap-12 md:gap-16 justify-start mb-12 sm:mb-16">
-                                <div>
-                                    <div className="text-4xl sm:text-5xl font-extrabold text-white mb-2 tracking-tight">+3</div>
-                                    <div className="text-[11px] text-neutral-500 uppercase tracking-widest font-semibold">Featured Projects</div>
-                                </div>
-                                <div className="w-[1px] bg-neutral-800 self-stretch" />
-                                <div>
-                                    <div className="text-4xl sm:text-5xl font-extrabold text-white mb-2 tracking-tight">+10</div>
-                                    <div className="text-[11px] text-neutral-500 uppercase tracking-widest font-semibold">Tools & Tech</div>
-                                </div>
+                        <div className="flex items-center gap-3 py-1">
+                            <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-lg bg-white/[0.03] border border-white/10">
+                                <Code2 className="w-4 h-4 text-emerald-400" />
+                                <span className="text-sm text-gray-400 font-medium">{textState.text}</span>
+                                <span className="w-1.5 h-4 bg-emerald-400 animate-pulse inline-block" />
                             </div>
+                        </div>
 
-                            {/* Title and Intro */}
-                            <div className="space-y-4 mb-8">
-                                <h1 className="text-5xl sm:text-7xl lg:text-8.5xl font-black tracking-tight text-white leading-none select-none uppercase">
-                                    Hello
-                                </h1>
-                                <div className="text-base sm:text-xl text-neutral-400 font-medium tracking-wide flex flex-row items-center justify-start gap-2 flex-wrap">
-                                    <span>— It's Dipesh Soni, a</span>
-                                    <div className="inline-flex items-center gap-2 text-white font-semibold border-b border-white/20 pb-0.5 min-h-[36px]">
-                                        <Code2 className="w-5 h-5 text-neutral-400" />
-                                        <span>{textState.text}</span>
-                                        <span className="animate-pulse border-l-2 border-white ml-0.5 h-5 inline-block align-middle" />
+                        <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl">
+                            Crafting blazing fast, accessible, and high-performance web applications using React, TypeScript, and modern engineering standards.
+                        </p>
+
+                        <div className="flex flex-wrap items-center gap-4">
+                            <button
+                                ref={viewWorkRef}
+                                onClick={() => scrollToSection('#projects')}
+                                className="vite-btn-primary"
+                            >
+                                <span>Explore My Work</span>
+                                <ArrowRight className="w-4 h-4" />
+                            </button>
+                            <button
+                                onClick={() => scrollToSection('#contact')}
+                                className="vite-btn-secondary"
+                            >
+                                <span>Get in Touch</span>
+                            </button>
+                        </div>
+
+                        <div className="pt-4">
+                            <div
+                                onClick={copyTerminalCmd}
+                                className="group inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-black/60 border border-white/10 cursor-pointer hover:border-white/20 hover:bg-black/80 transition-all w-full sm:w-auto"
+                            >
+                                <Terminal className="w-4 h-4 text-gray-500" />
+                                <code className="code-mono text-sm text-gray-300 flex-1">
+                                    <span className="text-gray-600">$</span> npx dipesh-soni@latest
+                                </code>
+                                <button className="shrink-0 p-1.5 rounded-md border border-white/10 hover:border-white/30 hover:bg-white/5 transition-all text-gray-400 hover:text-white">
+                                    {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="lg:col-span-5">
+                        <div className="relative w-full max-w-md mx-auto">
+                            <div className="absolute -inset-8 bg-gradient-to-tr from-white/5 via-transparent to-white/5 rounded-[2.5rem] blur-2xl opacity-60 pointer-events-none" />
+                            <div className="relative card-surface rounded-3xl p-4 hover-lift">
+                                <div className="absolute top-3 left-4 flex gap-1.5 z-10">
+                                    <span className="w-3 h-3 rounded-full bg-red-500/70" />
+                                    <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                                    <span className="w-3 h-3 rounded-full bg-green-500/70" />
+                                </div>
+                                <div className="absolute top-3 right-4 z-10 code-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                                    portfolio.tsx
+                                </div>
+                                <div className="w-full aspect-[4/5] mt-8 rounded-2xl overflow-hidden relative bg-black border border-white/5">
+                                    <img
+                                        src={heroImage}
+                                        alt="Dipesh Soni"
+                                        className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 brightness-95"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
+                                    <div className="absolute bottom-0 inset-x-0 p-5">
+                                        <div className="code-mono text-[11px] text-emerald-400 mb-2 uppercase tracking-wider">
+                                            Frontend Developer · India
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <div>
+                                                <div className="text-xl font-bold text-white">Dipesh Soni</div>
+                                                <div className="text-xs text-gray-400 mt-0.5">React · TypeScript · Vite</div>
+                                            </div>
+                                            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center backdrop-blur-md">
+                                                <ArrowRight className="w-4 h-4 text-white" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Description - styled with vertical line prefix matching image style */}
-                            <div className="border-l-2 border-neutral-700 pl-4 py-1 text-left mb-8 max-w-xl mr-auto lg:mr-0">
-                                <p className="text-sm sm:text-base text-neutral-400 leading-relaxed">
-                                    Passionate about creating beautiful and functional web experiences. Learning and building with
-                                    <span className="text-white font-semibold"> React</span>,
-                                    <span className="text-white font-semibold"> Vite</span>,
-                                    and modern frontend technologies.
-                                </p>
-                            </div>
-
-                            {/* Action Link & Scroll Down */}
-                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-8">
-                                <button
-                                    ref={viewWorkRef}
-                                    onClick={() => scrollToSection('#projects')}
-                                    className={`group inline-flex items-center gap-2.5 bg-white text-black font-extrabold px-8 py-3.5 hover:bg-neutral-200 transition-all text-xs uppercase tracking-widest cursor-pointer shadow-lg hover:shadow-white/10 relative overflow-hidden ${
-                                        isMobile ? 'rounded-full' : ''
-                                    }`}
-                                    style={isMobile ? undefined : {
-                                        clipPath: 'polygon(12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%, 0% 12px)'
-                                    }}
-                                >
-                                    View Work
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </button>
-
-                                <button
-                                    ref={scrollDownRef}
-                                    onClick={() => scrollToSection('#about')}
-                                    className="group inline-flex items-center gap-2 text-[10px] text-neutral-500 hover:text-white uppercase tracking-[0.25em] transition-colors cursor-pointer py-2 font-bold"
-                                >
-                                    <span>Scroll down</span>
-                                    <span className="transition-transform duration-300 group-hover:translate-y-1">↓</span>
-                                </button>
-                            </div>
                         </div>
-
-                        {/* Right Side: Squarish Portrait Image */}
-                        <div className={`lg:col-span-5 flex justify-center lg:justify-end transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} mt-8 lg:mt-0`} mt-8 lg:mt-0>
-                            <div className="relative w-full max-w-[280px] sm:max-w-[360px] aspect-square rounded-[2rem] overflow-hidden border border-white/10 group-hover:border-white/30 transition-all duration-500 group bg-neutral-950 shadow-2xl mx-auto">
-                                {/* Ambient Glow */}
-                                <div className="absolute -inset-4 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl pointer-events-none" />
-
-                                <img
-                                    src={heroImage}
-                                    alt="Dipesh Soni"
-                                    className="w-full h-full object-cover transition-all duration-[1200ms] group-hover:scale-105 grayscale group-hover:grayscale-0 brightness-[0.85] group-hover:brightness-100"
-                                />
-
-                                {/* Subtle dark gradient fade on bottom */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent opacity-75 pointer-events-none transition-opacity duration-500 group-hover:opacity-40" />
-                            </div>
-                        </div>
-
                     </div>
-                </HUDContainer>
+                </div>
+
+                <div
+                    className={`mt-24 sm:mt-32 transition-all duration-1000 delay-300 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                >
+                    <div className="text-center mb-5">
+                        <span className="text-[11px] font-mono text-gray-500 uppercase tracking-[0.24em]">
+                            Core Technology Stack
+                        </span>
+                    </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
+                        {techStackStrip.map((item) => (
+                            <div key={item.name} className="bg-[#0a0a0a] p-6 sm:p-7 text-center hover:bg-white/[0.03] transition-colors group">
+                                <div className="code-mono text-[10px] text-gray-500 uppercase tracking-[0.18em] block mb-2">
+                                    {item.label}
+                                </div>
+                                <div className="text-xl sm:text-2xl font-bold text-white group-hover:text-gray-200 transition-colors tracking-tight">
+                                    {item.name}
+                                </div>
+                                <div className="mt-2 text-xs text-gray-500">{item.status}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </section>
     );
