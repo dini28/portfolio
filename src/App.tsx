@@ -22,14 +22,16 @@ function App() {
       {/* Main content layer */}
       <div className="relative z-10">
         <Header />
-        <main id="main-content">
-          <Hero />
-          <About />
-          <Skills />
-          <Project />
-          <Contact />
-        </main>
-        <Footer />
+        <div className="lg:pl-28 xl:pl-32 transition-all duration-300">
+          <main id="main-content">
+            <Hero />
+            <About />
+            <Skills />
+            <Project />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
 
         <WhatsAppButton />
       </div>

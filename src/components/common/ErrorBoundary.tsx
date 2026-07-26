@@ -30,8 +30,7 @@ class ErrorBoundary extends Component<Props, State> {
                             <span className="text-4xl">⚡</span>
                         </div>
                         <h1
-                            className="text-3xl font-bold text-white mb-4"
-                            style={{ fontFamily: 'Offside' }}
+                            className="text-3xl font-bold text-white mb-4 font-display"
                         >
                             Something went wrong
                         </h1>

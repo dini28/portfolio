@@ -105,14 +105,14 @@ const Contact = () => {
                     <div className="lg:col-span-5 grid grid-cols-2 gap-4 my-auto">
                         <div className="card-surface rounded-2xl p-5 sm:p-6 hover-lift">
                             <div className="flex items-center gap-2 code-mono text-[10.5px] text-gray-500 mb-2 uppercase tracking-[0.18em]">
-                                <Clock className="w-3.5 h-3.5 text-emerald-400" /> Response Time
+                                Response Time
                             </div>
                             <div className="text-3xl font-bold tracking-tight text-white">&lt; 24h</div>
                             <p className="text-xs text-gray-500 mt-1">Prompt turnarounds</p>
                         </div>
                         <div className="card-surface rounded-2xl p-5 sm:p-6 hover-lift">
                             <div className="flex items-center gap-2 code-mono text-[10.5px] text-gray-500 mb-2 uppercase tracking-[0.18em]">
-                                <Globe className="w-3.5 h-3.5 text-blue-400" /> Location
+                                Location
                             </div>
                             <div className="text-xl font-bold tracking-tight text-white truncate">India (IST)</div>
                             <p className="text-xs text-gray-500 mt-1">Open to remote globally</p>
@@ -189,17 +189,17 @@ const Contact = () => {
                                     <ShieldCheck className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold tracking-tight text-white">Open for Hiring</h3>
-                                    <p className="text-xs text-gray-500 mt-0.5">Full-time, Contract & Freelance</p>
+                                    <h3 className="text-lg font-bold tracking-tight text-white">Open for Freelance &amp; Projects</h3>
+                                    <p className="text-xs text-emerald-400 font-medium mt-0.5">UI/UX Designer @ Toba Tech</p>
                                 </div>
                             </div>
 
                             <p className="text-sm sm:text-[0.95rem] text-gray-400 leading-relaxed mb-6">
-                                Looking for a dedicated Frontend Developer who builds fast, responsive, and beautifully structured web applications? I'm available to collaborate on new ideas or join your team.
+                                Looking for a UI/UX Designer &amp; Frontend Engineer to design intuitive interfaces in Figma and build fast, responsive React applications? I'm available for freelance projects and technical collaborations.
                             </p>
 
                             <div className="flex flex-wrap gap-2 pt-5 border-t border-white/[0.08]">
-                                {['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Vite'].map(tag => (
+                                {['UIUX', 'Figma', 'React', 'TypeScript', 'Nextjs', 'TailwindCSS'].map(tag => (
                                     <span key={tag} className="px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/[0.08] code-mono text-[11px] text-gray-400 font-medium">
                                         #{tag}
                                     </span>
@@ -213,10 +213,11 @@ const Contact = () => {
                                 <span className="text-[10px] text-emerald-400 font-bold">● READY</span>
                             </div>
                             <div className="space-y-1.5">
-                                <div><span className="text-purple-400">const</span> <span className="text-blue-400">developer</span> = &#123;</div>
+                                <div><span className="text-purple-400">const</span> <span className="text-blue-400">designer</span> = &#123;</div>
                                 <div className="pl-4"><span className="text-gray-500">name:</span> <span className="text-emerald-300">'Dipesh Soni'</span>,</div>
-                                <div className="pl-4"><span className="text-gray-500">role:</span> <span className="text-emerald-300">'Frontend Developer'</span>,</div>
-                                <div className="pl-4"><span className="text-gray-500">status:</span> <span className="text-emerald-300">'Available'</span></div>
+                                <div className="pl-4"><span className="text-gray-500">role:</span> <span className="text-emerald-300">'UI/UX Designer &amp; Developer'</span>,</div>
+                                <div className="pl-4"><span className="text-gray-500">company:</span> <span className="text-emerald-300">'Toba Tech'</span>,</div>
+                                <div className="pl-4"><span className="text-gray-500">freelance:</span> <span className="text-emerald-300">'Available'</span></div>
                                 <div>&#125;;</div>
                             </div>
                         </div>

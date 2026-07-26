@@ -34,7 +34,7 @@ export const PROJECTS_DATA: readonly ProjectData[] = [
         }
     },
     {
-        title: 'Fiction Games',
+        title: 'Fiction',
         subtitle: 'Next-Gen Web Gaming',
         status: 'Currently developing',
         description: 'Bold gaming experiences where every click writes a new story. Built with React and JavaScript, deployed on Vercel for seamless performance.',

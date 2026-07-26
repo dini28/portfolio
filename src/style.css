@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+    --font-sans: "Genos", sans-serif;
+    --font-mono: "Genos", sans-serif;
+    --font-display: "Offside", sans-serif;
+}
+
 :root {
     color-scheme: dark;
 }
@@ -162,7 +168,11 @@ body::before {
 }
 
 .code-mono {
-    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-family: "Genos", sans-serif;
+}
+
+.font-display {
+    font-family: "Offside", sans-serif;
 }
 
 .hover-lift {
