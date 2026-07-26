@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useMemo } from 'react';
-import { Code2, ArrowRight, Sparkles, Building2, Palette } from 'lucide-react';
+import { Code2, ArrowRight } from 'lucide-react';
 import heroImage from '../../assets/dipesh.webp';
 import { useMagnetic } from '../../hooks/useMagnetic';
 

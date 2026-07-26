@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { GraduationCap, Code2, Rocket, Award, Terminal, MapPin, Sparkles, CheckCircle2, User, BookOpen, Cpu, ArrowUpRight } from 'lucide-react';
+import { Code2, Rocket, Award, Terminal, CheckCircle2, BookOpen } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import about from '../../assets/about.webp';
 

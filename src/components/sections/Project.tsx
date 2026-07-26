@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Github, ArrowUpRight, X, Lightbulb, Target, Rocket as RocketIcon, Layers, Sparkles, Code2, ChevronRight, CheckCircle2, Monitor } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight, X, Lightbulb, Target, Rocket as RocketIcon, Layers, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { PROJECTS_DATA } from '../../data/projects';
 
