@@ -1,3 +1,4 @@
+import type { StaticImageData } from 'next/image';
 import pixelwings from '../assets/pixelwings.webp';
 import fictiongames from '../assets/fictiongames.webp';
 import ghummakkad from '../assets/ghummakkad.webp';
@@ -6,7 +7,7 @@ export interface ProjectData {
     readonly title: string;
     readonly subtitle: string;
     readonly description: string;
-    readonly image: string;
+    readonly image: StaticImageData;
     readonly technologies: readonly string[];
     readonly liveUrl: string;
     readonly githubUrl: string;

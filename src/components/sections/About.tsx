@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Code2, Rocket, Award, Terminal, CheckCircle2, BookOpen } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
@@ -50,7 +52,7 @@ const About = () => {
                             <div className="p-4 sm:p-5">
                                 <div className="relative rounded-2xl overflow-hidden bg-black border border-white/10 group">
                                     <img
-                                        src={about}
+                                        src={about.src}
                                         alt="Dipesh Soni - Frontend Developer"
                                         loading="lazy"
                                         className="w-full h-auto object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 brightness-95 group-hover:scale-105"

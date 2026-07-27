@@ -7,9 +7,9 @@
 **A meticulously crafted developer portfolio built for speed, aesthetics, and impact.**
 
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Vite 7](https://img.shields.io/badge/Vite-7-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000?style=flat-square&logo=vercel&logoColor=white)](https://dipeshsoni.vercel.app/)
 
 <br />
@@ -24,51 +24,39 @@
 
 <br />
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 | :--- | :--- |
-| **Framework** | React 19 + TypeScript 5.9 |
-| **Styling** | Tailwind CSS v4 (zero-runtime) |
-| **Build** | Vite 7 (ESM, instant HMR) |
-| **Scroll** | Lenis (buttery smooth) |
+| **Framework** | Next.js 15 (App Router) + React 19 + TypeScript |
+| **Styling** | Tailwind CSS v4 |
+| **Scroll** | Lenis |
 | **Icons** | Lucide React + Simple Icons |
-| **UI Primitives** | Radix UI (accessible, unstyled) |
+| **UI Primitives** | Radix UI |
 | **Analytics** | Vercel Analytics |
-| **Deployment** | Vercel (CI/CD) |
+| **Deployment** | Vercel |
 
 <br />
 
-## ✨ Highlights
-
-- 🎯 **Glassmorphism Design System** — Unified frosted-glass aesthetic with subtle depth layering
-- 🖱️ **Mouse-tracking Spotlight** — Interactive cursor glow that follows user movement
-- 📊 **Skills Intelligence** — Component-based proficiency cards with real project context
-- 🪟 **Accessible Modals** — Project case studies powered by Radix UI primitives
-- ⚡ **Sub-second Loads** — Code-split, lazy-loaded, and tree-shaken for peak performance
-- 🌊 **Lenis Smooth Scroll** — Decoupled scrolling for a premium, native-app feel
-- 📱 **Fully Responsive** — Pixel-perfect from 320px mobile to 4K ultrawide
-
-<br />
-
-## 📐 Architecture
+## Architecture
 
 ```
 src/
+├── app/                 # Next.js App Router — layout, page, API routes
+│   └── api/contact/     # Contact form Route Handler
 ├── components/
 │   ├── common/          # Atomic UI — Card, Button, SectionBackground
 │   ├── layout/          # Shell — Header, Footer
 │   └── sections/        # Page blocks — Hero, About, Skills, Projects, Contact
 ├── hooks/               # Custom hooks — animations, scroll spy, viewport
 ├── data/                # Static data — projects, skills, social links
-├── lib/                 # Utilities — cn(), constants
-├── assets/              # Images, SVGs, fonts
-└── App.tsx              # Root composition
+├── utils/               # Utilities — cn()
+└── assets/              # Images, SVGs
 ```
 
 <br />
 
-## 🚀 Quick Start
+## Quick Start
 
 > **Prerequisites:** Node.js ≥ 20 &nbsp;•&nbsp; npm ≥ 9
 
@@ -80,27 +68,18 @@ cd Portfolio
 # Install
 npm install
 
-# Dev server (hot reload)
+# Dev server
 npm run dev
 
 # Production build
-npm run build && npm run preview
+npm run build && npm start
 ```
 
-<br />
-
-## 📊 Lighthouse
-
-| Metric | Score |
-| :--- | :--- |
-| Performance | 🟢 98 |
-| Accessibility | 🟢 100 |
-| Best Practices | 🟢 100 |
-| SEO | 🟢 100 |
+Copy `.env` with `SMTP_EMAIL` and `SMTP_PASSWORD` for the contact form.
 
 <br />
 
-## 📄 License
+## License
 
 MIT — free to use, modify, and distribute.
 

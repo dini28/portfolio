@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState, useRef, useMemo } from 'react';
 
 interface HUDContainerProps {

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { ExternalLink, Github, ArrowUpRight, X, Lightbulb, Target, Rocket as RocketIcon, Layers, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
@@ -152,8 +154,8 @@ const Project = () => {
                             {/* Project Visual Stage */}
                             <div className="relative h-64 sm:h-80 overflow-hidden bg-black group shrink-0 border-b border-white/[0.08]">
                                 <img
-                                    key={activeProject.image}
-                                    src={activeProject.image}
+                                    key={activeProject.image.src}
+                                    src={activeProject.image.src}
                                     alt={activeProject.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                                 />
@@ -354,7 +356,7 @@ const Project = () => {
                     >
                         <div className="relative h-60 overflow-hidden shrink-0 border-b border-white/[0.08]">
                             <img
-                                src={selectedModalProject.image}
+                                src={selectedModalProject.image.src}
                                 alt={selectedModalProject.title}
                                 className="w-full h-full object-cover"
                             />

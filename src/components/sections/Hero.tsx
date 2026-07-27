@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState, useRef, useMemo } from 'react';
 import { Code2, ArrowRight } from 'lucide-react';
 import heroImage from '../../assets/dipesh.webp';
@@ -146,7 +148,7 @@ const Hero = () => {
 
                                 <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden relative bg-black border border-white/10 group">
                                     <img
-                                        src={heroImage}
+                                        src={heroImage.src}
                                         alt="Dipesh Soni - UI/UX Designer & Developer"
                                         className="w-full h-full object-cover grayscale-[100%] transition-all duration-700 brightness-75"
                                     />

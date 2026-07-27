@@ -1,4 +1,5 @@
-import logo from '../../assets/logo.svg';
+'use client';
+
 import { SOCIAL_LINKS, FOOTER_LINKS } from '../../data/social';
 import { ArrowUp, Quote } from 'lucide-react';
 
@@ -121,7 +122,7 @@ const Footer = () => {
                     {/* Brand Meta */}
                     <div className="flex items-center gap-3.5">
                         <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-1.5">
-                            <img src={logo} alt="Logo" className="w-full h-full brightness-0 invert" />
+                            <img src="/logo.svg" alt="Logo" className="w-full h-full brightness-0 invert" />
                         </div>
                         <p className="text-xs text-gray-400 tracking-wider">
                             &copy; {currentYear} | Built with care by <span className="text-white font-semibold">Dipesh Soni</span>

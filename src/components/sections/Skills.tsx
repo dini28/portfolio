@@ -1,3 +1,5 @@
+'use client';
+
 import { Cpu } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { ThreeDSkillStack } from './ThreeDSkillStack';

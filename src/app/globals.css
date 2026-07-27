@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-    --font-sans: "Genos", sans-serif;
-    --font-mono: "Genos", sans-serif;
-    --font-display: "Offside", sans-serif;
+    --font-sans: var(--font-genos), "Genos", sans-serif;
+    --font-mono: var(--font-genos), "Genos", sans-serif;
+    --font-display: var(--font-offside), "Offside", sans-serif;
 }
 
 :root {
@@ -20,7 +20,7 @@ html, body {
 }
 
 body {
-    font-family: "Genos", sans-serif;
+    font-family: var(--font-genos), "Genos", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #060606;
@@ -175,11 +175,11 @@ body::before {
 }
 
 .code-mono {
-    font-family: "Genos", sans-serif;
+    font-family: var(--font-genos), "Genos", sans-serif;
 }
 
 .font-display {
-    font-family: "Offside", sans-serif;
+    font-family: var(--font-offside), "Offside", sans-serif;
 }
 
 .hover-lift {

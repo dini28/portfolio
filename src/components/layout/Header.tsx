@@ -1,5 +1,6 @@
+'use client';
+
 import { useState, useEffect } from "react";
-import logo_header from '../../assets/logo_header.svg';
 import { NAV_LINKS, SOCIAL_LINKS } from '../../data/social';
 import { User, Cpu, Terminal, Mail, ArrowUp } from 'lucide-react';
 
@@ -76,7 +77,7 @@ export default function Header() {
                     title="Dipesh Soni - Scroll to Top"
                 >
                     <img
-                        src={logo_header}
+                        src="/logo_header.svg"
                         alt="Logo"
                         className="w-5 h-5 object-contain brightness-0 invert group-hover:rotate-[15deg] group-hover:scale-110 transition-all duration-500"
                     />
@@ -134,7 +135,7 @@ export default function Header() {
                     className="flex items-center gap-2.5 group"
                 >
                     <img
-                        src={logo_header}
+                        src="/logo_header.svg"
                         alt="Logo"
                         className="w-7 h-7 object-contain brightness-0 invert"
                     />

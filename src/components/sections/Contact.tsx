@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useRef } from 'react';
 import { Mail, Linkedin, MapPin, CheckCircle, AlertCircle, Copy, Check, Send, Github, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
