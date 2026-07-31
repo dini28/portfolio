@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Code2, Rocket, Award, Terminal, CheckCircle2, BookOpen } from 'lucide-react';
+import { Code2, Rocket, Award, CheckCircle2, BookOpen } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import about from '../../assets/about.webp';
 
@@ -25,9 +25,9 @@ const About = () => {
             <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
                 {/* Header */}
                 <div className={`text-center mb-16 sm:mb-20 transition-all duration-700 ease-out ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    <div className="section-eyebrow mb-4">
-                        <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>Developer Profile</span>
+                    <div className="fc-section-tag mb-4">
+                        <span className="fc-index">[ 04 / 05 ]</span>
+                        <span>· DEVELOPER PROFILE & DOSSIER</span>
                     </div>
                     <h2 className="display-heading text-4xl sm:text-5xl lg:text-6xl mb-5">
                         <span className="block text-white">Engineering Experience &amp;</span>

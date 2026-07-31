@@ -91,9 +91,9 @@ const Contact = () => {
             <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
                 <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-16 pb-16 border-b border-white/[0.08] transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <div className="lg:col-span-7 space-y-6">
-                        <div className="section-eyebrow">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                            <span>Get in Touch</span>
+                        <div className="fc-section-tag">
+                            <span className="fc-index">[ 05 / 05 ]</span>
+                            <span>· GET IN TOUCH</span>
                         </div>
                         <h2 className="display-heading text-4xl sm:text-5xl lg:text-6xl">
                             <span className="block text-white">Let's Build Something</span>

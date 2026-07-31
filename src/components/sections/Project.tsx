@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ExternalLink, Github, ArrowUpRight, X, Lightbulb, Target, Rocket as RocketIcon, Layers, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight, X, Lightbulb, Target, Rocket as RocketIcon, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { PROJECTS_DATA } from '../../data/projects';
 
@@ -24,10 +24,11 @@ const Project = () => {
             <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
                 {/* Header */}
                 <div className={`text-center mb-14 sm:mb-20 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    <div className="section-eyebrow mb-4">
-                        <Layers className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>Interactive Showcase</span>
+                    <div className="fc-section-tag mb-4">
+                        <span className="fc-index">[ 02 / 05 ]</span>
+                        <span>· FEATURED PROJECTS</span>
                     </div>
+
                     <h2 className="display-heading text-4xl sm:text-5xl lg:text-6xl mb-5">
                         <span className="block text-white">Powering Modern</span>
                         <span className="block gradient-text mt-1">Frameworks &amp; Applications</span>
@@ -58,9 +59,9 @@ const Project = () => {
                                             setActiveIndex(index);
                                             setActiveTab('overview');
                                         }}
-                                        className={`group relative p-5 sm:p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${isActive
+                                        className={`group relative p-5 sm:p-6 rounded-2xl cursor-pointer transition-all duration-300 border fc-bento-card ${isActive
                                             ? 'bg-gradient-to-r from-emerald-950/40 via-white/[0.04] to-transparent border-emerald-500/40 shadow-lg shadow-emerald-950/30 ring-1 ring-emerald-500/20'
-                                            : 'card-surface border-white/[0.08] hover:border-white/20 hover:bg-white/[0.04]'
+                                            : 'border-white/[0.08] hover:border-white/20'
                                             }`}
                                     >
                                         {/* Active Beam Indicator */}
