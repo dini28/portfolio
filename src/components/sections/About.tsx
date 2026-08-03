@@ -26,12 +26,11 @@ const About = () => {
                 {/* Header */}
                 <div className={`text-center mb-16 sm:mb-20 transition-all duration-700 ease-out ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <div className="fc-section-tag mb-4">
-                        <span className="fc-index">[ 04 / 05 ]</span>
-                        <span>· DEVELOPER PROFILE & DOSSIER</span>
+                        <span className="fc-index">[ 02 / 05 ]</span>
+                        <span>· DEVELOPER PROFILE</span>
                     </div>
                     <h2 className="display-heading text-4xl sm:text-5xl lg:text-6xl mb-5">
-                        <span className="block text-white">Engineering Experience &amp;</span>
-                        <span className="block gradient-text-soft mt-1">Technical Foundation</span>
+                        <span className="block text-white">Technical Foundation</span>
                     </h2>
                     <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
                         Bridging computer science fundamentals with modern frontend architecture to build high-performance web applications.

@@ -98,8 +98,8 @@ const Hero = () => {
 
                             <div className="flex flex-wrap items-center gap-2.5 pt-1">
                                 <div className="fc-pill-badge">
-                                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                                    <span className="text-emerald-300 font-semibold">{'// Available for Freelancing \\\\'}</span>
+                                    <span className="w-2 h-2 rounded-xs bg-emerald-400 animate-pulse" />
+                                    <span className="text-emerald-300 font-semibold">{'Available for Freelancing'}</span>
                                 </div>
 
                                 <div className="fc-pill-badge">
@@ -119,7 +119,7 @@ const Hero = () => {
                             <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 shadow-inner">
                                 <Code2 className="w-4.5 h-4.5 text-emerald-400 shrink-0" />
                                 <span className="text-sm sm:text-base text-gray-200 font-semibold code-mono">{textState.text}</span>
-                                <span className="w-1.5 h-4 bg-emerald-400 animate-pulse inline-block" />
+                                <span className="w-0.5 h-4 bg-emerald-400 inline-block" />
                             </div>
                         </div>
 
@@ -147,20 +147,29 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Right Column: Terminal Showcase Image */}
-                    <div className="lg:col-span-5">
+                    {/* Right Column: Terminal Showcase Image Layout */}
+                    <div className="lg:col-span-5 relative">
                         <div className="relative w-full max-w-md mx-auto group">
-                            {/* Ambient Glow */}
-                            <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/20 via-white/10 to-transparent rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500 pointer-events-none" />
+                            {/* Multi-layered Ambient Backlight Glow */}
+                            <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/25 via-teal-500/15 to-cyan-500/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 pointer-events-none" />
+                            <div className="absolute -inset-1 bg-gradient-to-b from-emerald-400/30 via-white/10 to-transparent rounded-[2rem] blur-md opacity-40 group-hover:opacity-75 transition-all duration-500 pointer-events-none" />
 
-                            {/* Terminal Window Container */}
-                            <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-[#09090b] shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-white/25">
-                                <img
-                                    src={dipeshImg.src}
-                                    alt="Dipesh.dev CLI Terminal"
-                                    className="w-full h-auto object-cover rounded-2xl"
-                                    loading="eager"
-                                />
+                            {/* Main Card Container with Gradient Border */}
+                            <div className="relative p-1 rounded-3xl bg-gradient-to-b from-white/20 via-white/10 to-emerald-500/30 shadow-2xl transition-transform duration-500">
+                                <div className="relative rounded-[1.4rem] overflow-hidden bg-[#09090b] border border-white/10">
+
+                                    {/* Hero Showcase Image */}
+                                    <div className="relative overflow-hidden group/img">
+                                        <img
+                                            src={dipeshImg.src}
+                                            alt="Dipesh Soni Developer Portfolio"
+                                            className="w-full h-auto object-cover rounded-b-[1.3rem] transition-transform duration-700"
+                                            loading="eager"
+                                        />
+                                        {/* Subtle Overlay Gradient for Depth */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#09090b]/80 via-transparent to-transparent pointer-events-none opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -17,6 +17,7 @@ import {
     SiPostman,
     SiVercel
 } from '@icons-pack/react-simple-icons';
+import { Layers, Cpu, Cloud, Wrench, CheckCircle2, RotateCcw, Award } from 'lucide-react';
 
 export interface SkillItem {
     id: string;
@@ -49,7 +50,7 @@ export const SKILL_ITEMS: SkillItem[] = [
         bgGlow: 'rgba(49, 120, 198, 0.25)',
         borderColor: 'rgba(49, 120, 198, 0.4)',
         icon: SiTypescript,
-        description: 'Strongly typed JavaScript for scalable, crash-resistant web architecture.',
+        description: 'Strongly typed JavaScript for scalable, crash-resistant web architecture and type safety.',
         projects: ['Portfolio', 'Ghummakkad', 'UI System'],
         pos: { rotateX: 14, rotateY: -16, rotateZ: -4, x: 0, y: 10, z: 70 }
     },
@@ -62,9 +63,9 @@ export const SKILL_ITEMS: SkillItem[] = [
         bgGlow: 'rgba(97, 218, 251, 0.25)',
         borderColor: 'rgba(97, 218, 251, 0.4)',
         icon: SiReact,
-        description: 'Component-driven UI architecture, custom hooks, and concurrent rendering.',
+        description: 'Component-driven UI architecture, custom hooks, concurrent rendering, and reactive state management.',
         projects: ['Ghummakkad', 'Portfolio', 'Fiction Games'],
-        pos: { rotateX: 10, rotateY: -10, rotateZ: 2, x: -160, y: 70, z: 20 }
+        pos: { rotateX: 10, rotateY: -10, rotateZ: 2, x: -150, y: 65, z: 20 }
     },
     {
         id: 'js',
@@ -75,9 +76,9 @@ export const SKILL_ITEMS: SkillItem[] = [
         bgGlow: 'rgba(247, 223, 30, 0.25)',
         borderColor: 'rgba(247, 223, 30, 0.4)',
         icon: SiJavascript,
-        description: 'Modern ES6+, async workflows, DOM APIs, and functional patterns.',
-        projects: ['All Projects', 'Interactive Modules'],
-        pos: { rotateX: 18, rotateY: -22, rotateZ: -12, x: -140, y: -70, z: -30 }
+        description: 'Modern ES6+, async/await workflows, DOM APIs, closure optimization, and functional programming.',
+        projects: ['All Web Apps', 'Interactive Canvas'],
+        pos: { rotateX: 18, rotateY: -22, rotateZ: -12, x: -130, y: -65, z: -30 }
     },
     {
         id: 'css',
@@ -88,22 +89,22 @@ export const SKILL_ITEMS: SkillItem[] = [
         bgGlow: 'rgba(21, 114, 182, 0.25)',
         borderColor: 'rgba(21, 114, 182, 0.4)',
         icon: SiCss,
-        description: 'Fluid animations, 3D CSS transforms, flex/grid responsive systems.',
+        description: 'Fluid responsive layouts, 3D CSS transforms, keyframe animations, and custom design tokens.',
         projects: ['Design Foundations', 'Portfolio Themes'],
-        pos: { rotateX: 16, rotateY: -12, rotateZ: 8, x: 150, y: -80, z: 10 }
+        pos: { rotateX: 16, rotateY: -12, rotateZ: 8, x: 140, y: -70, z: 10 }
     },
     {
         id: 'tailwind',
-        name: 'Tailwind CSS',
+        name: 'Tailwind CSS v4',
         category: 'Development',
         proficiency: 92,
         color: '#06B6D4',
         bgGlow: 'rgba(6, 182, 212, 0.25)',
         borderColor: 'rgba(6, 182, 212, 0.4)',
         icon: SiTailwindcss,
-        description: 'Utility-first styling, responsive design systems, custom theme design.',
-        projects: ['All Modern Apps'],
-        pos: { rotateX: 12, rotateY: -8, rotateZ: 10, x: 170, y: 60, z: -10 }
+        description: 'Utility-first styling, rapid prototyping, glassmorphism systems, and dark theme designs.',
+        projects: ['All Modern Projects'],
+        pos: { rotateX: 12, rotateY: -8, rotateZ: 10, x: 160, y: 55, z: -10 }
     },
     {
         id: 'next',
@@ -114,9 +115,9 @@ export const SKILL_ITEMS: SkillItem[] = [
         bgGlow: 'rgba(255, 255, 255, 0.2)',
         borderColor: 'rgba(255, 255, 255, 0.3)',
         icon: SiNextdotjs,
-        description: 'App router, SSR/SSG optimization, server actions, and SEO excellence.',
-        projects: ['Ghummakkad', 'E-commerce App'],
-        pos: { rotateX: 22, rotateY: -24, rotateZ: -8, x: -280, y: 0, z: -60 }
+        description: 'App Router architecture, React Server Components, route handlers, and SEO optimization.',
+        projects: ['Ghummakkad', 'Portfolio'],
+        pos: { rotateX: 22, rotateY: -24, rotateZ: -8, x: -250, y: 0, z: -60 }
     },
     {
         id: 'html',
@@ -127,9 +128,9 @@ export const SKILL_ITEMS: SkillItem[] = [
         bgGlow: 'rgba(227, 79, 38, 0.25)',
         borderColor: 'rgba(227, 79, 38, 0.4)',
         icon: SiHtml5,
-        description: 'Semantic markup, accessibility (a11y), and web performance standards.',
-        projects: ['Base Foundations'],
-        pos: { rotateX: 8, rotateY: -6, rotateZ: 12, x: 280, y: 10, z: -70 }
+        description: 'Semantic document structure, web accessibility (ARIA / a11y), and web standards.',
+        projects: ['Base Web Structure'],
+        pos: { rotateX: 8, rotateY: -6, rotateZ: 12, x: 250, y: 10, z: -70 }
     },
     {
         id: 'node',
@@ -140,9 +141,9 @@ export const SKILL_ITEMS: SkillItem[] = [
         bgGlow: 'rgba(95, 160, 78, 0.25)',
         borderColor: 'rgba(95, 160, 78, 0.4)',
         icon: SiNodedotjs,
-        description: 'Asynchronous event-driven server runtime and RESTful API endpoints.',
-        projects: ['Server Backends', 'Express API'],
-        pos: { rotateX: 15, rotateY: -15, rotateZ: 0, x: 0, y: -130, z: -20 }
+        description: 'Asynchronous event-driven server runtime, REST APIs, and backend integrations.',
+        projects: ['Server API Handlers'],
+        pos: { rotateX: 15, rotateY: -15, rotateZ: 0, x: 0, y: -125, z: -20 }
     }
 ];
 
@@ -156,7 +157,7 @@ export const EXTRA_SKILLS: SkillItem[] = [
         bgGlow: 'rgba(71, 162, 72, 0.25)',
         borderColor: 'rgba(71, 162, 72, 0.4)',
         icon: SiMongodb,
-        description: 'NoSQL document database, aggregation pipelines, and schema indexing.',
+        description: 'NoSQL document databases, schema indexing, and aggregation pipelines.',
         projects: ['Ghummakkad'],
         pos: { rotateX: 0, rotateY: 0, rotateZ: 0, x: 0, y: 0, z: 0 }
     },
@@ -169,7 +170,7 @@ export const EXTRA_SKILLS: SkillItem[] = [
         bgGlow: 'rgba(255, 202, 40, 0.25)',
         borderColor: 'rgba(255, 202, 40, 0.4)',
         icon: SiFirebase,
-        description: 'Realtime database, authentication services, and serverless hosting.',
+        description: 'Realtime Database, Authentication services, and cloud hosting.',
         projects: ['Portfolio', 'Live Demos'],
         pos: { rotateX: 0, rotateY: 0, rotateZ: 0, x: 0, y: 0, z: 0 }
     },
@@ -182,7 +183,7 @@ export const EXTRA_SKILLS: SkillItem[] = [
         bgGlow: 'rgba(240, 80, 50, 0.25)',
         borderColor: 'rgba(240, 80, 50, 0.4)',
         icon: SiGit,
-        description: 'Branch management, pull requests, version control, and team workflows.',
+        description: 'Version control, branch strategies, pull request workflows, and collaborative development.',
         projects: ['All Projects'],
         pos: { rotateX: 0, rotateY: 0, rotateZ: 0, x: 0, y: 0, z: 0 }
     },
@@ -195,7 +196,7 @@ export const EXTRA_SKILLS: SkillItem[] = [
         bgGlow: 'rgba(255, 255, 255, 0.25)',
         borderColor: 'rgba(255, 255, 255, 0.4)',
         icon: SiVercel,
-        description: 'Automated CI/CD deployments, edge functions, and global CDN hosting.',
+        description: 'Automated CI/CD deployments, edge network distribution, and web analytics.',
         projects: ['Fiction Games', 'Portfolio'],
         pos: { rotateX: 0, rotateY: 0, rotateZ: 0, x: 0, y: 0, z: 0 }
     },
@@ -208,8 +209,8 @@ export const EXTRA_SKILLS: SkillItem[] = [
         bgGlow: 'rgba(36, 150, 237, 0.25)',
         borderColor: 'rgba(36, 150, 237, 0.4)',
         icon: SiDocker,
-        description: 'Containerized application environments and microservice setups.',
-        projects: ['Dev Environments'],
+        description: 'Containerized application runtime environments and microservice setups.',
+        projects: ['Dev Workflows'],
         pos: { rotateX: 0, rotateY: 0, rotateZ: 0, x: 0, y: 0, z: 0 }
     },
     {
@@ -221,17 +222,18 @@ export const EXTRA_SKILLS: SkillItem[] = [
         bgGlow: 'rgba(255, 108, 55, 0.25)',
         borderColor: 'rgba(255, 108, 55, 0.4)',
         icon: SiPostman,
-        description: 'API endpoint testing, collection automation, and integration checks.',
-        projects: ['API Testing'],
+        description: 'API endpoint testing, request automated collections, and backend debugging.',
+        projects: ['API Integration'],
         pos: { rotateX: 0, rotateY: 0, rotateZ: 0, x: 0, y: 0, z: 0 }
     }
 ];
 
-// Optimized Memoized 3D Card Sub-Component
+// Optimized Memoized 3D Skill Card Component
 interface SkillCardProps {
     skill: SkillItem;
     isHovered: boolean;
     isActive: boolean;
+    isFilteredOut: boolean;
     onSelect: (skill: SkillItem) => void;
     onHover: (id: string) => void;
     onLeave: () => void;
@@ -241,6 +243,7 @@ const SkillCard = React.memo<SkillCardProps>(({
     skill,
     isHovered,
     isActive,
+    isFilteredOut,
     onSelect,
     onHover,
     onLeave
@@ -249,9 +252,10 @@ const SkillCard = React.memo<SkillCardProps>(({
     const currentRotateX = isHovered ? 0 : skill.pos.rotateX;
     const currentRotateY = isHovered ? 0 : skill.pos.rotateY;
     const currentRotateZ = isHovered ? 0 : skill.pos.rotateZ;
-    const currentZ = isHovered ? 140 : (isActive ? skill.pos.z + 30 : skill.pos.z);
-    const currentScale = isHovered ? 1.15 : (isActive ? 1.05 : 1);
-    const zIndex = isHovered ? 50 : (isActive ? 40 : Math.floor(skill.pos.z + 100));
+    const currentZ = isHovered ? 140 : (isActive ? skill.pos.z + 35 : skill.pos.z);
+    const currentScale = isHovered ? 1.15 : (isActive ? 1.06 : (isFilteredOut ? 0.85 : 1));
+    const opacity = isFilteredOut ? 0.35 : 1;
+    const zIndex = isHovered ? 60 : (isActive ? 50 : Math.floor(skill.pos.z + 100));
 
     return (
         <div
@@ -262,11 +266,12 @@ const SkillCard = React.memo<SkillCardProps>(({
             style={{
                 transformStyle: 'preserve-3d',
                 transform: `translate3d(${skill.pos.x}px, ${skill.pos.y}px, ${currentZ}px) rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) rotateZ(${currentRotateZ}deg) scale(${currentScale})`,
+                opacity,
                 zIndex
             }}
         >
             <div
-                className={`w-36 h-36 sm:w-44 sm:h-44 rounded-[2rem] p-5 flex flex-col justify-between backdrop-blur-2xl transition-all duration-300 ${
+                className={`w-36 h-36 sm:w-44 sm:h-44 rounded-[2rem] p-5 flex flex-col justify-between backdrop-blur-2xl transition-all duration-300 relative group overflow-hidden ${
                     isHovered || isActive
                         ? 'bg-neutral-900/95 border-2 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]'
                         : 'bg-neutral-900/80 border border-white/10 shadow-[0_15px_35px_-10px_rgba(0,0,0,0.7)] hover:border-white/20'
@@ -274,32 +279,36 @@ const SkillCard = React.memo<SkillCardProps>(({
                 style={{
                     borderColor: (isHovered || isActive) ? skill.borderColor : 'rgba(255, 255, 255, 0.1)',
                     boxShadow: (isHovered || isActive)
-                        ? `0 20px 40px -10px ${skill.bgGlow}, 0 0 20px -5px ${skill.bgGlow}`
+                        ? `0 20px 45px -10px ${skill.bgGlow}, 0 0 25px -5px ${skill.bgGlow}`
                         : undefined
                 }}
             >
-                <div className="flex items-center justify-between">
+                {/* Top Subtle Specular Light Highlight */}
+                <div className="absolute -top-12 -left-12 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none group-hover:opacity-100 transition-opacity opacity-50" />
+
+                <div className="flex items-center justify-between relative z-10">
                     <div
-                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-md"
                         style={{ backgroundColor: skill.bgGlow }}
                     >
                         <Icon size={24} color={skill.color} />
                     </div>
                     <span
-                        className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border"
+                        className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border shadow-inner"
                         style={{
                             color: skill.color,
                             borderColor: skill.borderColor,
-                            backgroundColor: 'rgba(0, 0, 0, 0.4)'
+                            backgroundColor: 'rgba(0, 0, 0, 0.5)'
                         }}
                     >
                         {skill.proficiency}%
                     </span>
                 </div>
 
-                <div>
-                    <h4 className="text-base sm:text-lg font-bold text-white tracking-tight">
-                        {skill.name}
+                <div className="relative z-10">
+                    <h4 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center justify-between">
+                        <span>{skill.name}</span>
+                        {isActive && <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />}
                     </h4>
                     <p className="text-[11px] font-mono text-gray-400 mt-0.5 truncate">
                         {skill.category}
@@ -315,11 +324,20 @@ SkillCard.displayName = 'SkillCard';
 export const ThreeDSkillStack: React.FC = () => {
     const [activeSkill, setActiveSkill] = useState<SkillItem>(SKILL_ITEMS[0]);
     const [hoveredId, setHoveredId] = useState<string | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState<string>('All');
     const containerRef = useRef<HTMLDivElement>(null);
     const stageRef = useRef<HTMLDivElement>(null);
     const rafRef = useRef<number | null>(null);
 
-    // Hardware-accelerated 60fps CSS transform mouse parallax without React re-renders
+    // Filter categories list
+    const categories = useMemo(() => [
+        { label: 'All Stack', value: 'All', icon: Layers },
+        { label: 'Development', value: 'Development', icon: Cpu },
+        { label: 'Cloud & Database', value: 'Database & Cloud', icon: Cloud },
+        { label: 'Developer Tools', value: 'Tools', icon: Wrench },
+    ], []);
+
+    // 60fps Mouse parallax handling
     const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         if (!containerRef.current) return;
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
@@ -332,12 +350,12 @@ export const ThreeDSkillStack: React.FC = () => {
 
         rafRef.current = requestAnimationFrame(() => {
             if (stageRef.current) {
-                stageRef.current.style.transform = `rotateX(${12 - mouseY * 10}deg) rotateY(${-8 + mouseX * 10}deg)`;
+                stageRef.current.style.transform = `rotateX(${12 - mouseY * 12}deg) rotateY(${-8 + mouseX * 12}deg)`;
             }
         });
     }, []);
 
-    const handleMouseLeave = useCallback(() => {
+    const resetStageRotation = useCallback(() => {
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
         if (stageRef.current) {
             stageRef.current.style.transform = 'rotateX(12deg) rotateY(-8deg)';
@@ -364,22 +382,56 @@ export const ThreeDSkillStack: React.FC = () => {
     const allSkillsCombined = useMemo(() => [...SKILL_ITEMS, ...EXTRA_SKILLS], []);
 
     return (
-        <div className="w-full space-y-12">
+        <div className="w-full space-y-10">
+            
+            {/* Top Interactive Category Filter Bar & Perspective Control */}
+            <div className="flex flex-wrap items-center justify-between gap-4 max-w-4xl mx-auto px-2">
+                <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
+                    {categories.map((cat) => {
+                        const Icon = cat.icon;
+                        const isActive = selectedCategory === cat.value;
+                        return (
+                            <button
+                                key={cat.value}
+                                onClick={() => setSelectedCategory(cat.value)}
+                                className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-300 ${
+                                    isActive
+                                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-lg'
+                                        : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
+                                }`}
+                            >
+                                <Icon className="w-3.5 h-3.5" />
+                                <span>{cat.label}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+
+                <button
+                    onClick={resetStageRotation}
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/[0.03] border border-white/10 text-xs font-mono text-gray-400 hover:text-white hover:bg-white/[0.08] transition-all"
+                    title="Reset 3D Perspective View"
+                >
+                    <RotateCcw className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Reset View</span>
+                </button>
+            </div>
+
             {/* 3D Stack Stage Container */}
             <div
                 ref={containerRef}
                 onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
+                onMouseLeave={resetStageRotation}
                 className="relative min-h-[420px] sm:min-h-[480px] w-full flex items-center justify-center overflow-visible py-8"
                 style={{ perspective: '1200px' }}
             >
-                {/* Background Ambient Glow */}
+                {/* Background Dynamic Ambient Glow */}
                 <div
-                    className="absolute w-[350px] h-[350px] rounded-full blur-[100px] pointer-events-none transition-colors duration-700 opacity-40"
+                    className="absolute w-[380px] h-[380px] rounded-full blur-[110px] pointer-events-none transition-colors duration-700 opacity-35"
                     style={{ backgroundColor: activeColor }}
                 />
 
-                {/* 3D Floating Cards Container */}
+                {/* 3D Floating Cards Stage */}
                 <div
                     ref={stageRef}
                     className="relative w-full max-w-2xl h-[320px] sm:h-[380px] flex items-center justify-center transition-transform duration-300 ease-out"
@@ -394,65 +446,82 @@ export const ThreeDSkillStack: React.FC = () => {
                             skill={skill}
                             isHovered={hoveredId === skill.id}
                             isActive={activeSkill.id === skill.id}
+                            isFilteredOut={selectedCategory !== 'All' && skill.category !== selectedCategory}
                             onSelect={handleSelectSkill}
                             onHover={handleHover}
-                            onLeave={handleMouseLeave}
+                            onLeave={resetStageRotation}
                         />
                     ))}
                 </div>
             </div>
 
-            {/* Active Skill Detailed Showcase Panel */}
+            {/* Active Skill Detailed Showcase Card */}
             <div className="card-surface rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto border border-white/10 backdrop-blur-xl shadow-2xl relative overflow-hidden transition-all duration-500">
+                {/* Ambient Soft Glow Accent */}
                 <div
-                    className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl pointer-events-none opacity-20 transition-all duration-700"
+                    className="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl pointer-events-none opacity-25 transition-all duration-700"
                     style={{ backgroundColor: activeSkill.color }}
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center relative z-10">
+                    
+                    {/* Left: Icon & Name Header */}
                     <div className="md:col-span-4 flex items-center gap-4">
                         <div
-                            className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shrink-0 border shadow-lg"
+                            className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shrink-0 border shadow-xl transition-transform duration-300 hover:scale-105"
                             style={{
                                 backgroundColor: activeSkill.bgGlow,
                                 borderColor: activeSkill.borderColor
                             }}
                         >
-                            {React.createElement(activeSkill.icon, { size: 36, color: activeSkill.color })}
+                            {React.createElement(activeSkill.icon, { size: 38, color: activeSkill.color })}
                         </div>
                         <div>
                             <div className="flex items-center gap-2">
-                                <h3 className="text-2xl font-bold text-white">{activeSkill.name}</h3>
+                                <h3 className="text-2xl font-bold text-white tracking-tight">{activeSkill.name}</h3>
                             </div>
-                            <span className="code-mono text-xs text-gray-400 block mt-1">
+                            <span className="code-mono text-xs text-emerald-400/90 font-semibold block mt-1">
                                 {activeSkill.category}
                             </span>
                         </div>
                     </div>
 
+                    {/* Right: Description & Proficiency Bar */}
                     <div className="md:col-span-8 space-y-4">
                         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                             {activeSkill.description}
                         </p>
 
+                        {/* Animated Proficiency Bar */}
+                        <div className="space-y-1.5">
+                            <div className="flex items-center justify-between text-xs font-mono">
+                                <span className="text-gray-400 flex items-center gap-1.5">
+                                    <Award className="w-3.5 h-3.5 text-emerald-400" />
+                                    <span>Mastery &amp; Proficiency</span>
+                                </span>
+                                <span className="font-bold text-white">{activeSkill.proficiency}%</span>
+                            </div>
+                            <div className="w-full h-2 rounded-full bg-white/[0.08] overflow-hidden p-0.5 border border-white/5">
+                                <div
+                                    className="h-full rounded-full transition-all duration-700 ease-out shadow-sm"
+                                    style={{
+                                        width: `${activeSkill.proficiency}%`,
+                                        backgroundColor: activeSkill.color,
+                                        boxShadow: `0 0 12px ${activeSkill.color}`
+                                    }}
+                                />
+                            </div>
+                        </div>
+
+                        {/* Key Uses & Projects */}
                         <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-white/10">
                             <div className="flex items-center gap-2">
-                                <span className="text-xs text-gray-400 font-medium">Proficiency Level:</span>
-                                <span
-                                    className="text-xs font-mono font-bold px-2 py-0.5 rounded-md"
-                                    style={{ color: activeSkill.color, backgroundColor: activeSkill.bgGlow }}
-                                >
-                                    {activeSkill.proficiency}% Mastered
-                                </span>
-                            </div>
-
-                            <div className="flex items-center gap-2">
-                                <span className="text-xs text-gray-400 font-medium">Key Uses:</span>
-                                <div className="flex items-center gap-1.5">
+                                <span className="text-xs text-gray-400 font-medium">Applied In Projects:</span>
+                                <div className="flex flex-wrap items-center gap-1.5">
                                     {activeSkill.projects.map((proj) => (
                                         <span
                                             key={proj}
-                                            className="text-[10px] font-mono text-gray-300 bg-white/5 border border-white/10 px-2 py-0.5 rounded-md"
+                                            className="text-[10px] font-mono text-gray-200 bg-white/[0.06] border border-white/10 px-2.5 py-0.5 rounded-lg"
                                         >
                                             {proj}
                                         </span>
@@ -464,15 +533,15 @@ export const ThreeDSkillStack: React.FC = () => {
                 </div>
             </div>
 
-            {/* Comprehensive Stack Grid for Additional Skills & Tools */}
-            <div className="pt-6">
-                <div className="text-center mb-6">
+            {/* Comprehensive Stack Grid for All Skills & Tools */}
+            <div className="pt-4 max-w-4xl mx-auto">
+                <div className="text-center mb-5">
                     <span className="text-[11px] font-mono text-gray-500 uppercase tracking-[0.24em]">
-                        All Languages, Libraries &amp; Developer Tools
+                        Full Technology Ecosystem
                     </span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-2.5">
                     {allSkillsCombined.map((item) => {
                         const Icon = item.icon;
                         const isCurrentActive = activeSkill.id === item.id;
@@ -480,21 +549,21 @@ export const ThreeDSkillStack: React.FC = () => {
                             <button
                                 key={item.id}
                                 onClick={() => handleSelectSkill(item)}
-                                className={`group p-3.5 rounded-2xl flex items-center gap-3 border transition-all duration-300 text-left ${
+                                className={`group p-3 rounded-2xl flex items-center gap-2.5 border transition-all duration-300 text-left ${
                                     isCurrentActive
-                                        ? 'bg-white/10 border-white/30 shadow-lg'
-                                        : 'bg-black/40 border-white/[0.06] hover:border-white/20 hover:bg-black/60'
+                                        ? 'bg-white/10 border-white/30 shadow-lg scale-105'
+                                        : 'bg-black/40 border-white/[0.06] hover:border-white/20 hover:bg-black/60 hover:scale-[1.02]'
                                 }`}
                             >
                                 <div
-                                    className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+                                    className="w-7 h-7 rounded-xl flex items-center justify-center shrink-0 shadow-inner"
                                     style={{ backgroundColor: item.bgGlow }}
                                 >
-                                    <Icon size={18} color={item.color} />
+                                    <Icon size={16} color={item.color} />
                                 </div>
                                 <div className="min-w-0 flex-1">
                                     <div className="text-xs font-semibold text-white truncate">{item.name}</div>
-                                    <div className="text-[10px] font-mono text-gray-500">{item.proficiency}%</div>
+                                    <div className="text-[10px] font-mono text-gray-400">{item.proficiency}%</div>
                                 </div>
                             </button>
                         );
