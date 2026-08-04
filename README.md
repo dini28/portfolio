@@ -2,7 +2,7 @@
 
   <img src="public/logo.svg" alt="Dipesh Soni Logo" width="80" height="80" />
 
-  # ⚡ Dipesh Soni — Personal Portfolio
+  # ⚡ Dipesh Soni
 
   **A modern, high-performance developer portfolio built with Next.js 15, React 19, TypeScript, and Tailwind CSS v4.**
 
