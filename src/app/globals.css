@@ -23,7 +23,7 @@ body {
     font-family: var(--font-genos), "Genos", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #060606;
+    background: #05050f;
     color: #e5e5e5;
     overflow-x: hidden;
     width: 100%;
@@ -62,14 +62,14 @@ body::before {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 40%, #a3a3a3 70%, #737373 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 35%, #818cf8 65%, #6366f1 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
 .gradient-text-soft {
-    background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -80,21 +80,21 @@ body::before {
     pointer-events: none;
     border-radius: 9999px;
     filter: blur(120px);
-    opacity: 0.06;
-    background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+    opacity: 0.09;
+    background: radial-gradient(circle, #7c3aed 0%, #4f46e5 40%, transparent 70%);
 }
 
 .card-surface {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.04) 0%, rgba(99, 102, 241, 0.02) 100%);
+    border: 1px solid rgba(139, 92, 246, 0.12);
     backdrop-filter: blur(12px);
 }
 
 .card-surface:hover {
-    border-color: rgba(255, 255, 255, 0.18);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(255, 255, 255, 0.04);
+    border-color: rgba(139, 92, 246, 0.28);
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.07) 0%, rgba(99, 102, 241, 0.03) 100%);
+    box-shadow: 0 24px 60px -20px rgba(109, 40, 217, 0.35),
+        0 0 0 1px rgba(139, 92, 246, 0.08);
 }
 
 .vite-btn-primary {
@@ -104,21 +104,21 @@ body::before {
     gap: 0.6rem;
     padding: 0.85rem 1.5rem;
     border-radius: 0.6rem;
-    background: #ffffff;
-    color: #0a0a0a;
+    background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+    color: #ffffff;
     font-weight: 600;
     font-size: 0.9rem;
     letter-spacing: 0.01em;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
-        0 8px 24px -8px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
+        0 8px 24px -8px rgba(124, 58, 237, 0.5);
 }
 
 .vite-btn-primary:hover {
-    background: #e5e5e5;
+    background: linear-gradient(135deg, #6d28d9 0%, #4338ca 100%);
     transform: translateY(-1px);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
-        0 16px 40px -12px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),
+        0 16px 40px -12px rgba(124, 58, 237, 0.65);
 }
 
 .vite-btn-primary:active {
@@ -132,19 +132,21 @@ body::before {
     gap: 0.6rem;
     padding: 0.85rem 1.5rem;
     border-radius: 0.6rem;
-    background: rgba(255, 255, 255, 0.03);
-    color: #f5f5f5;
+    background: rgba(139, 92, 246, 0.06);
+    color: #c4b5fd;
     font-weight: 500;
     font-size: 0.9rem;
     letter-spacing: 0.01em;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.22);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .vite-btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.24);
+    background: rgba(139, 92, 246, 0.14);
+    border-color: rgba(139, 92, 246, 0.45);
+    color: #ede9fe;
     transform: translateY(-1px);
+    box-shadow: 0 8px 24px -8px rgba(124, 58, 237, 0.3);
 }
 
 .vite-btn-secondary:active {
@@ -165,13 +167,13 @@ body::before {
     gap: 0.5rem;
     padding: 0.35rem 0.85rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(139, 92, 246, 0.22);
+    background: rgba(139, 92, 246, 0.06);
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #a3a3a3;
+    color: #a78bfa;
 }
 
 .code-mono {
@@ -235,7 +237,7 @@ body::before {
 }
 
 .mouse-glow {
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(99, 102, 241, 0.06) 40%, transparent 60%);
     transform: translate(-50%, -50%);
     left: var(--mouse-x, 50%);
     top: var(--mouse-y, 50%);
@@ -409,15 +411,15 @@ body::before {
     width: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(139, 92, 246, 0.04);
     border-radius: 9px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(139, 92, 246, 0.3);
     border-radius: 9px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(139, 92, 246, 0.55);
     border-radius: 9px;
 }
 
@@ -445,15 +447,15 @@ body::before {
 /* ─── Firecrawl Design System Utilities (User Color Theme) ─── */
 .firecrawl-grid-bg {
     background-image: 
-        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.12) 1px, transparent 0),
-        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        radial-gradient(circle at 1px 1px, rgba(139, 92, 246, 0.15) 1px, transparent 0),
+        linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
     background-size: 40px 40px, 40px 40px, 40px 40px;
     background-position: -1px -1px;
 }
 
 .firecrawl-dither-bg {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
+    background-image: radial-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 0);
     background-size: 8px 8px;
 }
 
@@ -465,11 +467,11 @@ body::before {
     font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(196, 181, 253, 0.55);
 }
 
 .fc-section-tag .fc-index {
-    color: #ffffff;
+    color: #a78bfa;
     font-weight: 600;
 }
 
@@ -479,24 +481,24 @@ body::before {
     gap: 0.5rem;
     padding: 0.35rem 0.85rem;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(139, 92, 246, 0.06);
+    border: 1px solid rgba(139, 92, 246, 0.18);
     font-family: var(--font-mono), monospace;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(196, 181, 253, 0.9);
     transition: all 0.2s ease;
 }
 
 .fc-pill-badge:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    background: rgba(139, 92, 246, 0.12);
+    border-color: rgba(139, 92, 246, 0.35);
+    color: #ede9fe;
 }
 
 .fc-bento-card {
     position: relative;
-    background: rgba(18, 18, 20, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 8, 20, 0.7);
+    border: 1px solid rgba(139, 92, 246, 0.1);
     border-radius: 0.85rem;
     backdrop-filter: blur(16px);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -509,20 +511,20 @@ body::before {
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.02) 100%);
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.22) 0%, rgba(99, 102, 241, 0.03) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0.4;
+    opacity: 0.45;
     transition: opacity 0.3s ease;
     pointer-events: none;
 }
 
 .fc-bento-card:hover {
     transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.22);
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 30px -10px rgba(255, 255, 255, 0.06);
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: 0 20px 40px -15px rgba(109, 40, 217, 0.4), 0 0 30px -10px rgba(139, 92, 246, 0.12);
 }
 
 .fc-bento-card:hover::before {

@@ -308,7 +308,7 @@ const SkillCard = React.memo<SkillCardProps>(({
                 <div className="relative z-10">
                     <h4 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center justify-between">
                         <span>{skill.name}</span>
-                        {isActive && <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />}
+                        {isActive && <CheckCircle2 className="w-4 h-4 text-violet-400 shrink-0" />}
                     </h4>
                     <p className="text-[11px] font-mono text-gray-400 mt-0.5 truncate">
                         {skill.category}
@@ -396,7 +396,7 @@ export const ThreeDSkillStack: React.FC = () => {
                                 onClick={() => setSelectedCategory(cat.value)}
                                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-300 ${
                                     isActive
-                                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-lg'
+                                        ? 'bg-violet-500/20 text-violet-300 border border-violet-500/40 shadow-lg'
                                         : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
                                 }`}
                             >
@@ -412,7 +412,7 @@ export const ThreeDSkillStack: React.FC = () => {
                     className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/[0.03] border border-white/10 text-xs font-mono text-gray-400 hover:text-white hover:bg-white/[0.08] transition-all"
                     title="Reset 3D Perspective View"
                 >
-                    <RotateCcw className="w-3.5 h-3.5 text-emerald-400" />
+                    <RotateCcw className="w-3.5 h-3.5 text-violet-400" />
                     <span>Reset View</span>
                 </button>
             </div>
@@ -480,7 +480,7 @@ export const ThreeDSkillStack: React.FC = () => {
                             <div className="flex items-center gap-2">
                                 <h3 className="text-2xl font-bold text-white tracking-tight">{activeSkill.name}</h3>
                             </div>
-                            <span className="code-mono text-xs text-emerald-400/90 font-semibold block mt-1">
+                            <span className="code-mono text-xs text-violet-400/90 font-semibold block mt-1">
                                 {activeSkill.category}
                             </span>
                         </div>
@@ -496,7 +496,7 @@ export const ThreeDSkillStack: React.FC = () => {
                         <div className="space-y-1.5">
                             <div className="flex items-center justify-between text-xs font-mono">
                                 <span className="text-gray-400 flex items-center gap-1.5">
-                                    <Award className="w-3.5 h-3.5 text-emerald-400" />
+                                    <Award className="w-3.5 h-3.5 text-violet-400" />
                                     <span>Mastery &amp; Proficiency</span>
                                 </span>
                                 <span className="font-bold text-white">{activeSkill.proficiency}%</span>

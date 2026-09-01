@@ -59,14 +59,14 @@ const About = () => {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
 
                                     {/* Overlay Award Badge */}
-                                    <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl border border-emerald-500/30 bg-black/80 backdrop-blur-md flex items-center justify-between shadow-xl">
+                                    <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl border border-violet-500/30 bg-black/80 backdrop-blur-md flex items-center justify-between shadow-xl">
                                         <div className="flex items-center gap-2.5">
-                                            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0">
-                                                <Award className="w-4 h-4 text-emerald-400" />
+                                            <div className="w-8 h-8 rounded-lg bg-violet-500/20 border border-violet-500/30 flex items-center justify-center shrink-0">
+                                                <Award className="w-4 h-4 text-violet-400" />
                                             </div>
                                             <div>
                                                 <span className="text-xs font-extrabold text-white block">CODEFIESTA 3.0</span>
-                                                <span className="text-[10px] text-emerald-300 font-semibold uppercase tracking-wider block">1st Place • National Hackathon Winner</span>
+                                                <span className="text-[10px] text-violet-300 font-semibold uppercase tracking-wider block">1st Place • National Hackathon Winner</span>
                                             </div>
                                         </div>
                                     </div>
@@ -84,37 +84,37 @@ const About = () => {
                                 <button
                                     onClick={() => setActiveBioTab('story')}
                                     className={`pb-3.5 px-1 text-xs sm:text-sm font-semibold transition-all relative flex items-center gap-2 whitespace-nowrap ${activeBioTab === 'story'
-                                        ? 'text-emerald-400'
+                                        ? 'text-violet-400'
                                         : 'text-gray-400 hover:text-gray-200'
                                         }`}
                                 >
                                     <span>Engineering Story</span>
                                     {activeBioTab === 'story' && (
-                                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400 rounded-full" />
+                                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-400 rounded-full" />
                                     )}
                                 </button>
                                 <button
                                     onClick={() => setActiveBioTab('expertise')}
                                     className={`pb-3.5 px-1 text-xs sm:text-sm font-semibold transition-all relative flex items-center gap-2 whitespace-nowrap ${activeBioTab === 'expertise'
-                                        ? 'text-emerald-400'
+                                        ? 'text-violet-400'
                                         : 'text-gray-400 hover:text-gray-200'
                                         }`}
                                 >
                                     <span>Stack &amp; Horizon</span>
                                     {activeBioTab === 'expertise' && (
-                                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400 rounded-full" />
+                                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-400 rounded-full" />
                                     )}
                                 </button>
                                 <button
                                     onClick={() => setActiveBioTab('achievements')}
                                     className={`pb-3.5 px-1 text-xs sm:text-sm font-semibold transition-all relative flex items-center gap-2 whitespace-nowrap ${activeBioTab === 'achievements'
-                                        ? 'text-emerald-400'
+                                        ? 'text-violet-400'
                                         : 'text-gray-400 hover:text-gray-200'
                                         }`}
                                 >
                                     <span>Key Milestones</span>
                                     {activeBioTab === 'achievements' && (
-                                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400 rounded-full" />
+                                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-400 rounded-full" />
                                     )}
                                 </button>
                             </div>
@@ -145,16 +145,16 @@ const About = () => {
 
                                     {/* Principles Pills */}
                                     <div className="pt-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                        <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center gap-2.5">
-                                            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                                        <div className="p-3 rounded-xl bg-violet-500/[0.04] border border-violet-500/[0.12] flex items-center gap-2.5">
+                                            <CheckCircle2 className="w-4 h-4 text-violet-400 shrink-0" />
                                             <span className="text-xs text-gray-300 font-semibold">60 FPS Fluidity</span>
                                         </div>
-                                        <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center gap-2.5">
-                                            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                                        <div className="p-3 rounded-xl bg-violet-500/[0.04] border border-violet-500/[0.12] flex items-center gap-2.5">
+                                            <CheckCircle2 className="w-4 h-4 text-violet-400 shrink-0" />
                                             <span className="text-xs text-gray-300 font-semibold">Strict Typing (TS)</span>
                                         </div>
-                                        <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center gap-2.5">
-                                            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                                        <div className="p-3 rounded-xl bg-violet-500/[0.04] border border-violet-500/[0.12] flex items-center gap-2.5">
+                                            <CheckCircle2 className="w-4 h-4 text-violet-400 shrink-0" />
                                             <span className="text-xs text-gray-300 font-semibold">Clean Architecture</span>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@ const About = () => {
                                     {/* Primary Core */}
                                     <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
                                         <div className="flex items-center gap-3 mb-4">
-                                            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                            <div className="w-9 h-9 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
                                                 <Code2 className="w-4.5 h-4.5" />
                                             </div>
                                             <div>
@@ -177,7 +177,7 @@ const About = () => {
                                         </div>
                                         <div className="flex flex-wrap gap-2">
                                             {['React 19', 'TypeScript', 'JavaScript (ES6+)', 'Tailwind CSS', 'HTML5 & CSS3', 'Git / GitHub', 'State Management'].map((tech) => (
-                                                <span key={tech} className="px-3 py-1.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 code-mono text-xs text-emerald-300 font-medium">
+                                                <span key={tech} className="px-3 py-1.5 rounded-xl bg-violet-950/40 border border-violet-500/30 code-mono text-xs text-violet-300 font-medium">
                                                     {tech}
                                                 </span>
                                             ))}
@@ -210,14 +210,14 @@ const About = () => {
                             {activeBioTab === 'achievements' && (
                                 <div className="space-y-4 animate-in fade-in duration-300">
                                     {/* CODEFIESTA Card */}
-                                    <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/30 via-white/[0.02] to-transparent border border-emerald-500/30 flex items-start gap-4">
-                                        <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                                    <div className="p-5 rounded-2xl bg-gradient-to-r from-violet-950/30 via-white/[0.02] to-transparent border border-violet-500/30 flex items-start gap-4">
+                                        <div className="w-10 h-10 rounded-xl bg-violet-500/20 border border-violet-500/40 flex items-center justify-center text-violet-400 shrink-0 mt-0.5">
                                             <Award className="w-5 h-5" />
                                         </div>
                                         <div>
                                             <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
                                                 <h4 className="text-white font-bold text-base">CODEFIESTA 3.0 Hackathon Winner</h4>
-                                                <span className="code-mono text-[10px] px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold uppercase">
+                                                <span className="code-mono text-[10px] px-2 py-0.5 rounded-md bg-violet-500/20 text-violet-300 border border-violet-500/30 font-bold uppercase">
                                                     1st Place National
                                                 </span>
                                             </div>

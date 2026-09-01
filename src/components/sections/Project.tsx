@@ -60,19 +60,19 @@ const Project = () => {
                                             setActiveTab('overview');
                                         }}
                                         className={`group relative p-5 sm:p-6 rounded-2xl cursor-pointer transition-all duration-300 border fc-bento-card ${isActive
-                                            ? 'bg-gradient-to-r from-emerald-950/40 via-white/[0.04] to-transparent border-emerald-500/40 shadow-lg shadow-emerald-950/30 ring-1 ring-emerald-500/20'
-                                            : 'border-white/[0.08] hover:border-white/20'
+                                            ? 'bg-gradient-to-r from-violet-950/40 via-indigo-950/[0.04] to-transparent border-violet-500/40 shadow-lg shadow-violet-950/30 ring-1 ring-violet-500/20'
+                                            : 'border-violet-500/[0.08] hover:border-violet-500/20'
                                             }`}
                                     >
                                         {/* Active Beam Indicator */}
                                         {isActive && (
-                                            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-10 bg-emerald-400 rounded-r-full shadow-lg shadow-emerald-400/50" />
+                                            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-10 bg-violet-400 rounded-r-full shadow-lg shadow-violet-400/50" />
                                         )}
 
                                         <div className="flex items-start justify-between gap-4">
                                             <div className="flex items-center gap-3.5">
                                                 <span className={`code-mono text-sm font-bold px-2.5 py-1 rounded-lg border ${isActive
-                                                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+                                                    ? 'bg-violet-500/20 text-violet-300 border-violet-500/30'
                                                     : 'bg-white/[0.04] text-gray-500 border-white/[0.08] group-hover:text-gray-300'
                                                     }`}>
                                                     0{index + 1}
@@ -86,7 +86,7 @@ const Project = () => {
                                                 </div>
                                             </div>
 
-                                            <ChevronRight className={`w-5 h-5 transition-transform duration-300 shrink-0 ${isActive ? 'text-emerald-400 translate-x-1' : 'text-gray-600 group-hover:text-gray-400'
+                                            <ChevronRight className={`w-5 h-5 transition-transform duration-300 shrink-0 ${isActive ? 'text-violet-400 translate-x-1' : 'text-gray-600 group-hover:text-gray-400'
                                                 }`} />
                                         </div>
 
@@ -96,7 +96,7 @@ const Project = () => {
                                                 <span
                                                     key={tech}
                                                     className={`code-mono text-[10.5px] px-2 py-0.5 rounded-md border ${isActive
-                                                        ? 'bg-emerald-950/60 border-emerald-500/30 text-emerald-300 font-medium'
+                                                        ? 'bg-violet-950/60 border-violet-500/30 text-violet-300 font-medium'
                                                         : 'bg-black/40 border-white/[0.06] text-gray-400'
                                                         }`}
                                                 >
@@ -117,14 +117,14 @@ const Project = () => {
                         {/* Quick GitHub Navigation Card */}
                         <div className="mt-2 card-surface p-4 rounded-2xl border border-white/[0.08] flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                                <Github className="w-4 h-4 text-emerald-400" />
+                                <Github className="w-4 h-4 text-violet-400" />
                                 <span className="text-xs text-gray-400 font-medium">Explore All Repositories on GitHub</span>
                             </div>
                             <a
                                 href="https://github.com/dini28"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="code-mono text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 font-semibold transition-colors"
+                                className="code-mono text-xs text-violet-400 hover:text-violet-300 flex items-center gap-1 font-semibold transition-colors"
                             >
                                 <span>GitHub</span>
                                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -134,10 +134,10 @@ const Project = () => {
 
                     {/* Right Column: Dynamic Stage & Detail Canvas (7 Cols) */}
                     <div className="lg:col-span-7 flex flex-col justify-between">
-                        <div className="card-surface rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col h-full bg-gradient-to-b from-[#0f1512] to-[#0a0a0a]">
+                        <div className="bg-[#07060f]/80 rounded-3xl border border-violet-500/[0.12] flex flex-col h-full">
 
                             {/* Browser Frame Top Bar */}
-                            <div className="px-5 py-3.5 bg-black/60 border-b border-white/[0.08] flex items-center justify-between shrink-0">
+                            <div className="px-5 py-3.5 bg-black/60 border-b border-violet-500/[0.1] flex items-center justify-between shrink-0">
                                 <div className="flex items-center gap-2">
                                     <span className="ml-3 code-mono text-xs text-gray-400 flex items-center gap-1.5">
                                         {activeProject.title.toLowerCase()}.vercel.app
@@ -145,7 +145,7 @@ const Project = () => {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     {activeProject.status && (
-                                        <span className="px-2.5 py-0.5 bg-emerald-500/15 border border-emerald-500/30 rounded-full code-mono text-[10px] text-emerald-300 font-bold uppercase tracking-wider">
+                                        <span className="px-2.5 py-0.5 bg-violet-500/15 border border-violet-500/30 rounded-full code-mono text-[10px] text-violet-300 font-bold uppercase tracking-wider">
                                             {activeProject.status}
                                         </span>
                                     )}
@@ -169,7 +169,7 @@ const Project = () => {
                                             href={activeProject.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="px-3.5 py-2 rounded-xl bg-emerald-500 text-black font-semibold text-xs flex items-center gap-1.5 hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20"
+                                            className="px-3.5 py-2 rounded-xl bg-violet-500 text-white font-semibold text-xs flex items-center gap-1.5 hover:bg-violet-400 transition-all shadow-lg shadow-violet-500/30"
                                         >
                                             <span>Live Demo</span>
                                             <ExternalLink className="w-3.5 h-3.5" />
@@ -190,7 +190,7 @@ const Project = () => {
 
                                 <div className="absolute bottom-4 left-5">
                                     <h4 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">{activeProject.title}</h4>
-                                    <p className="code-mono text-xs text-emerald-400 font-medium">{activeProject.subtitle}</p>
+                                    <p className="code-mono text-xs text-violet-400 font-medium">{activeProject.subtitle}</p>
                                 </div>
                             </div>
 
@@ -202,37 +202,37 @@ const Project = () => {
                                         <button
                                             onClick={() => setActiveTab('overview')}
                                             className={`pb-3 text-xs sm:text-sm font-semibold transition-all relative ${activeTab === 'overview'
-                                                ? 'text-emerald-400'
+                                                ? 'text-violet-400'
                                                 : 'text-gray-400 hover:text-gray-200'
                                                 }`}
                                         >
                                             Overview
                                             {activeTab === 'overview' && (
-                                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400 rounded-full" />
+                                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-400 rounded-full" />
                                             )}
                                         </button>
                                         <button
                                             onClick={() => setActiveTab('architecture')}
                                             className={`pb-3 text-xs sm:text-sm font-semibold transition-all relative ${activeTab === 'architecture'
-                                                ? 'text-emerald-400'
+                                                ? 'text-violet-400'
                                                 : 'text-gray-400 hover:text-gray-200'
                                                 }`}
                                         >
                                             Architecture
                                             {activeTab === 'architecture' && (
-                                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400 rounded-full" />
+                                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-400 rounded-full" />
                                             )}
                                         </button>
                                         <button
                                             onClick={() => setActiveTab('impact')}
                                             className={`pb-3 text-xs sm:text-sm font-semibold transition-all relative ${activeTab === 'impact'
-                                                ? 'text-emerald-400'
+                                                ? 'text-violet-400'
                                                 : 'text-gray-400 hover:text-gray-200'
                                                 }`}
                                         >
                                             Impact &amp; Results
                                             {activeTab === 'impact' && (
-                                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400 rounded-full" />
+                                                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-400 rounded-full" />
                                             )}
                                         </button>
                                     </div>
@@ -264,16 +264,16 @@ const Project = () => {
 
                                     {activeTab === 'architecture' && (
                                         <div className="space-y-4 animate-in fade-in duration-300">
-                                            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex gap-3">
-                                                <Target className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                                            <div className="p-4 rounded-xl bg-violet-500/[0.03] border border-violet-500/[0.1] flex gap-3">
+                                                <Target className="w-5 h-5 text-violet-400 shrink-0 mt-0.5" />
                                                 <div>
                                                     <h5 className="text-white font-bold text-xs uppercase tracking-wider mb-1">Problem</h5>
                                                     <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{activeProject.caseStudy.problem}</p>
                                                 </div>
                                             </div>
 
-                                            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] flex gap-3">
-                                                <Lightbulb className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                                            <div className="p-4 rounded-xl bg-violet-500/[0.03] border border-violet-500/[0.1] flex gap-3">
+                                                <Lightbulb className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
                                                 <div>
                                                     <h5 className="text-white font-bold text-xs uppercase tracking-wider mb-1">Engineering Solution</h5>
                                                     <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{activeProject.caseStudy.solution}</p>
@@ -284,21 +284,21 @@ const Project = () => {
 
                                     {activeTab === 'impact' && (
                                         <div className="space-y-4 animate-in fade-in duration-300">
-                                            <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/20 flex gap-3">
-                                                <RocketIcon className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                                            <div className="p-4 rounded-xl bg-violet-950/20 border border-violet-500/20 flex gap-3">
+                                                <RocketIcon className="w-5 h-5 text-violet-400 shrink-0 mt-0.5" />
                                                 <div>
-                                                    <h5 className="text-emerald-300 font-bold text-xs uppercase tracking-wider mb-1">Key Results</h5>
+                                                    <h5 className="text-violet-300 font-bold text-xs uppercase tracking-wider mb-1">Key Results</h5>
                                                     <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">{activeProject.caseStudy.impact}</p>
                                                 </div>
                                             </div>
 
                                             <ul className="space-y-2">
                                                 <li className="flex items-center gap-2 text-xs text-gray-400">
-                                                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                                                    <CheckCircle2 className="w-4 h-4 text-violet-400" />
                                                     <span>Optimized layout performance &amp; component architecture</span>
                                                 </li>
                                                 <li className="flex items-center gap-2 text-xs text-gray-400">
-                                                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                                                    <CheckCircle2 className="w-4 h-4 text-violet-400" />
                                                     <span>Production-ready deployment &amp; continuous integration</span>
                                                 </li>
                                             </ul>
@@ -310,10 +310,10 @@ const Project = () => {
                                 <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
                                     <button
                                         onClick={() => setSelectedModalProject(activeProject)}
-                                        className="py-2.5 px-4 rounded-xl bg-white/[0.04] border border-white/10 code-mono text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-2"
+                                        className="py-2.5 px-4 rounded-xl bg-violet-500/[0.06] border border-violet-500/20 code-mono text-xs text-violet-300 hover:text-violet-200 hover:bg-violet-500/[0.12] transition-all flex items-center gap-2"
                                     >
                                         <span>Read Full Case Study</span>
-                                        <ArrowUpRight className="w-3.5 h-3.5 text-emerald-400" />
+                                        <ArrowUpRight className="w-3.5 h-3.5 text-violet-400" />
                                     </button>
 
                                     <div className="flex gap-2">
@@ -370,14 +370,14 @@ const Project = () => {
                             </button>
                             <div className="absolute bottom-5 left-6 sm:left-8">
                                 <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">{selectedModalProject.title}</h3>
-                                <p className="code-mono text-[11px] text-emerald-400 mt-1 uppercase tracking-wider">{selectedModalProject.subtitle}</p>
+                                <p className="code-mono text-[11px] text-violet-400 mt-1 uppercase tracking-wider">{selectedModalProject.subtitle}</p>
                             </div>
                         </div>
 
                         <div className="p-6 sm:p-8 space-y-6">
                             <div className="space-y-5">
                                 <div className="flex gap-4">
-                                    <div className="shrink-0 w-10 h-10 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                    <div className="shrink-0 w-10 h-10 bg-violet-500/10 rounded-xl border border-violet-500/20 flex items-center justify-center text-violet-400">
                                         <Target className="w-4.5 h-4.5" />
                                     </div>
                                     <div>
@@ -387,7 +387,7 @@ const Project = () => {
                                 </div>
 
                                 <div className="flex gap-4">
-                                    <div className="shrink-0 w-10 h-10 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                    <div className="shrink-0 w-10 h-10 bg-indigo-500/10 rounded-xl border border-indigo-500/20 flex items-center justify-center text-indigo-400">
                                         <Lightbulb className="w-4.5 h-4.5" />
                                     </div>
                                     <div>
@@ -397,7 +397,7 @@ const Project = () => {
                                 </div>
 
                                 <div className="flex gap-4">
-                                    <div className="shrink-0 w-10 h-10 bg-emerald-500/10 rounded-xl border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                    <div className="shrink-0 w-10 h-10 bg-purple-500/10 rounded-xl border border-purple-500/20 flex items-center justify-center text-purple-400">
                                         <RocketIcon className="w-4.5 h-4.5" />
                                     </div>
                                     <div>

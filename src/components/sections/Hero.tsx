@@ -98,8 +98,8 @@ const Hero = () => {
 
                             <div className="flex flex-wrap items-center gap-2.5 pt-1">
                                 <div className="fc-pill-badge">
-                                    <span className="w-2 h-2 rounded-xs bg-emerald-400 animate-pulse" />
-                                    <span className="text-emerald-300 font-semibold">{'Available for Freelancing'}</span>
+                                    <span className="w-2 h-2 rounded-xs bg-violet-400 animate-pulse" />
+                                    <span className="text-violet-300 font-semibold">{`Available for Freelancing`}</span>
                                 </div>
 
                                 <div className="fc-pill-badge">
@@ -116,10 +116,10 @@ const Hero = () => {
 
                         {/* Animated Role Cycler */}
                         <div className="flex items-center gap-3">
-                            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 shadow-inner">
-                                <Code2 className="w-4.5 h-4.5 text-emerald-400 shrink-0" />
+                            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-violet-500/[0.06] border border-violet-500/20 shadow-inner">
+                                <Code2 className="w-4.5 h-4.5 text-violet-400 shrink-0" />
                                 <span className="text-sm sm:text-base text-gray-200 font-semibold code-mono">{textState.text}</span>
-                                <span className="w-0.5 h-4 bg-emerald-400 inline-block" />
+                                <span className="w-0.5 h-4 bg-violet-400 inline-block" />
                             </div>
                         </div>
 
@@ -151,11 +151,11 @@ const Hero = () => {
                     <div className="lg:col-span-5 relative">
                         <div className="relative w-full max-w-md mx-auto group">
                             {/* Multi-layered Ambient Backlight Glow */}
-                            <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/25 via-teal-500/15 to-cyan-500/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 pointer-events-none" />
-                            <div className="absolute -inset-1 bg-gradient-to-b from-emerald-400/30 via-white/10 to-transparent rounded-[2rem] blur-md opacity-40 group-hover:opacity-75 transition-all duration-500 pointer-events-none" />
+                            <div className="absolute -inset-4 bg-gradient-to-tr from-violet-600/25 via-indigo-500/15 to-purple-500/20 rounded-3xl blur-2xl opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 pointer-events-none" />
+                            <div className="absolute -inset-1 bg-gradient-to-b from-violet-400/30 via-indigo-500/10 to-transparent rounded-[2rem] blur-md opacity-40 group-hover:opacity-75 transition-all duration-500 pointer-events-none" />
 
                             {/* Main Card Container with Gradient Border */}
-                            <div className="relative p-1 rounded-3xl bg-gradient-to-b from-white/20 via-white/10 to-emerald-500/30 shadow-2xl transition-transform duration-500">
+                            <div className="relative p-1 rounded-3xl bg-gradient-to-b from-violet-400/20 via-indigo-500/10 to-purple-600/30 shadow-2xl transition-transform duration-500">
                                 <div className="relative rounded-[1.4rem] overflow-hidden bg-[#09090b] border border-white/10">
 
                                     {/* Hero Showcase Image */}
@@ -186,11 +186,11 @@ const Hero = () => {
                     </div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10 shadow-lg">
                         {techStackStrip.map((item) => (
-                            <div key={item.name} className="bg-[#0a0a0a] p-5 sm:p-6 text-center hover:bg-white/[0.03] transition-colors group">
+                            <div key={item.name} className="bg-[#07060f] p-5 sm:p-6 text-center hover:bg-violet-500/[0.04] transition-colors group">
                                 <div className="code-mono text-[10px] text-gray-500 uppercase tracking-[0.18em] block mb-2">
                                     {item.label}
                                 </div>
-                                <div className="text-lg sm:text-xl font-bold text-white group-hover:text-emerald-300 transition-colors tracking-tight">
+                                <div className="text-lg sm:text-xl font-bold text-white group-hover:text-violet-300 transition-colors tracking-tight">
                                     {item.name}
                                 </div>
                                 <div className="mt-1.5 text-xs text-gray-500">{item.status}</div>

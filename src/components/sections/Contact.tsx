@@ -130,7 +130,7 @@ const Contact = () => {
                             </div>
                             <button
                                 onClick={copyEmail}
-                                className={`p-1.5 rounded-lg border text-[11px] flex items-center gap-1 transition-all code-mono ${copied ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300' : 'bg-white/[0.03] border-white/10 text-gray-500 hover:text-white hover:border-white/20'}`}
+                                className={`p-1.5 rounded-lg border text-[11px] flex items-center gap-1 transition-all code-mono ${copied ? 'bg-violet-500/15 border-violet-500/30 text-violet-300' : 'bg-white/[0.03] border-white/10 text-gray-500 hover:text-white hover:border-white/20'}`}
                             >
                                 {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                                 <span>{copied ? 'Done' : 'Copy'}</span>
@@ -187,12 +187,12 @@ const Contact = () => {
                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/[0.03] rounded-full blur-2xl pointer-events-none" />
 
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                                <div className="p-2 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400">
                                     <ShieldCheck className="w-5 h-5" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold tracking-tight text-white">Open for Freelance &amp; Projects</h3>
-                                    <p className="text-xs text-emerald-400 font-medium mt-0.5">UI/UX Designer @ Toba Tech</p>
+                                    <p className="text-xs text-violet-400 font-medium mt-0.5">UI/UX Designer @ Toba Tech</p>
                                 </div>
                             </div>
 
@@ -212,14 +212,14 @@ const Contact = () => {
                         <div className="card-surface rounded-3xl p-6 sm:p-7 code-mono text-xs text-gray-400 relative hover-lift">
                             <div className="flex items-center justify-between mb-4 text-gray-500 pb-3 border-b border-white/[0.08]">
                                 <span>contact-info.ts</span>
-                                <span className="text-[10px] text-emerald-400 font-bold">● READY</span>
+                                <span className="text-[10px] text-violet-400 font-bold">● READY</span>
                             </div>
                             <div className="space-y-1.5">
                                 <div><span className="text-purple-400">const</span> <span className="text-blue-400">designer</span> = &#123;</div>
-                                <div className="pl-4"><span className="text-gray-500">name:</span> <span className="text-emerald-300">'Dipesh Soni'</span>,</div>
-                                <div className="pl-4"><span className="text-gray-500">role:</span> <span className="text-emerald-300">'UI/UX Designer &amp; Developer'</span>,</div>
-                                <div className="pl-4"><span className="text-gray-500">company:</span> <span className="text-emerald-300">'Toba Tech'</span>,</div>
-                                <div className="pl-4"><span className="text-gray-500">freelance:</span> <span className="text-emerald-300">'Available'</span></div>
+                                <div className="pl-4"><span className="text-gray-500">name:</span> <span className="text-violet-300">'Dipesh Soni'</span>,</div>
+                                <div className="pl-4"><span className="text-gray-500">role:</span> <span className="text-violet-300">'UI/UX Designer &amp; Developer'</span>,</div>
+                                <div className="pl-4"><span className="text-gray-500">company:</span> <span className="text-violet-300">'Toba Tech'</span>,</div>
+                                <div className="pl-4"><span className="text-gray-500">freelance:</span> <span className="text-violet-300">'Available'</span></div>
                                 <div>&#125;;</div>
                             </div>
                         </div>
@@ -236,7 +236,7 @@ const Contact = () => {
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                     <div>
                                         <label htmlFor="contact-name" className="block code-mono text-[10.5px] text-gray-500 uppercase tracking-[0.18em] mb-2.5">
-                                            Your Name <span className="text-emerald-400">*</span>
+                                        Your Name <span className="text-violet-400">*</span>
                                         </label>
                                         <input
                                             type="text"
@@ -245,7 +245,7 @@ const Contact = () => {
                                             className={`w-full px-4 py-3.5 rounded-xl bg-black/50 text-white text-sm transition-all border ${formErrors.name
                                                 ? 'border-red-500/40 focus:ring-1 focus:ring-red-500/50'
                                                 : focusedField === 'name'
-                                                    ? 'border-emerald-500/40 ring-1 ring-emerald-500/15'
+                                                    ? 'border-violet-500/40 ring-1 ring-violet-500/15'
                                                     : 'border-white/[0.08] hover:border-white/[0.18]'
                                                 } focus:outline-none`}
                                             onChange={() => handleInputChange('name')}
@@ -262,7 +262,7 @@ const Contact = () => {
 
                                     <div>
                                         <label htmlFor="contact-email" className="block code-mono text-[10.5px] text-gray-500 uppercase tracking-[0.18em] mb-2.5">
-                                            Email <span className="text-emerald-400">*</span>
+                                        Email <span className="text-violet-400">*</span>
                                         </label>
                                         <input
                                             type="email"
@@ -271,7 +271,7 @@ const Contact = () => {
                                             className={`w-full px-4 py-3.5 rounded-xl bg-black/50 text-white text-sm transition-all border ${formErrors.email
                                                 ? 'border-red-500/40 focus:ring-1 focus:ring-red-500/50'
                                                 : focusedField === 'email'
-                                                    ? 'border-emerald-500/40 ring-1 ring-emerald-500/15'
+                                                    ? 'border-violet-500/40 ring-1 ring-violet-500/15'
                                                     : 'border-white/[0.08] hover:border-white/[0.18]'
                                                 } focus:outline-none`}
                                             onChange={() => handleInputChange('email')}
@@ -289,7 +289,7 @@ const Contact = () => {
 
                                 <div>
                                     <label htmlFor="contact-subject" className="block code-mono text-[10.5px] text-gray-500 uppercase tracking-[0.18em] mb-2.5">
-                                        Subject <span className="text-emerald-400">*</span>
+                                    Subject <span className="text-violet-400">*</span>
                                     </label>
                                     <input
                                         type="text"
@@ -298,7 +298,7 @@ const Contact = () => {
                                         className={`w-full px-4 py-3.5 rounded-xl bg-black/50 text-white text-sm transition-all border ${formErrors.subject
                                             ? 'border-red-500/40 focus:ring-1 focus:ring-red-500/50'
                                             : focusedField === 'subject'
-                                                ? 'border-emerald-500/40 ring-1 ring-emerald-500/15'
+                                                ? 'border-violet-500/40 ring-1 ring-violet-500/15'
                                                 : 'border-white/[0.08] hover:border-white/[0.18]'
                                             } focus:outline-none`}
                                         onChange={() => handleInputChange('subject')}
@@ -315,7 +315,7 @@ const Contact = () => {
 
                                 <div>
                                     <label htmlFor="contact-message" className="block code-mono text-[10.5px] text-gray-500 uppercase tracking-[0.18em] mb-2.5">
-                                        Message <span className="text-emerald-400">*</span>
+                                    Message <span className="text-violet-400">*</span>
                                     </label>
                                     <textarea
                                         id="contact-message"
@@ -324,7 +324,7 @@ const Contact = () => {
                                         className={`w-full px-4 py-3.5 rounded-xl bg-black/50 text-white text-sm transition-all resize-none border ${formErrors.message
                                             ? 'border-red-500/40 focus:ring-1 focus:ring-red-500/50'
                                             : focusedField === 'message'
-                                                ? 'border-emerald-500/40 ring-1 ring-emerald-500/15'
+                                                ? 'border-violet-500/40 ring-1 ring-violet-500/15'
                                                 : 'border-white/[0.08] hover:border-white/[0.18]'
                                             } focus:outline-none`}
                                         onChange={() => handleInputChange('message')}
@@ -340,7 +340,7 @@ const Contact = () => {
                                 </div>
 
                                 {submitSuccess && (
-                                    <div className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 text-[12px]">
+                                <div className="flex items-center gap-3 p-4 rounded-xl bg-violet-500/10 border border-violet-500/25 text-violet-300 text-[12px]">
                                         <CheckCircle className="w-4 h-4 shrink-0" />
                                         <span>Message sent successfully! I'll respond to your email shortly.</span>
                                     </div>

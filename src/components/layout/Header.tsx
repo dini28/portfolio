@@ -101,13 +101,13 @@ export default function Header() {
                                     }`}
                             >
                                 <div className="flex items-center gap-3">
-                                    <IconComp className={`w-4 h-4 shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? "text-emerald-400" : "text-gray-400 group-hover:text-white"
+                                    <IconComp className={`w-4 h-4 shrink-0 transition-transform duration-300 group-hover:scale-110 ${isActive ? "text-violet-400" : "text-gray-400 group-hover:text-white"
                                         }`} />
                                     <span className="text-xs font-semibold tracking-wide">
                                         {link.label}
                                     </span>
                                 </div>
-                                <span className={`w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-0"
+                                <span className={`w-1.5 h-1.5 rounded-full bg-violet-400 shadow-[0_0_8px_rgba(139,92,246,0.8)] transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-0"
                                     }`} />
                             </a>
                         );
@@ -195,7 +195,7 @@ export default function Header() {
                                         : "h-0 bg-white/40 group-hover:h-5"
                                         }`} />
                                     <div className="flex items-baseline gap-4 pl-5">
-                                        <span className={`text-[11px] font-mono tracking-widest transition-colors duration-300 ${isActive ? "text-emerald-400" : "text-neutral-600 group-hover:text-neutral-400"}`}>
+                                        <span className={`text-[11px] font-mono tracking-widest transition-colors duration-300 ${isActive ? "text-violet-400" : "text-neutral-600 group-hover:text-neutral-400"}`}>
                                             {sectionNum}
                                         </span>
                                         <span

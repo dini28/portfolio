@@ -66,7 +66,7 @@ const Footer = () => {
                                             onClick={() => scrollToSection(link.href)}
                                             className="flex items-center gap-3 text-sm font-semibold text-gray-400 hover:text-white transition-all group cursor-pointer hover:translate-x-1 duration-300"
                                         >
-                                            <span className="text-gray-500 group-hover:text-emerald-400 transition-colors duration-300">
+                                            <span className="text-gray-500 group-hover:text-violet-400 transition-colors duration-300">
                                                 <link.icon className="w-4 h-4" />
                                             </span>
                                             <span>{link.label}</span>
@@ -90,7 +90,7 @@ const Footer = () => {
                                             rel="noopener noreferrer"
                                             className="flex items-center gap-3 text-sm font-semibold text-gray-400 hover:text-white transition-all group cursor-pointer hover:translate-x-1 duration-300"
                                         >
-                                            <span className="text-gray-500 group-hover:text-emerald-400 transition-colors duration-300">
+                                            <span className="text-gray-500 group-hover:text-violet-400 transition-colors duration-300">
                                                 <link.icon className="w-4 h-4" />
                                             </span>
                                             <span>{link.label}</span>
@@ -107,7 +107,7 @@ const Footer = () => {
                             </h4>
                             <div className="relative p-6 sm:p-7 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl group hover:border-white/20 transition-all overflow-hidden">
                                 <Quote className="absolute -right-2 -bottom-2 w-24 h-24 text-white/[0.03] select-none pointer-events-none transform -rotate-12 transition-transform duration-500 group-hover:rotate-0" />
-                                <blockquote className="text-sm sm:text-base text-gray-300 italic leading-relaxed relative z-10 border-l-2 border-emerald-400/80 pl-4 max-w-2xl">
+                                <blockquote className="text-sm sm:text-base text-gray-300 italic leading-relaxed relative z-10 border-l-2 border-violet-400/80 pl-4 max-w-2xl">
                                     "I believe learning doesn't end. There's always a better way to do things, and I'm always curious enough to go find it."
                                 </blockquote>
                             </div>
